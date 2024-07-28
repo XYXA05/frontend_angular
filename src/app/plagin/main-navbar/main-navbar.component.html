@@ -1,0 +1,28 @@
+
+
+<link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+
+<nav #nav>
+  <div class="nav-bar">
+    <i class='bx bx-menu sidebarOpen' #sidebarOpen></i>
+    <span class="logo navLogo"><a [routerLink]="['/new_build/']">MARK</a></span>
+    <div class="menu">
+      <div class="logo-toggle">
+        <span class="logo"><a href="#">MARK</a></span>
+        <i class='bx bx-x sidebarClose' #sidebarClose></i>
+      </div>
+      <ul class="nav-links">
+        <li><a [routerLink]="['/new_build/']">New Buildings</a></li>
+        <li><a [routerLink]="['/bulders/']">Builders</a></li>
+        <li><a [routerLink]="['/new_cattages/']">New Cottages</a></li>
+        <li><a [routerLink]="['/static/']">Statistics</a></li>
+      </ul>
+    </div>
+    <div class="darkLight-searchBox">
+      <div class="dark-light" #modeToggle></div>
+      <div class="searchBox">
+        <div class="searchToggle" #searchToggle></div>
+      </div>
+    </div>
+  </div>
+</nav>

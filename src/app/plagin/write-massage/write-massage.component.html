@@ -1,0 +1,31 @@
+<div style="overflow: hidden;" class="filter-table1" *ngIf="showFilterTable">
+    <div class="filter-table-title">
+        <h2 style="color: black;">Request prices and availability</h2>
+        <img style="height: 48px; width: 48px; cursor: pointer;" (click)="toggleFilterTable()" src="assets/icons8-close-100.png">
+    </div>
+    <div style="height: 80%;"  class="filter-table1-in">
+        <h3 style="color: black;">What exactly are you interested in?</h3>
+        <div  style="display: none; flex-wrap: nowrap; justify-content: space-evenly; margin: 0 auto;">
+          <button class="custom-btn btn-3"><span>Read More</span></button>
+          <button class="custom-btn btn-3"><span>Read More</span></button>  
+          <button class="custom-btn btn-3"><span>Read More</span></button>
+        </div>
+
+        <textarea name="message" type="text" id="input-message" placeholder="Message"></textarea>
+        <h3 style="color: black;">How to contact you?</h3>
+
+        <div class="row">
+            <span>
+              <input class="swing" id="artist" type="text" placeholder="BO$$" /><label for="artist">How can I call you?</label>
+            </span>
+            <span>
+              <input class="swing" id="song" type="text" placeholder="I don't give a ****" /><label for="song">Telephone number</label>
+            </span>
+            <span>
+              <input class="swing" id="eyes" type="text" placeholder="Crazy" /><label for="eyes">Email (optional)</label>
+            </span>
+        </div>
+
+    </div>
+    <button class="custom-btn1 btn-11">Read More</button>
+</div>

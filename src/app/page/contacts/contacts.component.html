@@ -1,0 +1,16 @@
+<app-main-navbar></app-main-navbar>
+<app-main-navbar2></app-main-navbar2>
+<div class="div0" [@fadeAnimation]>
+    <h1>Contacts of the sales department of the ...... residential complex</h1>
+    <div *ngIf="jsonDataOwner" style="height: 600px;">
+        <app-map-for-builder [jsonDataOwner]="jsonDataOwner"></app-map-for-builder>
+    </div>
+    <div style="margin: -580px 0px 0px 20px;">
+        <app-cart-builder></app-cart-builder>
+    </div>
+
+</div>
+<div class="div00">
+<h3>Choose a convenient day for your visit</h3>
+</div>
+<app-footer></app-footer>

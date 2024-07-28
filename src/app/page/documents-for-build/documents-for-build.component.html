@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="description" content="Мета-описание">
+    <meta name="keywords" content="js, py">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <app-main-navbar></app-main-navbar>
+    <app-main-navbar2></app-main-navbar2>
+    <div *ngIf="jsonDataa" style="display: grid; justify-content: space-around; justify-items: center; margin: 30px 0px 0px 0px;">
+      <h1 class="h2">Documents of the {{jsonDataa.title}}</h1>
+      <h4 class="h3">All documents are obtained from open state registers</h4>
+    </div>
+    <section [@fadeAnimation]>
+      <div class="container max-w-5xl mx-auto px-8">
+        <div class="card-wraper">
+          <div class="background" id="background"></div>
+          <a href="javascript:void(0)" class="card relative group block p-2 h-full w-full" *ngFor="let data of getMethodOwnerAboutData" (click)="onCardClick($event)">
+            <div class="card-main">
+              <div class="card-inner">
+                <div>
+                  <h3>{{data.title}}</h3>
+                  <p>
+                    {{data.text}}
+                    <a href="{{data.link}}" style="color: white;" target="_blank">{{data.link}}</a>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+    <app-footer></app-footer>
+  </body>
+</html>

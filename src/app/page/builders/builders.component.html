@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="description" content="Мета-описание">
+    <meta name="keywords" content="js, py">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  </head>
+  <body>
+<app-main-navbar></app-main-navbar>
+<div class="div0">
+    <div style="margin: 40px 0px 40px 0px;">
+        <h1 class="h2" style="margin: 0px 0px 15px 0px;">Developers of Luxembourg region</h1>
+        <h4 class="h3">Construction companies in the Luxembourg region</h4>
+    </div>
+    <div *ngFor="let ddata of paginatedData; let i = index">
+        <div style="display: flex; align-items: center;">
+            <h2 class="div_h1 h2">{{ddata.title_company}}</h2>
+            <a class="button" [routerLink]="['/document_page/', ddata?.id]" role="button">
+                <span>{{jsonDataMap[ddata.id]?.length || 0}} LCD</span>
+                <div class="icon">
+                    <i class="fa fa-remove">></i>
+                    <i class="fa fa-check">></i>
+                </div>
+            </a>
+        </div>
+        <div class="div1">
+            <div class="cart" *ngFor="let data of jsonDataMap[ddata.id]?.slice(0, 3)">
+                <a [routerLink]="['/build_about_the_project/', data?.id]">
+                    <video class="cart" [muted]="'muted'" loop  autoplay (ended)="replayVideo($event)">
+                        <source [src]="getVideoUrl(data.id)" type="video/mp4">
+                    </video>
+                </a>
+                <div class="description">
+                    <h2 class="description-title">{{ data.title }}</h2>
+                    <h3>{{ data.city }}</h3>
+                    <h4>From {{ data.price_low }} € up to {{ data.price_hi }} €</h4>
+                    <h5>{{ data.line_adres }}</h5>
+                </div>
+            </div>
+
+            <div class="cart-1">
+                <a [routerLink]="['/document_page/', ddata?.id]">
+                    <video class="cart-1" [muted]="'muted'" loop  autoplay (ended)="replayVideo($event)">
+                        <source  [src]="getVideoOwnerUrl(ddata?.id)" type="video/mp4">
+                    </video>
+                    <video class="cart-1-1" [muted]="'muted'" loop  autoplay (ended)="replayVideo($event)">
+                        <source [src]="getVideoOwnerUrl(ddata?.id)" type="video/mp4">
+                    </video>
+                </a>
+                <div class="description-1">
+                    <h4>year of foundation {{ddata.year_of_foundation}}</h4>
+                    <h4>{{ddata.houses_were_delivered}} houses were delivered</h4>
+                    <h4>{{ddata.houses_in_the_process}} houses in the process</h4>
+                    <h4>suburban type {{ddata.suburban_type}} project</h4>
+                </div>
+            </div>
+        </div> 
+        <div class="ccart-1">
+            <a [routerLink]="['/document_page/', ddata?.id]">
+                <video class="ccart-1" [muted]="'muted'" loop  autoplay (ended)="replayVideo($event)">
+                    <source [src]="getVideoOwnerUrl(ddata?.id)" type="video/mp4">
+                </video>
+                <video class="ccart-1-1" [muted]="'muted'" loop  autoplay (ended)="replayVideo($event)">
+                    <source [src]="getVideoOwnerUrl(ddata?.id)" type="video/mp4">
+                </video>
+            </a>
+            <div class="ddescription-1">
+                <h4>year of foundation {{ddata.year_of_foundation}}</h4>
+                <h4>{{ddata.houses_were_delivered}} houses were delivered</h4>
+                <h4>{{ddata.houses_in_the_process}} houses in the process</h4>
+                <h4>suburban type {{ddata.suburban_type}} project</h4>
+            </div>
+        </div>
+    </div> 
+</div>
+<div style="margin: 90px 0px 0px 0px;">
+<app-paginator [totalItems]="jsonDataOwner.length" [itemsPerPage]="itemsPerPage" (pageSelected)="changePage($event)"></app-paginator>   
+
+<app-footer></app-footer>
+</div>
+</body>
+</html>

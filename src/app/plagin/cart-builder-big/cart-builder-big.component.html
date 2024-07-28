@@ -1,0 +1,30 @@
+<article class="postcard dark blue">
+    <a class="postcard__img_link" [routerLink]="['/document_page/', jsonDataOwner?.id]">
+        <video class="postcard__img" [muted]="'muted'" loop  autoplay (ended)="replayVideo($event)">
+            <source *ngIf="jsonDataOwner?.id" [src]="getVideoOwnerUrl(jsonDataOwner?.id)" type="video/mp4">
+        </video>
+    </a>
+    <div class="postcard__text">
+        <h1 class="postcard__title blue"><a [routerLink]="['/document_page/', jsonDataOwner?.id]">{{jsonDataOwner.title_company}}</a></h1>
+        <div class="postcard__subtitle small">
+            <time datetime="2020-05-25 12:00:00">
+                {{jsonDataOwner.adres}}
+            </time>
+        </div>
+        <div style="margin: 15px 0px 15px 0px;" class="postcard__bar"></div>
+        <div class="postcard__preview-txt">
+            <div style="display: flex;align-items: center;">
+                <img style="height: 50px; width: 50px;" src="assets/avatar.png" alt="avatar">
+                
+                <div style="margin: 0px 30px 0px 0px;"> Mon - Fri: 09:00 - 19:00</div>
+                Sat - Sun: 10:00 - 18:00
+
+            </div>
+            <div class="div1">
+                <button class="custom-btn1 btn-12"><span><a href="tel:">+{{jsonDataOwner.phone}}</a></span><span>Phone</span></button>
+                <button class="custom-btn btn-5"><a href="https://wa.me/{{jsonDataOwner.phone}}?text=Hello%20World!" target="_blank">Write WhatsApp</a></button>
+                <button class="custom-btn btn-5"><a href="{{jsonDataOwner.website}}" target="_blank">website</a></button>
+            </div>
+        </div>
+    </div>
+</article>

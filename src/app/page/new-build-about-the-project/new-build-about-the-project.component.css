@@ -1,0 +1,360 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+*{
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+  transition: all 0.4s ease;;
+
+}
+.gallery {
+	display: grid;
+	grid-template-columns: repeat(30, auto);
+	grid-template-rows: 1fr;
+	grid-column-gap: 1rem;
+	grid-row-gap: 1rem;
+	overflow-x: scroll; /* Only allow horizontal scrolling */
+	overflow-y: hidden; /* Prevent vertical scrolling */
+	height: 630px;
+	scroll-snap-type: x mandatory; /* Apply snap type only for x-axis */
+	scroll-padding: 1rem;
+	width: 100.7%;
+}
+
+.gallery::-webkit-scrollbar {
+	display: none; /* Hide scrollbar for Chrome, Safari, and Opera */
+}
+
+.gallery {
+	scrollbar-width: none; /* Hide scrollbar for Firefox */
+}
+
+.active {
+	scroll-snap-type: unset;
+}
+
+li {
+	scroll-snap-align: center;
+	display: inline-block;
+	border-radius: 3px;
+	object-fit: cover;
+}
+
+.video111 {
+	height: 100%;
+  width: 630px;
+}
+.but{
+  margin: 20px 15px 20px 20px;
+}
+.darken-area {
+  position: absolute;
+  bottom: 200px;
+  left: 0;
+  right: 0;
+  top: auto;
+  height: 150px;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent); /* Linear gradient for smooth transition */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.div1{
+  margin: 0px auto;
+  max-width: 1440px;
+}
+
+.div2{
+  margin: 0px 0px 0px 0px;
+}
+.div3{
+  position: relative;
+  max-width: 397px;
+  -webkit-flex: 1;
+  flex: 1;
+  margin-left: 25px;
+}
+.div3-1{
+  display: none;
+}
+.div4{
+	display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+	justify-content: space-between;
+  max-width: 1000px;
+  background: #ebeef4;
+  border-radius: 10px 10px 0px 0px;
+}
+.div5{
+  margin: -272px 0px 0px 1085px;
+  position: absolute;
+
+  max-width: 370px;
+  -webkit-flex: 1;
+  flex: 1;
+}
+
+.div5-5{
+  position: -webkit-sticky;
+  position: sticky;
+  top: 56px;
+}
+.div6{
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
+
+}
+.div6-6:hover{
+  transform: scale(1.005);
+  box-shadow: inset 0px 0px 0px 1px rgba(0,0,0,0.5);
+}
+.div6-5{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+.div7{
+  display: flex;
+  flex-direction: row;
+  padding: 20px 0px 0px 20px;
+  color: #000;
+  width: 33.33333%;
+}
+.div8{
+  display: flex;
+  flex-wrap: wrap;
+}
+.div9{
+  width: 303px;
+  height: 300px;
+  margin: 0px 60px 40px 0px;
+  border-radius: 26px;
+  filter: brightness(80%);
+  transition: 0.3s;
+  background-color: #010718;
+  background-color: #89d8d3;
+}
+
+button {
+  margin: 20px;
+}
+
+.custom-btn {
+  height: 48px;
+  color: #000000;
+  border-radius: 5px;
+  padding: 10px 25px;
+
+  font-weight: 500;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
+  box-shadow: inset 2px 2px 2px 0px rgba(255,255,255,.5),
+              7px 7px 20px 0px rgba(0,0,0,.1),
+              4px 4px 5px 0px rgba(0,0,0,.1);
+  outline: none;
+}
+
+/* 13 */
+.btn-13 {
+  background-color: #89d8d3;
+background-image: linear-gradient(315deg, #c8c8c8 0%, #ebeef4 74%);
+  border: none;
+  z-index: 1;
+}
+.btn-13:after {
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 0;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+  border-radius: 5px;
+   background-color: #000000;
+background-image: linear-gradient(315deg, #343434 0%, #000000 74%);
+  box-shadow:
+   -7px -7px 20px 0px #fff9,
+   -4px -4px 5px 0px #fff9,
+   7px 7px 20px 0px #0002,
+   4px 4px 5px 0px #0001;
+  transition: all 0.3s ease;
+}
+.btn-13:hover {
+  color: #fff;
+}
+.btn-13:hover:after {
+  top: 0;
+  height: 100%;
+}
+.btn-13:active {
+  top: 2px;
+}
+
+
+.filter-table{
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  overflow: auto;
+  z-index: 1500;
+  opacity: 0;
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  -webkit-transform: translateY(100%);
+  transform: translateY(100%);
+  background-color: rgba(0, 0, 0, .7);
+  transition: opacity .4s cubic-bezier(.4,0,.75,0), -webkit-transform 0s .4s;
+  transition: opacity .4s cubic-bezier(.4,0,.75,0), transform 0s .4s;
+  transition: opacity .4s cubic-bezier(.4,0,.75,0), transform 0s .4s, -webkit-transform 0s .4s;
+  opacity: 1;
+  -webkit-transform: translateY(0);
+  transform: translateY(0);
+  transition: opacity .4s cubic-bezier(.25,1,.6,1);
+  pointer-events: auto;
+}
+
+
+.div10{
+  display: flex;
+  height: 45px;
+  width: 100px;
+  background-color: rgb(255, 255, 255);
+  justify-content: space-evenly;
+  border-radius: 75px;
+  align-items: center;
+  position: absolute;
+  margin: -100px -125px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media  screen and (max-width: 1500px) {
+  .darken-area{
+    bottom: 0;
+  }
+}
+@media screen and (max-width: 1440px) {
+
+  .div3 {
+    padding: 0px 0px 0px 25px;
+  }
+}
+
+@media screen and (max-width: 1280px) {
+
+  .div3 {
+    margin: 20px 0px 0px -40px;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .div1 {
+    padding-left: 8px;
+    padding-right: 12px;
+  }
+  .div3 {
+    margin: 20px 0px 0px -30px;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .div1 {
+    padding-left: 20px;
+    padding-right: 8px;
+  }
+  .div3 {
+    display: none;
+  }
+  .div3-1{
+    display: inline;
+    margin: 0px auto;
+  }
+  .div7 {
+
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .displayyy{
+    display: none;
+  }
+  .but{
+    margin: 20px 15px 20px 20px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .div4{
+    flex-wrap: wrap;
+  }
+  .div1 {
+    padding-left: 4px;
+    padding-right: 4px;
+  }
+  .video111{
+    height: 92%;
+    width: 554px;
+  }
+
+  .gallery{
+    height: 516px;
+  }
+  .darken-area{
+    bottom: 100px;
+  }
+
+}
+@media (max-width: 450px) {
+  .h2{
+      font-size: 1.1em; /* Changes the font size */
+      font-weight: 900; /* Initial font weight */
+  }
+  .h3{
+    font-size: 0.9em;
+  }
+  .div9{
+    display: none;
+  }
+  .darken-area{
+    bottom: 200px;
+  }
+  .but{
+    margin: 0px 15px 20px 20px;
+  }
+}
+@media screen and (max-width: 400px) {
+
+  .div1 {
+    padding-left: 2px;
+    padding-right: 2px;
+  }
+  .div7 {
+
+    padding: 10px 0 0 10px;
+  }
+  .gallery{
+    height: 535px;
+  }
+
+}

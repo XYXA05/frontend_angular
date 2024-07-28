@@ -1,0 +1,98 @@
+<div >
+       <div style="display: none;">
+              <div class="range-slider flat" data-ticks-position='top' style='--min:-500; --max:500; --value-a:-220; --value-b:400; --suffix:"%"; --text-value-a:"-220"; --text-value-b:"400";'>
+                     <input type="range" min="-500" max="500" value="-220" oninput="this.parentNode.style.setProperty('--value-a',this.value); this.parentNode.style.setProperty('--text-value-a', JSON.stringify(this.value))">
+                     <output></output>
+                     <input type="range" min="-500" max="500" value="400" oninput="this.parentNode.style.setProperty('--value-b',this.value); this.parentNode.style.setProperty('--text-value-b', JSON.stringify(this.value))">
+                     <output></output>
+                     <div class='range-slider__progress'></div>
+              </div>
+       </div>
+
+
+
+
+
+  <div class="range-slider flat"
+  data-ticks-position='top'
+  [style.--min]="minMaxValues.minAllMeter"
+  [style.--max]="minMaxValues.maxAllMeter"
+  [style.--value-a]="selectedValueA"
+  [style.--value-b]="selectedValueB"
+  [style.--suffix]="'м²'"
+  [style.--text-value-a]="selectedValueA + 'м²'"
+  [style.--text-value-b]="selectedValueB + 'м²'">
+  <h3 style="margin: 20px 0px -50px 0px;">Area</h3>
+  <input #rangeA type="range"
+         [min]="minMaxValues.minAllMeter"
+         [max]="minMaxValues.maxAllMeter"
+         [value]="selectedValueA"
+         (input)="updateValue('--value-a', $event, '--text-value-a'); updateSliderValues()">
+  <output>{{selectedValueA}}м²</output>
+
+  <input #rangeB type="range"
+         [min]="minMaxValues.minAllMeter"
+         [max]="minMaxValues.maxAllMeter"
+         [value]="selectedValueB"
+         (input)="updateValue('--value-b', $event, '--text-value-b'); updateSliderValues()">
+  <output>{{selectedValueB}}м²</output>
+
+  <div class='range-slider__progress'></div>
+</div>
+
+
+<div class="range-slider flat"
+data-ticks-position='top'
+[style.--min]="minMaxValues.minPriceMeter"
+[style.--max]="minMaxValues.maxPriceMeter"
+[style.--value-a]="selectedPriceMeterA"
+[style.--value-b]="selectedPriceMeterB"
+[style.--suffix]="'€'"
+[style.--text-value-a]="selectedPriceMeterA + '€'"
+[style.--text-value-b]="selectedPriceMeterB + '€'">
+<h3 style="margin: 20px 0px -50px 0px;">Price</h3>
+<input #meterrangeA type="range"
+       [min]="minMaxValues.minPriceMeter"
+       [max]="minMaxValues.maxPriceMeter"
+       [value]="selectedPriceMeterA"
+       (input)="updatePriceMetrValue('--value-a', $event, '--text-value-a'); updatePriceMeterSliderValues()">
+<output>{{selectedPriceMeterA}}€</output>
+
+<input #meterrangeB type="range"
+       [min]="minMaxValues.minPriceMeter"
+       [max]="minMaxValues.maxPriceMeter"
+       [value]="selectedPriceMeterB"
+       (input)="updatePriceMetrValue('--value-b', $event, '--text-value-b'); updatePriceMeterSliderValues()">
+<output>{{selectedPriceMeterB}}€</output>
+
+<div class='range-slider__progress'></div>
+</div>
+
+<div class="range-slider flat"
+data-ticks-position='top'
+[style.--min]="minMaxValues.minAllPrice"
+[style.--max]="minMaxValues.maxAllPrice"
+[style.--value-a]="selectedPriceAllA"
+[style.--value-b]="selectedPriceAllB"
+[style.--suffix]="'€'"
+[style.--text-value-a]="selectedPriceAllA + '€'"
+[style.--text-value-b]="selectedPriceAllB + '€'">
+<h3 style="margin: 20px 0px -50px 0px;">Price of one meter</h3>
+<input #allrangeA type="range"
+       [min]="minMaxValues.minAllPrice"
+       [max]="minMaxValues.maxAllPrice"
+       [value]="selectedPriceAllA"
+       (input)="updatePriceAllValue('--value-a', $event, '--text-value-a'); updatePriceAllSliderValues()">
+<output>{{selectedPriceAllA}}€</output>
+
+<input #allrangeB type="range"
+       [min]="minMaxValues.minAllPrice"
+       [max]="minMaxValues.maxAllPrice"
+       [value]="selectedPriceAllB"
+       (input)="updatePriceAllValue('--value-b', $event, '--text-value-b'); updatePriceAllSliderValues()">
+<output>{{selectedPriceAllB}}€</output>
+
+<div class='range-slider__progress'></div>
+</div>
+
+</div>

@@ -1,0 +1,29 @@
+<form id="app-cover">
+  <div id="select-box">
+    <input type="checkbox" id="options-view-button">
+    <div id="select-button" class="brd">
+      <div id="selected-value">
+        <span>Any date of entry</span>
+      </div>
+      <div id="chevrons">
+        <i class="fas fa-chevron-up"></i>
+        <i class="fas fa-chevron-down"></i>
+      </div>
+    </div>
+    <div id="options">
+      <div class="option" *ngFor="let term of uniqueTerms">
+        <div>
+          <input class="s-c top" type="radio" name="platform" [value]="term.input_term" (change)="onSelectTerm(term.input_term)">
+          <i class="fab fa-codepen"></i>
+          <span class="label">{{term.input_term}}</span>
+          <div *ngFor="let section of term.sections">
+            <h6 class="label">{{section}}</h6>
+
+          </div>
+          <span class="opt-val">{{term.input_term}}</span>
+        </div>
+      </div>
+      <div id="option-bg"></div>
+    </div>
+  </div>
+</form>

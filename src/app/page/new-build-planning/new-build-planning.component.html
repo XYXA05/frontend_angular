@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="description" content="Мета-описание">
+    <meta name="keywords" content="js, py">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  </head>
+  <body>
+<app-main-navbar></app-main-navbar>
+<app-main-navbar2></app-main-navbar2>
+
+<div class="filter">
+    <app-input-tern style="position: relative;" (selectedTerm)="onTermSelected($event)" (selectedHouse)="onHouseSelected($event)"></app-input-tern>
+
+    <div class="range">
+
+        <app-range-input (rangeValuesChanged)="onRangeValuesChanged($event)" [getMethodDescriptions]="id"></app-range-input>
+
+    </div>
+    <div class="aaappp">
+        <div class="aaapp">
+            <h3 style="margin: -25px -65px 0px 0px;">Type</h3>
+            <button class="custom-btn btn-10" *ngFor="let typeItem of uniqueTypeItems" (click)="selectedTypeItem = typeItem">{{ typeItem }}</button>         
+        </div>
+        <div class="aaapp">
+            <h3 style="margin: -25px -90px 0px 10px;">Feature</h3>
+            <button class="custom-btn btn-10" *ngFor="let FeaturesItem of uniqueFeaturesItems" (click)="selectedFeaturesItem = FeaturesItem">{{ FeaturesItem }}</button>    
+        </div>
+
+            <button  style="margin-left: auto;"  class="custom-btn btn-11 btn-111" (click)="resetFilters()">Reset Filters<div class="dot"></div></button>
+    </div>
+</div>
+<div class="filter1">
+    <div style="display: flex; justify-content: space-between;">
+        <app-input-tern style="position: relative; margin: 9px 0px 0px 0px;" (selectedTerm)="onTermSelected($event)" (selectedHouse)="onHouseSelected($event)"></app-input-tern>
+        <button class="custom-btn btn-10" (click)="toggleFilterTables()">Show Filter</button>    
+    </div>
+    <div class="filter-tablea"  *ngIf="showFilterTables">
+        <div style="overflow: hidden;" class="filter-table1a">
+            <div class="filter-table-titlea">
+                <h2>Filters</h2>
+                <img style="height: 48px; width: 48px; cursor: pointer;" (click)="toggleFilterTables()" src="assets/icons8-close-100.png">
+            </div>
+            <div style="height: 80%;"  class="filter-table1-ina">
+                <div>
+                    <app-range-input (rangeValuesChanged)="onRangeValuesChanged($event)" [getMethodDescriptions]="id"></app-range-input>
+                    <h2>Type</h2>
+                    <button class="custom-btn btn-10" *ngFor="let typeItem of uniqueTypeItems" (click)="selectedTypeItem = typeItem">{{ typeItem }}</button>
+                    <h2>Feature</h2>
+                    <button class="custom-btn btn-10" *ngFor="let FeaturesItem of uniqueFeaturesItems" (click)="selectedFeaturesItem = FeaturesItem">{{ FeaturesItem }}</button>    
+                </div>
+            </div>
+            <div class="filter-table-endeda">
+                <div class="custom-btn1 btn-16">SET</div>
+                <div class="custom-btn1 btn-16"> SELECT</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="div0">
+        <div class="div1">
+            <div class="div2" *ngFor="let jsonDataDescription of jsonDataDescriptions | filterByType:selectedTypeItem:selectedFeaturesItem:selectedInputTerm:selectedInputHouse" (click)="toggleFilterTable(jsonDataDescription.id)">
+            <div class="div22"></div>
+            <img class="div3" [src]="getPhotoUrl(jsonDataDescription?.id)">
+            <h1 style="margin: 0px 0px 0px 30px;">{{jsonDataDescription.price_one_meter}} for м²</h1>
+            <div class="div4">
+                <div style="display: flex; align-items: center;">
+                <img style="width: 24px; height: 24px; margin: 0px 10px 0px 0px;" src="/assets/icons8-bed-64.png">
+                <h5>{{jsonDataDescription.type_items}}</h5>
+                </div>
+                <div style="display: flex; align-items: center;">
+                <img style="width: 24px; height: 24px; margin: 0px 10px 0px 0px;" src="/assets/icons8-stairs-50.png">
+                <h5>{{jsonDataDescription.all_price_items}}</h5>
+                </div>
+                <div style="display: flex; align-items: center;">
+                <img style="width: 24px; height: 24px; margin: 0px 10px 0px 0px;" src="/assets/icons8-stairs-50.png">
+                <h5>{{jsonDataDescription.floors}}</h5>
+                </div>
+                <div style="display: flex; align-items: center;">
+                <img style="width: 24px; height: 24px; margin: 0px 10px 0px 0px;" src="/assets/icons8-hotel-64.png">
+                <h5>{{jsonDataDescription.namber_build_andsection}}</h5>
+                </div>
+                <div style="display: flex; align-items: center;">
+                <img style="width: 24px; height: 24px; margin: 0px 10px 0px 0px;" src="/assets/icons8-calendar-48.png">
+                <h5>{{jsonDataDescription.input_term}}</h5>
+                </div>
+                <div style="display: flex; align-items: center;">
+                <img style="width: 24px; height: 24px; margin: 0px 10px 0px 0px;" src="/assets/icons8-constructing-50.png">
+                <h5>{{jsonDataDescription.state}}</h5>
+                </div>
+            </div>
+            </div>
+        </div>
+        <app-cart-builder-big [jsonDataOwner]="jsonDataOwner"></app-cart-builder-big>
+</div>
+
+
+<div class="filter-table"  *ngIf="showFilterTable">
+    <div style="overflow: hidden;" class="filter-table1">
+        <div class="filter-table-title">
+            <h2>Planing</h2>
+            <img style="height: 48px; width: 48px; cursor: pointer;" (click)="toggleFilterTable(null)" src="assets/icons8-close-100.png">
+        </div>
+        <div class="filter-table-ended">
+        </div>
+        <div style="height: 80%;"  class="filter-table1-in">
+            <div style="display: flex;">
+                <div class="filter-table1-in1">
+                    <div class="div5">
+                        <div class="div1">
+                            <div class="div2-2" *ngIf="jsonDataDescriptionsOriginalForId">
+                                <img  class="div3-3" [src]="getPhotoUrl(jsonDataDescriptionsOriginalForId?.id)" alt="plan">
+                                <h1 style="margin: 0px 0px 0px 35px;">{{jsonDataDescriptionsOriginalForId.price_one_meter}} for м²</h1>
+                                <div class="div4">                              
+                                    <div style="display: flex; align-items: center;">
+                                        <img style="width: 24px; height: 24px; margin: 0px 10px 0px 0px;" src="/assets/icons8-bed-64.png">
+                                        <h5>{{jsonDataDescriptionsOriginalForId.type_items}}</h5>
+                                    </div>
+                                    <div style="display: flex; align-items: center;">
+                                        <img style="width: 24px; height: 24px; margin: 0px 10px 0px 0px;" src="/assets/icons8-stairs-50.png">
+                                        <h5>{{jsonDataDescriptionsOriginalForId.all_price_items}}</h5>
+                                    </div>
+                                    <div style="display: flex; align-items: center;">
+                                        <img style="width: 24px; height: 24px; margin: 0px 10px 0px 0px;" src="/assets/icons8-stairs-50.png">
+                                        <h5>{{jsonDataDescriptionsOriginalForId.floors}}</h5>
+                                    </div>
+                                    <div style="display: flex; align-items: center;">
+                                        <img style="width: 24px; height: 24px; margin: 0px 10px 0px 0px;" src="/assets/icons8-hotel-64.png">
+                                        <h5>{{jsonDataDescriptionsOriginalForId.namber_build_andsection}}</h5>
+                                    </div>
+                                    <div style="display: flex; align-items: center;">
+                                        <img style="width: 24px; height: 24px; margin: 0px 10px 0px 0px;" src="/assets/icons8-calendar-48.png">
+                                        <h5>{{jsonDataDescriptionsOriginalForId.input_term}}</h5>
+                                    </div>
+                                    <div style="display: flex; align-items: center;">
+                                        <img style="width: 24px; height: 24px; margin: 0px 10px 0px 0px;" src="/assets/icons8-constructing-50.png">
+                                        <h5>{{jsonDataDescriptionsOriginalForId.state}}</h5> 
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div  class="div6">
+                        <h1>3D Walk Soon</h1>
+                    </div>
+                </div>
+                <div class="cart-builder">
+                    <app-cart-builder [jsonDataOwner]="jsonDataOwner"></app-cart-builder>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div style="margin: 40px 0px 0px 0px;">
+<app-footer></app-footer>
+</div>
+</body>
+</html>
+
+
+

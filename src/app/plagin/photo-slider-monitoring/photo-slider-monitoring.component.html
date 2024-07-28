@@ -1,0 +1,21 @@
+<section class="photos">
+   <div class="photo-item">
+      <div class="darken-area">
+         <div style="display: flex; color: white; justify-content: center;">
+            <h2 style="margin: 0px 25px 0px 0px;">Position {{photo[currentSlide].position}}</h2>
+            <h2 style="margin: 0px 25px 0px 0px;">{{photo[currentSlide].namber_build_andsection}}</h2>
+            <h2 style="margin: 0px 25px 0px 0px;">{{photo[currentSlide].date}}</h2>
+            <h1 style="margin: 0px 25px 0px 0px;" (click)="closeSlider()">close</h1>        
+       </div>
+      </div>
+      <div *ngFor="let photos of photo">
+         <img class="responsive-img"  [src]="photos.url" >
+       </div>
+   </div>
+   <section class="overlay"></section>
+   <button id="prevBtn" (click)="changeImage(-1)">&#10094;</button>
+   <button id="nextBtn" (click)="changeImage(1)">&#10095;</button>
+
+ </section>
+
+

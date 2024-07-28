@@ -1,0 +1,97 @@
+<div style="display: none;">
+       <div class="range-slider flat" data-ticks-position='top' style='--min:-500; --max:500; --value-a:-220; --value-b:400; --suffix:"%"; --text-value-a:"-220"; --text-value-b:"400";'>
+              <input type="range" min="-500" max="500" value="-220" oninput="this.parentNode.style.setProperty('--value-a',this.value); this.parentNode.style.setProperty('--text-value-a', JSON.stringify(this.value))">
+              <output></output>
+              <input type="range" min="-500" max="500" value="400" oninput="this.parentNode.style.setProperty('--value-b',this.value); this.parentNode.style.setProperty('--text-value-b', JSON.stringify(this.value))">
+              <output></output>
+              <div class='range-slider__progress'></div>
+       </div>
+</div>
+<h4>Area</h4>
+<div class="range-slider flat"
+    data-ticks-position='top'
+    [style.--min]="minMaxValues.minAllMeter"
+    [style.--max]="minMaxValues.maxAllMeter"
+    [style.--value-a]="selectedRangeValues.valueA"
+    [style.--value-b]="selectedRangeValues.valueB"
+    [style.--suffix]="'м²'"
+    [style.--text-value-a]="selectedRangeValues.valueA + 'м²'"
+    [style.--text-value-b]="selectedRangeValues.valueB + 'м²'">
+    <input #rangeA type="range"
+        [min]="minMaxValues.minAllMeter"
+        [max]="minMaxValues.maxAllMeter"
+        [(ngModel)]="selectedRangeValues.valueA"
+        (input)="updateRangeValue('--value-a', $event)">
+    <output>{{selectedRangeValues.valueA}}м²</output>
+    <input #rangeB type="range"
+        [min]="minMaxValues.minAllMeter"
+        [max]="minMaxValues.maxAllMeter"
+        [(ngModel)]="selectedRangeValues.valueB"
+        (input)="updateRangeValue('--value-b', $event)">
+    <output>{{selectedRangeValues.valueB}}м²</output>
+    <div class='range-slider__progress'></div>
+</div>
+
+<h4>Price</h4>
+<div class="range-slider flat"
+    data-ticks-position='top'
+    [style.--min]="minMaxValues.minAllPrice"
+    [style.--max]="minMaxValues.maxAllPrice"
+    [style.--value-a]="selectedRangeValues.priceAllA"
+    [style.--value-b]="selectedRangeValues.priceAllB"
+    [style.--suffix]="'€'"
+    [style.--text-value-a]="selectedRangeValues.priceAllA + '€'"
+    [style.--text-value-b]="selectedRangeValues.priceAllB + '€'">
+    <input #allrangeA type="range"
+        [min]="minMaxValues.minAllPrice"
+        [max]="minMaxValues.maxAllPrice"
+        [(ngModel)]="selectedRangeValues.priceAllA"
+        (input)="updateRangeValue('--priceAllA', $event)">
+    <output>{{selectedRangeValues.priceAllA}}€</output>
+    <input #allrangeB type="range"
+        [min]="minMaxValues.minAllPrice"
+        [max]="minMaxValues.maxAllPrice"
+        [(ngModel)]="selectedRangeValues.priceAllB"
+        (input)="updateRangeValue('--priceAllB', $event)">
+    <output>{{selectedRangeValues.priceAllB}}€</output>
+    <div class='range-slider__progress'></div>
+</div>
+
+<h4>Price of one meter</h4>
+<div class="range-slider flat"
+    data-ticks-position='top'
+    [style.--min]="minMaxValues.minPriceMeter"
+    [style.--max]="minMaxValues.maxPriceMeter"
+    [style.--value-a]="selectedRangeValues.priceMeterA"
+    [style.--value-b]="selectedRangeValues.priceMeterB"
+    [style.--suffix]="'€'"
+    [style.--text-value-a]="selectedRangeValues.priceMeterA + '€'"
+    [style.--text-value-b]="selectedRangeValues.priceMeterB + '€'">
+    <input #meterrangeA type="range"
+        [min]="minMaxValues.minPriceMeter"
+        [max]="minMaxValues.maxPriceMeter"
+        [(ngModel)]="selectedRangeValues.priceMeterA"
+        (input)="updateRangeValue('--priceMeterA', $event)">
+    <output>{{selectedRangeValues.priceMeterA}}€</output>
+    <input #meterrangeB type="range"
+        [min]="minMaxValues.minPriceMeter"
+        [max]="minMaxValues.maxPriceMeter"
+        [(ngModel)]="selectedRangeValues.priceMeterB"
+        (input)="updateRangeValue('--priceMeterB', $event)">
+    <output>{{selectedRangeValues.priceMeterB}}€</output>
+    <div class='range-slider__progress'></div>
+</div>
+<h4>Number of rooms</h4>
+<button class="custom-btn btn-14" *ngFor="let typeItem of uniqueTypeItems" 
+        (click)="updateSelectedUniqueTypeItems(typeItem)">{{ typeItem }}</button>
+<h4>Declared commissioning</h4>
+<button class="custom-btn btn-14" *ngFor="let typeItem of uniqueDeclaredCommissioning" 
+        (click)="updateSelectedUniqueDeclaredCommissioning(typeItem)">{{ typeItem }}</button>
+
+<h4>Construction status</h4>
+<button class="custom-btn btn-14" *ngFor="let typeItem of uniqueConstructionStatus" 
+        (click)="updateSelectedUniqueConstructionStatus(typeItem)">{{ typeItem }}</button>
+
+<h4>Number of storeys in the building</h4>
+<button class="custom-btn btn-14" *ngFor="let typeItem of uniqueNumberOfStoreys" 
+        (click)="updateSelectedUniqueNumberOfStoreys(typeItem)">{{ typeItem }}</button>

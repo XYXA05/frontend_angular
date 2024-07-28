@@ -1,0 +1,39 @@
+<app-input-tern style="
+display: flex;
+position: absolute;
+margin: 17px 0px 0px 0px;
+" (selectedTerm)="onTermSelected($event)" (selectedHouse)="onHouseSelected($event)" [getMethodDescriptio]="id"></app-input-tern>
+<section class="wrapper">
+  <!-- Row title -->
+  <main class="row title">
+    <ul>
+      <li style="color: black;"></li>
+      <li style="color: black;"></li>
+      <li><span style="color: black;" class="title-hide">from {{ minMaxValues.minPriceMeter }} €/м²</span></li>
+      <li style="color: black;">from {{ minMaxValues.minAllPrice }} €</li>
+      <li></li>
+
+    </ul>
+  </main>
+
+  <!-- Row 3 -->
+  <article class="row nfl" *ngFor="let roomType of getRoomTypes()">
+    <ul>
+      <a style="color: black;" [routerLink]="['/new_build_planing/', jsonData.id]">
+      <li *ngIf="!isScreenSmall">{{ roomType }}</li>
+      <li *ngIf="isScreenSmall">{{ roomType }}</li>
+      <li *ngIf="isScreenSmall">m² {{ roomStatistics[roomType].min_meter }}-{{ roomStatistics[roomType].max_meter }}</li>
+      <li *ngIf="isScreenSmall">€/m² {{ roomStatistics[roomType].low_price_meter }}-{{ roomStatistics[roomType].hight_price_meter }}</li>
+      <li *ngIf="isScreenSmall">price {{ roomStatistics[roomType].min_price }}-{{ roomStatistics[roomType].max_price }}</li>
+      <li *ngIf="!isScreenSmall">{{ roomStatistics[roomType].min_meter }}-{{ roomStatistics[roomType].max_meter }}</li>
+      <li *ngIf="!isScreenSmall">{{ roomStatistics[roomType].low_price_meter }}-{{ roomStatistics[roomType].hight_price_meter }}</li>
+      <li *ngIf="!isScreenSmall">{{ roomStatistics[roomType].min_price }}-{{ roomStatistics[roomType].max_price }}</li>
+      <li >></li>
+    </a>
+    </ul>
+
+    <ul class="more-content">
+      <li>Desna Park Residence:layout of {{ roomType }} apartments</li>
+    </ul>
+  </article>
+</section>

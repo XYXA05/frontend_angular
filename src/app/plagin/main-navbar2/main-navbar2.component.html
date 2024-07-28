@@ -1,0 +1,24 @@
+<div class="div0" [@coolTransition]>
+    <div class="div1">
+        <h5 class="h55">
+            <a [routerLink]="['/build_about_the_project/', id]" 
+               [class.active]="isActive('/build_about_the_project/')">About the project</a>
+        </h5>
+        <h5 class="h55">
+            <a [routerLink]="['/new_build_planing/', id]" 
+               [class.active]="isActive('/new_build_planing/')">Planning</a>
+        </h5>
+        <h5 class="h55">
+            <a [routerLink]="['/construction_monitoring/', id]" 
+               [class.active]="isActive('/construction_monitoring/')">Construction monitoring</a>
+        </h5>
+        <h5 class="h55">
+            <a [routerLink]="['/document/', id]" 
+               [class.active]="isActive('/document/')">Documents</a>
+        </h5>
+        <h5 class="h55">
+            <a [routerLink]="['/aerial_survay_360/', id]" 
+               [class.active]="isActive('/aerial_survay_360/')">Aerial survey 360</a>
+        </h5>
+    </div>
+</div>

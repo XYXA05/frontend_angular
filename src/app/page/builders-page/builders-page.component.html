@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="description" content="Мета-описание">
+    <meta name="keywords" content="js, py">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  </head>
+  <body>
+<app-main-navbar></app-main-navbar>
+<div *ngIf="jsonDataOwner">
+    <div class="div0">
+        <video class="cart-1" [muted]="'muted'" loop  autoplay (ended)="replayVideo($event)">
+            <source [src]="getVideoOwnerUrl(jsonDataOwner?.id)" type="video/mp4">
+        </video>
+
+        <div class="description-1">
+            <video class="cart-1-1" [muted]="'muted'" loop  autoplay (ended)="replayVideo($event)">
+                <source [src]="getVideoOwnerUrl(jsonDataOwner?.id)" type="video/mp4">
+    
+            </video>
+            <h1 class="h2" style="position: absolute; margin: -150px auto;">{{jsonDataOwner.title_company}}</h1>
+            <h2 class="h3">year of foundation {{jsonDataOwner.year_of_foundation}}</h2>
+            <h2 class="h3">{{jsonDataOwner.houses_were_delivered}} houses were delivered</h2>
+            <h2 class="h3">{{jsonDataOwner.houses_in_the_process}} houses in the process</h2>
+            <h2 class="h3">suburban type {{jsonDataOwner.suburban_type}} project</h2>
+        </div>
+
+    </div>
+    <div class="div1">
+        <h1 class="h2" style="margin: 20px 0px 0px 0px;"> From {{jsonDataOwner.title_company}} developer in Luxembourg region</h1>
+        <div class="div2">
+            <div class="cart-news" *ngFor="let dddd of getNewsData">
+                <a href="dddd.link" target="_blank" style="text-decoration: none; color: black;">
+                <div class="description-news">
+                <h2  class="h2">{{dddd.title}}</h2>
+                <h3 class="h3">{{dddd.date}}</h3>
+                <h5 class="h3">{{dddd.text}}</h5>
+                </div>
+                </a>
+            </div>
+        </div>
+        <h1 class="h2" style="margin: 0px 0px 30px 0px;">New apartment by {{jsonDataOwner.title_company}} developer in Luxembourg region</h1>
+        <div class="div3">
+            <div class="cart" *ngFor="let data of jsonDataa">
+                <a [routerLink]="['/build_about_the_project/', data?.id]">
+                    <video class="cart" [muted]="'muted'" loop  autoplay (ended)="replayVideo($event)">
+                        <source [src]="getVideoUrl(data.id)" type="video/mp4">
+                    </video>
+                </a>
+                <div class="description">
+                    <h2 class="description-title">{{data.title}}</h2>
+                    <h3>{{data.city}}</h3>
+                    <h4>From {{data.price_low}} € up to {{data.price_hi}} €</h4>
+                    <h5>{{data.line_adres}}</h5>
+                </div>
+            </div>
+        </div>
+        <h1 class="h2" style="margin: 5px 0px 20px 0px;">New buildings and sales offices of the developer {{jsonDataOwner.title_company}} on the map</h1>
+    </div>
+    <app-map-for-builder [jsonDataOwner]="jsonDataOwner"></app-map-for-builder>
+</div>
+<div style="margin: 50px 0px 0px 0px;">
+<app-footer></app-footer>
+</div>
+  </body>
+</html>
+
