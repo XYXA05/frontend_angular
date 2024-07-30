@@ -20,6 +20,7 @@ import { MainNavbar2Component } from './plagin/main-navbar2/main-navbar2.compone
 
 
 const routes: Routes = [
+  { path: '', redirectTo: '/new_build', pathMatch: 'full' },
   {path:'new_build', component:NewBuildComponent, pathMatch:'full'},
   {path:'build_about_the_project/:id', component:NewBuildAboutTheProjectComponent, pathMatch:'full'},
   {path:'new_build_planing/:id', component:NewBuildPlanningComponent, pathMatch:'full'},
