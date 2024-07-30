@@ -66,7 +66,7 @@
         },
         "serve": {
           "options": {
-            "host": "s404occ.mark-build.com",
+            "host": "mark-build.com",
             "port": 80
           },
           "builder": "@angular-devkit/build-angular:dev-server",
