@@ -125,7 +125,7 @@ export class MainNavbarButtonComponent implements AfterViewInit, OnInit {
   }
 
   public getMethod(): void {
-    this.http.get<any[]>('https://usskkwk.mark-build.com/items/').subscribe(
+    this.http.get<any[]>('https://www.mark-build.com/items/').subscribe(
       (data: any[]) => {
         console.log(data);
         this.jsonData = data;
@@ -140,7 +140,7 @@ export class MainNavbarButtonComponent implements AfterViewInit, OnInit {
   }
 
   public getMethodDescription(): void {
-    this.http.get<DescriptionItem[]>('https://usskkwk.mark-build.com/get_alll_plans/').subscribe(
+    this.http.get<DescriptionItem[]>('https://www.mark-build.com/get_alll_plans/').subscribe(
       (data) => {
         this.jsonDataDescription = data;
         this.jsonDataDescriptionsOriginal = data.slice(); // Save the original data

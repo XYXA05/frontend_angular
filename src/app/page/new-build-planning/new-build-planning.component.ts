@@ -60,7 +60,7 @@ export class NewBuildPlanningComponent implements OnInit{
   }
 
   public getMethodDescriptions(): void {
-    this.http.get<any[]>(`https://usskkwk.mark-build.com/get_descriptions_id/${this.id}`).subscribe(data => {
+    this.http.get<any[]>(`https://www.mark-build.com/get_descriptions_id/${this.id}`).subscribe(data => {
       this.jsonDataDescriptionsOriginal = data;
       this.jsonDataDescriptions = [...this.jsonDataDescriptionsOriginal];
       this.uniqueTypeItems = [...new Set<string>(data.map((item: any) => item.type_items))];
@@ -68,7 +68,7 @@ export class NewBuildPlanningComponent implements OnInit{
     });
   }
   public getMethodOwner(){
-    this.http.get(`https://usskkwk.mark-build.com/user/1/`).subscribe((data:any) =>{
+    this.http.get(`https://www.mark-build.com/user/1/`).subscribe((data:any) =>{
       console.log(data);
       this.jsonDataOwner = data;
       this.cdr.detectChanges();
@@ -81,7 +81,7 @@ export class NewBuildPlanningComponent implements OnInit{
       console.error("ID is undefined");
       return '';
     }
-    return this.sanitizer.bypassSecurityTrustResourceUrl(`https://usskkwk.mark-build.com/get_image_description/${id}`);
+    return this.sanitizer.bypassSecurityTrustResourceUrl(`https://www.mark-build.com/get_image_description/${id}`);
   }
 
 

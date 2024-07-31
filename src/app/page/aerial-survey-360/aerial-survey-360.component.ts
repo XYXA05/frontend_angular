@@ -52,7 +52,7 @@ export class AerialSurvey360Component implements OnInit, AfterViewInit{
   }
 
   public getMethod() {
-    this.http.get(`https://usskkwk.mark-build.com/items/${this.id}/`).subscribe((data: any) => {
+    this.http.get(`https://www.mark-build.com/items/${this.id}/`).subscribe((data: any) => {
       console.log(data);
       this.jsonDataa = data;
       if (data.owner_id) {  // Check if owner_id exists
@@ -62,18 +62,18 @@ export class AerialSurvey360Component implements OnInit, AfterViewInit{
   }
 
   public getMethodOwner(ownerId: number) {
-    this.http.get(`https://usskkwk.mark-build.comuser/${ownerId}/`).subscribe((data: any) => {
+    this.http.get(`https://www.mark-build.comuser/${ownerId}/`).subscribe((data: any) => {
       console.log(data);
       this.jsonDataOwner = data;
     });
   }
 
   getImagesInformation(): void {
-    this.http.get<any>(`https://usskkwk.mark-build.com/get_image_description_360_metadata/${this.id}`).subscribe(
+    this.http.get<any>(`https://www.mark-build.com/get_image_description_360_metadata/${this.id}`).subscribe(
       (metadataList: any) => {
         this.PhotoInformation = metadataList.files.map((metadata: any) => ({
           id: metadata.id,
-          url: this.sanitizer.bypassSecurityTrustResourceUrl(`https://usskkwk.mark-build.com/get_image_description_360/${metadata.id}`),
+          url: this.sanitizer.bypassSecurityTrustResourceUrl(`https://www.mark-build.com/get_image_description_360/${metadata.id}`),
           date: metadata.date,
         }));
       },
