@@ -15,16 +15,16 @@ export class MapComponent implements AfterViewInit, OnDestroy, OnChanges {
   @Output() markerClicked: EventEmitter<any> = new EventEmitter<any>();
   @ViewChild('mapContainer') mapContainerRef!: ElementRef;
 
-  map: any; // Adjust the type according to your setup
+  map: any;
   camera: any;
   scene: any;
   renderer: any;
-  markers: any[] = []; // Store markers for cleanup
-  circleMarkers: any[] = []; // Store circle markers for cleanup
+  markers: any[] = [];
+  circleMarkers: any[] = [];
 
   ngAfterViewInit(): void {
     maptilersdk.config.apiKey = 'u72wRXIY1BOK8syhN9zb';
-    if (this.mapContainerRef && typeof maptilersdk.Map !== 'undefined') {
+    if (this.mapContainerRef && maptilersdk.Map) {
       this.initializeMap();
     } else {
       console.error('mapContainerRef or maptilersdk.Map is not available.');
@@ -32,7 +32,7 @@ export class MapComponent implements AfterViewInit, OnDestroy, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (changes['jsonData']) {
+    if (changes['jsonData'] && this.map) {
       this.updateMap();
     }
   }
@@ -70,48 +70,32 @@ export class MapComponent implements AfterViewInit, OnDestroy, OnChanges {
       for (const data of this.jsonData) {
         this.addMarker(data);
       }
+
+      this.map.on('zoom', () => {
+        const zoom = this.map.getZoom();
+        const infoElements = document.getElementsByClassName('marker-title');
+        const titleElements = document.getElementsByClassName('marker-info');
+
+        for (let i = 0; i < infoElements.length; i++) {
+          const infoElement = infoElements[i] as HTMLElement;
+          infoElement.style.display = zoom < 14 ? 'none' : 'block';
+        }
+
+        for (let i = 0; i < titleElements.length; i++) {
+          const titleElement = titleElements[i] as HTMLElement;
+          titleElement.style.display = zoom < 12.71 ? 'none' : 'block';
+        }
+
+        for (const data of this.jsonData) {
+          const layerId = `3d-model-${data.id}`;
+          const circleMarker = document.getElementById(`circle-marker-${data.id}`);
+          this.map.setLayoutProperty(layerId, 'visibility', zoom < 14 ? 'none' : 'visible');
+          if (circleMarker) {
+            circleMarker.style.display = zoom < 14 ? 'block' : 'none';
+          }
+        }
+      });
     }
-
-    this.map.on('zoom', () => {
-      const zoom = this.map.getZoom();
-      const infoElements = document.getElementsByClassName('marker-title');
-      const titleElements = document.getElementsByClassName('marker-info');
-
-      for (let i = 0; i < infoElements.length; i++) {
-        const infoElement = infoElements[i] as HTMLElement;
-        if (zoom < 14) {
-          infoElement.style.display = 'none';
-        } else {
-          infoElement.style.display = 'block';
-        }
-      }
-
-      for (let i = 0; i < titleElements.length; i++) {
-        const titleElement = titleElements[i] as HTMLElement;
-        if (zoom < 12.71) {
-          titleElement.style.display = 'none';
-        } else {
-          titleElement.style.display = 'block';
-        }
-      }
-
-      for (const data of this.jsonData) {
-        const layerId = `3d-model-${data.id}`;
-        const circleMarker = document.getElementById(`circle-marker-${data.id}`);
-        if (zoom < 14) {
-          this.map.setLayoutProperty(layerId, 'visibility', 'none');
-          if (circleMarker) {
-            circleMarker.style.display = 'block';
-            circleMarker.style.cursor = 'pointer';
-          }
-        } else {
-          this.map.setLayoutProperty(layerId, 'visibility', 'visible');
-          if (circleMarker) {
-            circleMarker.style.display = 'none';
-          }
-        }
-      }
-    });
   }
 
   addMarker(data: any): void {
@@ -156,7 +140,7 @@ export class MapComponent implements AfterViewInit, OnDestroy, OnChanges {
     circle.style.height = '10px';
     circle.style.backgroundColor = 'red';
     circle.style.borderRadius = '50%';
-    circle.style.display = 'none'; // Start with hidden
+    circle.style.display = 'none';
 
     const circleMarker = new Marker({ element: circle, anchor: 'center' })
       .setLngLat([data.lng, data.lat])
@@ -170,13 +154,11 @@ export class MapComponent implements AfterViewInit, OnDestroy, OnChanges {
       this.markerClicked.emit(data);
     });
 
-    this.markers.push(marker); // Store the marker for cleanup
-    this.circleMarkers.push(circleMarker); // Store the circle marker for cleanup
+    this.markers.push(marker);
+    this.circleMarkers.push(circleMarker);
 
-    // Add the 3D model layer
     this.addCustomLayer(data);
   }
-
 
   addCustomLayer(data: any): void {
     const modelOrigin = [data.lng, data.lat];
@@ -248,6 +230,10 @@ export class MapComponent implements AfterViewInit, OnDestroy, OnChanges {
       },
     };
 
-    this.map.addLayer(customLayer);
+    if (this.map) {
+      this.map.addLayer(customLayer);
+    } else {
+      console.error('Map is not initialized');
+    }
   }
 }
