@@ -47,7 +47,7 @@ export class NewBuildAboutTheProjectComponent implements OnInit, AfterViewInit{
     return outlet && outlet.activatedRouteData && outlet.activatedRouteData['animation'];
   }
   public getMethod(){
-    this.http.get(`http://127.0.0.1:8000/items/${this.id}/`).subscribe((data:any) =>{
+    this.http.get(`https://usskkwk.mark-build.com/items/${this.id}/`).subscribe((data:any) =>{
       console.log(data);
       this.jsonData = data;
       this.jsonData_id = data.id;
@@ -62,13 +62,13 @@ export class NewBuildAboutTheProjectComponent implements OnInit, AfterViewInit{
     );
   }
   public getMethodOwnerAboutDescription(): void {
-    this.http.get(`http://127.0.0.1:8000/get_items_for_document_description/${this.id}/`).subscribe((data: any) => {
+    this.http.get(`https://usskkwk.mark-build.com/get_items_for_document_description/${this.id}/`).subscribe((data: any) => {
       console.log(data);
       this.getTermsOfFinancing = data;
     });
   }
   public getMethodOwner(ownerId: number){
-    this.http.get(`http://127.0.0.1:8000/user/${ownerId}/`).subscribe((data:any) =>{
+    this.http.get(`https://usskkwk.mark-build.com/user/${ownerId}/`).subscribe((data:any) =>{
       console.log(data);
       this.jsonDataOwner = data;
       this.cdr.detectChanges(); // Trigger change detection
@@ -77,7 +77,7 @@ export class NewBuildAboutTheProjectComponent implements OnInit, AfterViewInit{
   }
 
   public getMethodOwnerAbout(){
-    this.http.get(`http://127.0.0.1:8000/get_items_for_about/${this.id}`).subscribe((data:any) =>{
+    this.http.get(`https://usskkwk.mark-build.com/get_items_for_about/${this.id}`).subscribe((data:any) =>{
       console.log("Owner About Data:", data);
       this.jsonDataOwnerAbout = data;
     }
@@ -92,14 +92,14 @@ export class NewBuildAboutTheProjectComponent implements OnInit, AfterViewInit{
   }
 
   public getImagesFromPosition(position: number){
-    this.http.get(`http://127.0.0.1:8000/get_images/${position}/${this.id}/`).subscribe((data:any) =>{
+    this.http.get(`https://usskkwk.mark-build.com/get_images/${position}/${this.id}/`).subscribe((data:any) =>{
       console.log(data);
       this.Video = data;  // Assuming Video will be an array of image paths
     });
   }
 
   public getVideoUrl(position: number): SafeResourceUrl {
-    return this.sanitizer.bypassSecurityTrustResourceUrl(`http://127.0.0.1:8000/get_image/${position}/${this.id}/`);
+    return this.sanitizer.bypassSecurityTrustResourceUrl(`https://usskkwk.mark-build.com/get_image/${position}/${this.id}/`);
   }
 
   updatePosition(position: number): void {
@@ -107,7 +107,7 @@ export class NewBuildAboutTheProjectComponent implements OnInit, AfterViewInit{
   }
   public getVideoFromPosition(id: number): SafeResourceUrl {
     if (id) {
-      return this.sanitizer.bypassSecurityTrustResourceUrl(`http://127.0.0.1:8000/get_image_about/${id}`);
+      return this.sanitizer.bypassSecurityTrustResourceUrl(`https://usskkwk.mark-build.com/get_image_about/${id}`);
     } else {
       console.error("ID is not available");
       return this.sanitizer.bypassSecurityTrustResourceUrl('');  // Handle the error as needed

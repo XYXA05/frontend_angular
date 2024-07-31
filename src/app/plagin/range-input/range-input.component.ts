@@ -61,7 +61,7 @@ export class RangeInputComponent implements AfterViewInit, OnInit{
   }
 
   public getMethodDescription(): void {
-    this.http.get<DescriptionItem[]>(`http://127.0.0.1:8000/get_descriptions_id/${this.id}`).subscribe((data) => {
+    this.http.get<DescriptionItem[]>(`https://usskkwk.mark-build.com/get_descriptions_id/${this.id}`).subscribe((data) => {
       this.jsonDataDescription = data;
       this.findMinMaxValues();
       this.selectedValueA = this.minMaxValues.minAllMeter;

@@ -38,7 +38,7 @@ export class ConstructionMonitoringComponent implements OnInit{
   }
 
   public getMethod(){
-    this.http.get(`http://127.0.0.1:8000/items/${this.id}/`).subscribe((data:any) =>{
+    this.http.get(`https://usskkwk.mark-build.com/items/${this.id}/`).subscribe((data:any) =>{
       console.log(data);
       this.jsonDataa = data;
       if (data.owner_id) {  // Check if owner_id exists
@@ -48,14 +48,14 @@ export class ConstructionMonitoringComponent implements OnInit{
     );
   }
   public getMethodOwner(ownerId: number){
-    this.http.get(`http://127.0.0.1:8000/user/${ownerId}/`).subscribe((data:any) =>{
+    this.http.get(`https://usskkwk.mark-build.com/user/${ownerId}/`).subscribe((data:any) =>{
       console.log(data);
       this.jsonDataOwner = data;
     }
     );
   }
   public getMethodDescriptions(): void {
-    this.http.get<any[]>(`http://127.0.0.1:8000/get_descriptions_id/${this.id}`).subscribe(data => {
+    this.http.get<any[]>(`https://usskkwk.mark-build.com/get_descriptions_id/${this.id}`).subscribe(data => {
       this.jsonDataDescriptionsOriginal = this.getUniqueData(data, 'namber_build_andsection');
       if (this.jsonDataDescriptionsOriginal.length > 0) {
         this.selectedNumberBuildAndSection = this.jsonDataDescriptionsOriginal[0].namber_build_andsection;
@@ -65,7 +65,7 @@ export class ConstructionMonitoringComponent implements OnInit{
   }
 
   public getImagesInformation(numberBuildAndSection: string, useFilter: boolean = true) {
-    this.http.get<any>(`http://127.0.0.1:8000/get_images_metadata/${this.id}`).subscribe(
+    this.http.get<any>(`https://usskkwk.mark-build.com/get_images_metadata/${this.id}`).subscribe(
       (metadataList: any) => {
         this.PhotoInformation = [];
         let filteredMetadata = metadataList.files;
@@ -89,7 +89,7 @@ export class ConstructionMonitoringComponent implements OnInit{
         filteredMetadata.forEach((metadata: any) => {
           this.PhotoInformation.push({
             id: metadata.id,
-            url: this.sanitizer.bypassSecurityTrustResourceUrl(`http://127.0.0.1:8000/get_image_monitoring/${metadata.id}`),
+            url: this.sanitizer.bypassSecurityTrustResourceUrl(`https://usskkwk.mark-build.com/get_image_monitoring/${metadata.id}`),
             date: metadata.date,
             position: metadata.position,
             namber_build_andsection: metadata.namber_build_andsection

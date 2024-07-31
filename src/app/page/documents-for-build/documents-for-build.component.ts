@@ -127,7 +127,7 @@ export class DocumentsForBuildComponent implements OnInit, AfterViewInit{
   }
 
   public getMethod() {
-    this.http.get(`http://127.0.0.1:8000/items/${this.id}/`).subscribe((data: any) => {
+    this.http.get(`https://usskkwk.mark-build.com/items/${this.id}/`).subscribe((data: any) => {
       console.log(data);
       this.jsonDataa = data;
       this.cdRef.detectChanges();
@@ -136,7 +136,7 @@ export class DocumentsForBuildComponent implements OnInit, AfterViewInit{
   }
 
   public getMethodOwnerAbout(): void {
-    this.http.get(`http://127.0.0.1:8000/get_items_for_document/${this.id}/`).subscribe((data: any) => {
+    this.http.get(`https://usskkwk.mark-build.com/get_items_for_document/${this.id}/`).subscribe((data: any) => {
       console.log(data);
       this.getMethodOwnerAboutData = data;
       this.cdRef.detectChanges();

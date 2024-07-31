@@ -33,7 +33,7 @@ export class InputTernComponent implements OnInit{
   }
 
   public getMethodDescription() {
-    this.http.get<DescriptionItem[]>(`http://127.0.0.1:8000/get_descriptions_id/${this.id}`).subscribe((data) => {
+    this.http.get<DescriptionItem[]>(`https://usskkwk.mark-build.com/get_descriptions_id/${this.id}`).subscribe((data) => {
       console.log(data);
       this.jsonDataDescription = data;
 
