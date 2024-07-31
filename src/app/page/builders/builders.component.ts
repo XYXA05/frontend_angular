@@ -26,7 +26,7 @@ export class BuildersComponent implements OnInit{
 
   }
   public getMethodOwner(): void {
-    this.http.get('https://usskkwk.mark-build.com/userss/').subscribe((data: any) => {
+    this.http.get('https://usskkwk.mark-build.com/userss').subscribe((data: any) => {
       this.jsonDataOwner = data;
 
       // Load data for each ddata.id
@@ -39,7 +39,7 @@ export class BuildersComponent implements OnInit{
   }
 
   public loadMethod(id: string): void {
-    this.http.get<any[]>(`https://usskkwk.mark-build.com/get_items/${id}/`).subscribe(data => {
+    this.http.get<any[]>(`https://usskkwk.mark-build.com/get_items/${id}`).subscribe(data => {
       if (Array.isArray(data) && data.length > 0 && data[0].position) { // Check if data is an array and contains 'position' property
         this.jsonDataMap[id] = data;
       }
@@ -64,7 +64,7 @@ export class BuildersComponent implements OnInit{
   }
 
   public getVideoUrl(id: string): SafeResourceUrl {
-    return this.sanitizer.bypassSecurityTrustResourceUrl(`https://usskkwk.mark-build.com/get_image/1/${id}/`);
+    return this.sanitizer.bypassSecurityTrustResourceUrl(`https://usskkwk.mark-build.com/get_image/1/${id}`);
   }
   public getVideoOwnerUrl(id: string): SafeResourceUrl {
     return this.sanitizer.bypassSecurityTrustResourceUrl(`https://usskkwk.mark-build.com/get_image_owner/1/${id}`);

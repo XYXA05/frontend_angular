@@ -28,7 +28,7 @@ export class BuildersPageComponent implements OnInit {
     this.getNews();
   }
   public getMethodOwner(){
-    this.http.get(`https://usskkwk.mark-build.com/user/${this.id}/`).subscribe((data:any) =>{
+    this.http.get(`https://usskkwk.mark-build.com/user/${this.id}`).subscribe((data:any) =>{
       console.log(data);
       this.jsonDataOwner = data;
     }
@@ -36,13 +36,13 @@ export class BuildersPageComponent implements OnInit {
   }
 
   public getNews() {
-    this.http.get<any[]>(`https://usskkwk.mark-build.com/get_news_id/${this.id}/`).subscribe((data:any) => {
+    this.http.get<any[]>(`https://usskkwk.mark-build.com/get_news_id/${this.id}`).subscribe((data:any) => {
       this.getNewsData = data;
     });
   }
 
   public getMethod() {
-    this.http.get<any[]>(`https://usskkwk.mark-build.com/get_items/${this.id}/`).subscribe((data:any) => {
+    this.http.get<any[]>(`https://usskkwk.mark-build.com/get_items/${this.id}`).subscribe((data:any) => {
       this.jsonDataa = data;
     });
   }
@@ -54,7 +54,7 @@ export class BuildersPageComponent implements OnInit {
   }
 
   public getVideoUrl(id: string): SafeResourceUrl {
-    return this.sanitizer.bypassSecurityTrustResourceUrl(`https://usskkwk.mark-build.com/get_image/1/${id}/`);
+    return this.sanitizer.bypassSecurityTrustResourceUrl(`https://usskkwk.mark-build.com/get_image/1/${id}`);
   }
   public getVideoOwnerUrl(id: string): SafeResourceUrl {
     return this.sanitizer.bypassSecurityTrustResourceUrl(`https://usskkwk.mark-build.com/get_image_owner/1/${id}`);

@@ -38,7 +38,7 @@ export class ConstructionMonitoringComponent implements OnInit{
   }
 
   public getMethod(){
-    this.http.get(`https://usskkwk.mark-build.com/items/${this.id}/`).subscribe((data:any) =>{
+    this.http.get(`https://usskkwk.mark-build.com/items/${this.id}`).subscribe((data:any) =>{
       console.log(data);
       this.jsonDataa = data;
       if (data.owner_id) {  // Check if owner_id exists
@@ -48,7 +48,7 @@ export class ConstructionMonitoringComponent implements OnInit{
     );
   }
   public getMethodOwner(ownerId: number){
-    this.http.get(`https://usskkwk.mark-build.com/user/${ownerId}/`).subscribe((data:any) =>{
+    this.http.get(`https://usskkwk.mark-build.com/user/${ownerId}`).subscribe((data:any) =>{
       console.log(data);
       this.jsonDataOwner = data;
     }
