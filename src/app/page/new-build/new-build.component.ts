@@ -59,7 +59,7 @@ export class NewBuildComponent implements OnInit{
     return outlet && outlet.activatedRouteData && outlet.activatedRouteData['animation'];
   }
   public getMethod(): void {
-    this.http.get<any[]>('https://usskkwk.mark-build.com/items').subscribe(
+    this.http.get<any[]>('https://usskkwk.mark-build.com/items/').subscribe(
       data => {
         this.jsonData = data;
         this.originalData = [...data]; // Keep the original data

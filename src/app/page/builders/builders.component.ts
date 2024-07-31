@@ -26,7 +26,7 @@ export class BuildersComponent implements OnInit{
 
   }
   public getMethodOwner(): void {
-    this.http.get('https://usskkwk.mark-build.com/userss').subscribe((data: any) => {
+    this.http.get('https://usskkwk.mark-build.com/userss/').subscribe((data: any) => {
       this.jsonDataOwner = data;
 
       // Load data for each ddata.id
