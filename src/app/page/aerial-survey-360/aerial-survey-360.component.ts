@@ -62,7 +62,7 @@ export class AerialSurvey360Component implements OnInit, AfterViewInit{
   }
 
   public getMethodOwner(ownerId: number) {
-    this.http.get(`https://usskkwk.mark-build.comuser/user/${ownerId}`).subscribe((data: any) => {
+    this.http.get(`https://usskkwk.mark-build.com/user/${ownerId}`).subscribe((data: any) => {
       console.log(data);
       this.jsonDataOwner = data;
     });
