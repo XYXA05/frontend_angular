@@ -18,7 +18,7 @@ export class ContactsComponent implements OnInit{
 
   }
   public getMethodOwner(){
-    this.http.get(`https://www.mark-build.com/user/1/`).subscribe((data:any) =>{
+    this.http.get(`https://usskkwk.mark-build.com/user/1/`).subscribe((data:any) =>{
       console.log(data);
       this.jsonDataOwner = data;
     }

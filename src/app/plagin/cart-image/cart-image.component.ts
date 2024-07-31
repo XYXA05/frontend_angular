@@ -108,13 +108,13 @@ export class CartImageComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   public getMethodDescriptions(): void {
-    this.http.get<any[]>(`https://www.mark-build.com/get_descriptions_id/${this.id}`).subscribe(data => {
+    this.http.get<any[]>(`https://usskkwk.mark-build.com/get_descriptions_id/${this.id}`).subscribe(data => {
       this.jsonDataDescriptionsOriginal = this.getUniqueData(data, 'namber_build_andsection');
     });
   }
 
   public getImagesInformation() {
-    this.http.get<any>(`https://www.mark-build.com/get_images_metadata/${this.id}`).subscribe(
+    this.http.get<any>(`https://usskkwk.mark-build.com/get_images_metadata/${this.id}`).subscribe(
       (metadataList: any) => {
         // Assuming metadataList.files is an array of photo metadata
         const files = metadataList.files;
@@ -129,7 +129,7 @@ export class CartImageComponent implements OnInit, AfterViewInit, OnDestroy {
         // Convert the map values to an array to get the latest photos
         this.PhotoInformation = Array.from(latestPhotosMap.values()).map(metadata => ({
           id: metadata.id,
-          url: this.sanitizer.bypassSecurityTrustResourceUrl(`https://www.mark-build.com/get_image_monitoring/${metadata.id}`),
+          url: this.sanitizer.bypassSecurityTrustResourceUrl(`https://usskkwk.mark-build.com/get_image_monitoring/${metadata.id}`),
           namber_build_andsection: metadata.namber_build_andsection
         }));
       }
