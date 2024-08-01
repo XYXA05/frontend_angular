@@ -15,6 +15,7 @@ export class MapComponent implements AfterViewInit, OnDestroy, OnChanges {
   @Output() markerClicked: EventEmitter<any> = new EventEmitter<any>();
   @ViewChild('mapContainer') mapContainerRef!: ElementRef;
 
+
   map: any; // Adjust the type according to your setup
   camera: any;
   scene: any;
