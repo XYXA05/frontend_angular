@@ -1,5 +1,5 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { ChangeDetectorRef, Component, Input, OnInit, ViewChild} from '@angular/core';
+import { ChangeDetectorRef, Component, HostListener, Input, OnInit, ViewChild} from '@angular/core';
 import { SafeResourceUrl, DomSanitizer} from '@angular/platform-browser';
 import { MapComponent } from '../../plagin/map/map.component';
 import { DataService } from '../../filter.service';
@@ -202,5 +202,9 @@ filterItems(
           console.error('Error filtering data:', error);
       }
   );
+}
+@HostListener('webkitbeginfullscreen', ['$event'])
+preventFullscreen(event: Event) {
+  event.preventDefault();
 }
 }
