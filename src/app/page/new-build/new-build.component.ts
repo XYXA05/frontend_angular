@@ -203,15 +203,4 @@ filterItems(
       }
   );
 }
-isAuthorized(): boolean {
-  // Implement your logic to check if the user is authorized
-  return true; // or false based on your logic
-}
-
-preventFullscreen(event: Event): void {
-  // Prevent the fullscreen mode if the user is unauthorized
-  if (!this.isAuthorized()) {
-    event.preventDefault();
-  }
-}
 }
