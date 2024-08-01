@@ -40,17 +40,6 @@
     "tslib": "^2.3.0",
     "zone.js": "~0.14.2"
   },
-  "browserslist": {
-    "production": [
-      "defaults",
-      "not ie 11"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  },
   "devDependencies": {
     "@angular-devkit/build-angular": "^17.0.10",
     "@angular/cli": "^17.0.10",

@@ -23,7 +23,6 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "allowedCommonJsDependencies": ["lodash"],
             "outputPath": "dist/frontend_angular",
             "index": "src/index.html",
             "browser": "src/main.ts",
