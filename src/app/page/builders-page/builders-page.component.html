@@ -15,12 +15,12 @@
 <app-main-navbar></app-main-navbar>
 <div *ngIf="jsonDataOwner">
     <div class="div0">
-        <video class="cart-1" [muted]="'muted'" loop  autoplay (ended)="replayVideo($event)">
+        <video class="cart-1" [muted]="'muted'" loop  autoplay playsinline (ended)="replayVideo($event)">
             <source [src]="getVideoOwnerUrl(jsonDataOwner?.id)" type="video/mp4">
         </video>
 
         <div class="description-1">
-            <video class="cart-1-1" [muted]="'muted'" loop  autoplay (ended)="replayVideo($event)">
+            <video class="cart-1-1" [muted]="'muted'" loop  autoplay playsinline (ended)="replayVideo($event)">
                 <source [src]="getVideoOwnerUrl(jsonDataOwner?.id)" type="video/mp4">
     
             </video>
