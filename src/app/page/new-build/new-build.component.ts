@@ -1,5 +1,5 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { ChangeDetectorRef, Component, HostListener, Input, OnInit, ViewChild} from '@angular/core';
+import { ChangeDetectorRef, Component, Input, OnInit, ViewChild} from '@angular/core';
 import { SafeResourceUrl, DomSanitizer} from '@angular/platform-browser';
 import { MapComponent } from '../../plagin/map/map.component';
 import { DataService } from '../../filter.service';
@@ -203,8 +203,15 @@ filterItems(
       }
   );
 }
-@HostListener('webkitbeginfullscreen', ['$event'])
-preventFullscreen(event: Event) {
-  event.preventDefault();
+isAuthorized(): boolean {
+  // Implement your logic to check if the user is authorized
+  return true; // or false based on your logic
+}
+
+preventFullscreen(event: Event): void {
+  // Prevent the fullscreen mode if the user is unauthorized
+  if (!this.isAuthorized()) {
+    event.preventDefault();
+  }
 }
 }
