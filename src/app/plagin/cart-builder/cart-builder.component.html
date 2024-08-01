@@ -1,10 +1,10 @@
 <div class="card">
-    <video class="cart-1-1" [muted]="'muted'" loop  autoplay (ended)="replayVideo($event)">
+    <video class="cart-1-1" [muted]="'muted'" loop  autoplay playsinline (ended)="replayVideo($event)">
       <source *ngIf="jsonDataOwner?.id" [src]="getVideoOwnerUrl(jsonDataOwner?.id)" type="video/mp4">
     </video>
     <div class="ds-top"></div>
     <div class="avatar-holderr">
-      <video class="cart-1-1" [muted]="'muted'" loop  autoplay (ended)="replayVideo($event)">
+      <video class="cart-1-1" [muted]="'muted'" loop  autoplay playsinline (ended)="replayVideo($event)">
         <source *ngIf="jsonDataOwner?.id" [src]="getVideoOwnerUrl(jsonDataOwner?.id)" type="video/mp4">
       </video>
     </div>

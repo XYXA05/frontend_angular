@@ -1,6 +1,6 @@
 <article class="postcard dark blue">
     <a class="postcard__img_link" [routerLink]="['/document_page/', jsonDataOwner?.id]">
-        <video class="postcard__img" [muted]="'muted'" loop  autoplay (ended)="replayVideo($event)">
+        <video class="postcard__img" [muted]="'muted'" loop  autoplay playsinline (ended)="replayVideo($event)">
             <source *ngIf="jsonDataOwner?.id" [src]="getVideoOwnerUrl(jsonDataOwner?.id)" type="video/mp4">
         </video>
     </a>

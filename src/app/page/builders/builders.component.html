@@ -32,7 +32,7 @@
         <div class="div1">
             <div class="cart" *ngFor="let data of jsonDataMap[ddata.id]?.slice(0, 3)">
                 <a [routerLink]="['/build_about_the_project/', data?.id]">
-                    <video class="cart" [muted]="'muted'" loop  autoplay (ended)="replayVideo($event)">
+                    <video class="cart" [muted]="'muted'" loop  autoplay playsinline (ended)="replayVideo($event)">
                         <source [src]="getVideoUrl(data.id)" type="video/mp4">
                     </video>
                 </a>
@@ -46,10 +46,10 @@
 
             <div class="cart-1">
                 <a [routerLink]="['/document_page/', ddata?.id]">
-                    <video class="cart-1" [muted]="'muted'" loop  autoplay (ended)="replayVideo($event)">
+                    <video class="cart-1" [muted]="'muted'" loop  autoplay playsinline (ended)="replayVideo($event)">
                         <source  [src]="getVideoOwnerUrl(ddata?.id)" type="video/mp4">
                     </video>
-                    <video class="cart-1-1" [muted]="'muted'" loop  autoplay (ended)="replayVideo($event)">
+                    <video class="cart-1-1" [muted]="'muted'" loop  autoplay playsinline (ended)="replayVideo($event)">
                         <source [src]="getVideoOwnerUrl(ddata?.id)" type="video/mp4">
                     </video>
                 </a>
@@ -63,10 +63,10 @@
         </div> 
         <div class="ccart-1">
             <a [routerLink]="['/document_page/', ddata?.id]">
-                <video class="ccart-1" [muted]="'muted'" loop  autoplay (ended)="replayVideo($event)">
+                <video class="ccart-1" [muted]="'muted'" loop  autoplay playsinline (ended)="replayVideo($event)">
                     <source [src]="getVideoOwnerUrl(ddata?.id)" type="video/mp4">
                 </video>
-                <video class="ccart-1-1" [muted]="'muted'" loop  autoplay (ended)="replayVideo($event)">
+                <video class="ccart-1-1" [muted]="'muted'" loop  autoplay playsinline (ended)="replayVideo($event)">
                     <source [src]="getVideoOwnerUrl(ddata?.id)" type="video/mp4">
                 </video>
             </a>
