@@ -15,20 +15,15 @@ export class MapComponent implements AfterViewInit, OnDestroy, OnChanges {
   @Output() markerClicked: EventEmitter<any> = new EventEmitter<any>();
   @ViewChild('mapContainer') mapContainerRef!: ElementRef;
 
-  map: any;
-  camera: any;
-  scene: any;
-  renderer: any;
-  markers: any[] = [];
-  circleMarkers: any[] = [];
+  private map: maptilersdk.Map | undefined;
+  private markers: Marker[] = [];
+  private circleMarkers: Marker[] = [];
+  private camera!: THREE.PerspectiveCamera;
+  private scene!: THREE.Scene;
+  private renderer!: THREE.WebGLRenderer;
 
   ngAfterViewInit(): void {
-    maptilersdk.config.apiKey = 'u72wRXIY1BOK8syhN9zb';
-    if (this.mapContainerRef && maptilersdk.Map) {
-      this.initializeMap();
-    } else {
-      console.error('mapContainerRef or maptilersdk.Map is not available.');
-    }
+    this.initializeMap();
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -38,67 +33,82 @@ export class MapComponent implements AfterViewInit, OnDestroy, OnChanges {
   }
 
   ngOnDestroy(): void {
-    if (this.map) {
-      this.map.remove();
-    }
+    this.cleanupMap();
   }
 
-  initializeMap(): void {
-    this.map = new maptilersdk.Map({
-      container: this.mapContainerRef.nativeElement,
-      style: 'https://api.maptiler.com/maps/67b21c41-2d2d-4572-90cf-27db23c84316/style.json?key=u72wRXIY1BOK8syhN9zb',
-      zoom: 15,
-      center: [6.13484, 49.61422],
-      pitch: 60,
-      antialias: true,
-    });
+  private initializeMap(): void {
+    try {
+      maptilersdk.config.apiKey = 'u72wRXIY1BOK8syhN9zb';
+      if (this.mapContainerRef && maptilersdk.Map) {
+        this.map = new maptilersdk.Map({
+          container: this.mapContainerRef.nativeElement,
+          style: 'https://api.maptiler.com/maps/67b21c41-2d2d-4572-90cf-27db23c84316/style.json?key=u72wRXIY1BOK8syhN9zb',
+          zoom: 15,
+          center: [6.13484, 49.61422],
+          pitch: 60,
+          antialias: true,
+        });
 
-    this.map.on('style.load', () => {
-      this.updateMap();
-    });
-  }
-
-  updateMap(): void {
-    if (this.map) {
-      // Remove existing markers
-      this.markers.forEach(marker => marker.remove());
-      this.circleMarkers.forEach(marker => marker.remove());
-      this.markers = [];
-      this.circleMarkers = [];
-
-      // Add new markers
-      for (const data of this.jsonData) {
-        this.addMarker(data);
+        this.map.on('style.load', () => this.updateMap());
+      } else {
+        console.error('Map container or MapTiler SDK not available.');
       }
-
-      this.map.on('zoom', () => {
-        const zoom = this.map.getZoom();
-        const infoElements = document.getElementsByClassName('marker-title');
-        const titleElements = document.getElementsByClassName('marker-info');
-
-        for (let i = 0; i < infoElements.length; i++) {
-          const infoElement = infoElements[i] as HTMLElement;
-          infoElement.style.display = zoom < 14 ? 'none' : 'block';
-        }
-
-        for (let i = 0; i < titleElements.length; i++) {
-          const titleElement = titleElements[i] as HTMLElement;
-          titleElement.style.display = zoom < 12.71 ? 'none' : 'block';
-        }
-
-        for (const data of this.jsonData) {
-          const layerId = `3d-model-${data.id}`;
-          const circleMarker = document.getElementById(`circle-marker-${data.id}`);
-          this.map.setLayoutProperty(layerId, 'visibility', zoom < 14 ? 'none' : 'visible');
-          if (circleMarker) {
-            circleMarker.style.display = zoom < 14 ? 'block' : 'none';
-          }
-        }
-      });
+    } catch (error) {
+      console.error('Error initializing map:', error);
     }
   }
 
-  addMarker(data: any): void {
+  private updateMap(): void {
+    if (!this.map) {
+      return;
+    }
+
+    // Remove existing markers
+    this.markers.forEach(marker => marker.remove());
+    this.circleMarkers.forEach(marker => marker.remove());
+    this.markers = [];
+    this.circleMarkers = [];
+
+    // Add new markers
+    this.jsonData.forEach((data: any) => this.addMarker(data));
+
+    this.map.on('zoom', () => this.handleZoom());
+  }
+
+  private handleZoom(): void {
+    const zoom = this.map?.getZoom() ?? 0;
+    const infoElements = document.getElementsByClassName('marker-title');
+    const titleElements = document.getElementsByClassName('marker-info');
+
+    for (let i = 0; i < infoElements.length; i++) {
+      const infoElement = infoElements[i] as HTMLElement;
+      infoElement.style.display = zoom < 14 ? 'none' : 'block';
+    }
+
+    for (let i = 0; i < titleElements.length; i++) {
+      const titleElement = titleElements[i] as HTMLElement;
+      titleElement.style.display = zoom < 12.71 ? 'none' : 'block';
+    }
+
+    this.jsonData.forEach((data: any) => {
+      const layerId = `3d-model-${data.id}`;
+      const circleMarker = document.getElementById(`circle-marker-${data.id}`);
+      if (zoom < 14) {
+        this.map?.setLayoutProperty(layerId, 'visibility', 'none');
+        if (circleMarker) {
+          circleMarker.style.display = 'block';
+          circleMarker.style.cursor = 'pointer';
+        }
+      } else {
+        this.map?.setLayoutProperty(layerId, 'visibility', 'visible');
+        if (circleMarker) {
+          circleMarker.style.display = 'none';
+        }
+      }
+    });
+  }
+
+  private addMarker(data: any): void {
     const el = document.createElement('div');
     el.className = 'custom-marker';
 
@@ -111,12 +121,12 @@ export class MapComponent implements AfterViewInit, OnDestroy, OnChanges {
 
     const info = document.createElement('div');
     info.className = 'marker-info';
-    info.style.background = "rgb(255, 255, 255)";
-    info.style.padding = "5px";
-    info.style.borderRadius = "3px";
-    info.style.boxShadow = "0 0 5px rgba(0,0,0,0.5)";
-    info.style.fontSize = "12px";
-    info.style.marginTop = "5px";
+    info.style.background = 'rgb(255, 255, 255)';
+    info.style.padding = '5px';
+    info.style.borderRadius = '3px';
+    info.style.boxShadow = '0 0 5px rgba(0,0,0,0.5)';
+    info.style.fontSize = '12px';
+    info.style.marginTop = '5px';
     info.style.cursor = 'pointer';
     info.innerHTML = `From ${data.price_low} € up to ${data.price_hi} €`;
 
@@ -140,19 +150,17 @@ export class MapComponent implements AfterViewInit, OnDestroy, OnChanges {
     circle.style.height = '10px';
     circle.style.backgroundColor = 'red';
     circle.style.borderRadius = '50%';
-    circle.style.display = 'none';
+    circle.style.display = 'none'; // Start with hidden
 
     const circleMarker = new Marker({ element: circle, anchor: 'center' })
-      .setLngLat([data.lng, data.lat])
-      .addTo(this.map);
+      .setLngLat([data.lng, data.lat] as [number, number]) // Ensure the type is correct
+      .addTo(this.map!);
 
     const marker = new Marker({ element: el, anchor: 'bottom' })
-      .setLngLat([data.lng, data.lat])
-      .addTo(this.map);
+      .setLngLat([data.lng, data.lat] as [number, number]) // Ensure the type is correct
+      .addTo(this.map!);
 
-    marker.getElement().addEventListener('click', () => {
-      this.markerClicked.emit(data);
-    });
+    marker.getElement().addEventListener('click', () => this.markerClicked.emit(data));
 
     this.markers.push(marker);
     this.circleMarkers.push(circleMarker);
@@ -160,11 +168,11 @@ export class MapComponent implements AfterViewInit, OnDestroy, OnChanges {
     this.addCustomLayer(data);
   }
 
-  addCustomLayer(data: any): void {
-    const modelOrigin = [data.lng, data.lat];
+  private addCustomLayer(data: any): void {
+    const modelOrigin: [number, number] = [data.lng, data.lat]; // Explicitly type as [number, number]
     const modelAltitude = 0;
     const modelRotate = [Math.PI / 2, 0, 0];
-    const modelAsMercatorCoordinate = maptilersdk.MercatorCoordinate.fromLngLat([modelOrigin[0], modelOrigin[1]], modelAltitude);
+    const modelAsMercatorCoordinate = maptilersdk.MercatorCoordinate.fromLngLat(modelOrigin, modelAltitude);
 
     const modelTransform = {
       translateX: modelAsMercatorCoordinate.x,
@@ -176,7 +184,7 @@ export class MapComponent implements AfterViewInit, OnDestroy, OnChanges {
       scale: modelAsMercatorCoordinate.meterInMercatorCoordinateUnits(),
     };
 
-    const customLayer = {
+    const customLayer: maptilersdk.CustomLayerInterface = {
       id: `3d-model-${data.id}`,
       type: 'custom',
       renderingMode: '3d',
@@ -184,20 +192,19 @@ export class MapComponent implements AfterViewInit, OnDestroy, OnChanges {
         this.camera = new THREE.PerspectiveCamera();
         this.scene = new THREE.Scene();
 
-        const directionalLight = new THREE.DirectionalLight(0xffffff);
-        directionalLight.position.set(0, -70, 100).normalize();
-        this.scene.add(directionalLight);
+        const light1 = new THREE.DirectionalLight(0xffffff);
+        light1.position.set(0, -70, 100).normalize();
+        this.scene.add(light1);
 
-        const directionalLight2 = new THREE.DirectionalLight(0xffffff);
-        directionalLight2.position.set(0, 70, 100).normalize();
-        this.scene.add(directionalLight2);
+        const light2 = new THREE.DirectionalLight(0xffffff);
+        light2.position.set(0, 70, 100).normalize();
+        this.scene.add(light2);
 
         const loader = new GLTFLoader();
         loader.load('assets/uploads_files_2735177_build.glb', (gltf) => {
           gltf.scene.traverse((child: any) => {
             if (child.isMesh) {
               child.material.depthWrite = true;
-              child.userData = { name: 'clicked on dish' };
             }
           });
           this.scene.add(gltf.scene);
@@ -226,14 +233,19 @@ export class MapComponent implements AfterViewInit, OnDestroy, OnChanges {
         this.camera.projectionMatrix = m.multiply(l);
         this.renderer.state.reset();
         this.renderer.render(this.scene, this.camera);
-        this.map.triggerRepaint();
+        this.map?.triggerRepaint();
       },
     };
 
+    this.map?.addLayer(customLayer);
+  }
+
+  private cleanupMap(): void {
     if (this.map) {
-      this.map.addLayer(customLayer);
-    } else {
-      console.error('Map is not initialized');
+      this.markers.forEach(marker => marker.remove());
+      this.circleMarkers.forEach(marker => marker.remove());
+      this.map.remove();
+      this.map = undefined;
     }
   }
 }
