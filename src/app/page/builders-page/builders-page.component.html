@@ -49,7 +49,7 @@
         <div class="div3">
             <div class="cart" *ngFor="let data of jsonDataa">
                 <a [routerLink]="['/build_about_the_project/', data?.id]">
-                    <video class="cart" [muted]="'muted'" loop  autoplay (ended)="replayVideo($event)">
+                    <video class="cart" [muted]="'muted'" loop  autoplay playsinline (ended)="replayVideo($event)">
                         <source [src]="getVideoUrl(data.id)" type="video/mp4">
                     </video>
                 </a>
