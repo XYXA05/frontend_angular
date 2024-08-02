@@ -65,10 +65,13 @@ export class NewBuildComponent implements OnInit{
         this.jsonData = data;
         this.originalData = [...data]; // Keep the original data
         this.filteredJsonData = [...data]; // Initial filtered data is all data
+        this.loading = false; // Set loading to false after data is loaded
       },
       error => {
         console.error('Error fetching data:', error);
-      });
+        this.loading = false; // Set loading to false in case of error
+      }
+    );
   }
 
   public getMethods(id: number): void {
