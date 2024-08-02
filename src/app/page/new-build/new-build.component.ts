@@ -32,7 +32,7 @@ export class NewBuildComponent implements OnInit{
   public itemsPerPage: number = 10; // Change this to set the number of items per page
 
 
-  loading = false;
+  loading = true;
 
   @ViewChild(MapComponent, { static: false }) mapComponent!: MapComponent; // Add "static: false" to avoid the initialization error
   constructor(private http: HttpClient, private sanitizer: DomSanitizer, private cdr: ChangeDetectorRef, private filterService: DataService, private router: Router) {
@@ -203,11 +203,8 @@ filterItems(
       }
   );
 }
-onVideoLoad(): void {
-  if (this.getVideoUrl.length === this.jsonData.length) {
-    this.loading = false; // Stop loading indicator when all videos are loaded
-    this.cdr.detectChanges(); // Trigger change detection
-  }
+onVideoLoaded(event: Event): void {
+  this.loading = false; // Set loading to false when the video metadata is loaded
 }
 }
 
