@@ -202,4 +202,12 @@ filterItems(
       }
   );
 }
+onVideoLoaded(): void {
+  this.loading = false; // Stop showing the loader once the video metadata is loaded
+}
+
+// Method to handle video canplaythrough event
+onVideoCanPlay(): void {
+  this.loading = false; // Stop showing the loader once the video is fully loaded
+}
 }
