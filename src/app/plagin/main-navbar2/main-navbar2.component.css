@@ -21,7 +21,6 @@
 
 .div1{
     position: relative;
-    height: 100%;
     max-width: 900px;
     width: 100%;
     margin: 10px auto;
@@ -74,7 +73,6 @@
 @media(max-width:1000px){
     .div1{
         padding: 0px 0px;
-        height: -1%;
     }
 }
 
