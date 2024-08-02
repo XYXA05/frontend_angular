@@ -206,5 +206,10 @@ filterItems(
 onVideoLoaded(event: Event): void {
   this.loading = false; // Set loading to false when the video metadata is loaded
 }
+
+onVideoError(event: Event): void {
+  console.error('Error loading video:', event);
+  this.loading = false; // Set loading to false in case of video loading error
+}
 }
 
