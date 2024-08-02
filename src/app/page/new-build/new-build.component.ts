@@ -78,8 +78,15 @@ export class NewBuildComponent implements OnInit{
       console.log(data);
       this.jsonData = data;
       this.filteredJsonData = data; // Initialize filtered data
+      this.loading = false; // Stop loading indicator after data is loaded
+      this.cdr.detectChanges(); // Trigger change detection
+    },
+    error => {
+      console.error('Error fetching data:', error);
+      this.loading = false; // Stop loading indicator on error
     });
   }
+
 
   get jsonDataCount(): number {
     return this.filteredJsonData.length;
