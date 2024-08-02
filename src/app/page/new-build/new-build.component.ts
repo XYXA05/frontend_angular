@@ -33,7 +33,6 @@ export class NewBuildComponent implements OnInit{
 
 
   loading = false;
-  @ViewChildren('videoElem') videoElements!: QueryList<ElementRef>;
 
   @ViewChild(MapComponent, { static: false }) mapComponent!: MapComponent; // Add "static: false" to avoid the initialization error
   constructor(private http: HttpClient, private sanitizer: DomSanitizer, private cdr: ChangeDetectorRef, private filterService: DataService, private router: Router) {
@@ -66,12 +65,9 @@ export class NewBuildComponent implements OnInit{
         this.jsonData = data;
         this.originalData = [...data]; // Keep the original data
         this.filteredJsonData = [...data]; // Initial filtered data is all data
-        this.loading = false; // Stop loading indicator after data is loaded
-        this.cdr.detectChanges(); // Trigger change detection
       },
       error => {
         console.error('Error fetching data:', error);
-        this.loading = false; // Stop loading indicator on error
       });
   }
 
@@ -208,7 +204,7 @@ filterItems(
   );
 }
 onVideoLoad(): void {
-  if (this.videoElements.length === this.jsonData.length) {
+  if (this.getVideoUrl.length === this.jsonData.length) {
     this.loading = false; // Stop loading indicator when all videos are loaded
     this.cdr.detectChanges(); // Trigger change detection
   }
