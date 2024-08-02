@@ -12,6 +12,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
   </head>
   <body>
+    <app-louding *ngIf="loading"></app-louding>
     <app-main-navbar></app-main-navbar>
     <div>
     <div class="divv">
@@ -25,7 +26,7 @@
     <div *ngIf="!showMaps" class="div1">
       <div class="cart" *ngFor="let data of paginatedData; let i = index">
         <a [routerLink]="['/build_about_the_project/', data?.id]">
-          <video class="cart" [muted]="'muted'" loop  autoplay playsinline (ended)="replayVideo($event)"  [src]="getVideoUrl(data.id)" >
+          <video #videoElem class="cart" [muted]="'muted'" loop  autoplay playsinline (ended)="replayVideo($event)"  (loadeddata)="onVideoLoad()" [src]="getVideoUrl(data.id)" >
           </video>
         </a>
         <div class="description">
@@ -74,5 +75,14 @@
       <app-footer *ngIf="!showMaps"></app-footer>
     </div>
     </div>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-04BE3JYN39"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-04BE3JYN39');
+    </script>
   </body>
   </html>
