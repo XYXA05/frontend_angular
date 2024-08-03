@@ -30,7 +30,6 @@ export class NewBuildComponent implements OnInit{
 
   public currentPage: number = 1;
   public itemsPerPage: number = 10; // Change this to set the number of items per page
-  public loading: boolean = true; // Add loading property
 
   @ViewChild(MapComponent, { static: false }) mapComponent!: MapComponent; // Add "static: false" to avoid the initialization error
   constructor(private http: HttpClient, private sanitizer: DomSanitizer, private cdr: ChangeDetectorRef, private filterService: DataService, private router: Router) {
@@ -190,8 +189,5 @@ filterItems(
           console.error('Error filtering data:', error);
       }
   );
-}
-onVideoLoad(): void {
-  this.loading = false;
 }
 }
