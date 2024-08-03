@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ViewEncapsulation } from '@angular/core';
+import { AfterViewInit, Component, Input, ViewEncapsulation } from '@angular/core';
 declare var particlesJS: any;
 
 @Component({
@@ -9,7 +9,7 @@ declare var particlesJS: any;
 
 })
 export class LoudingComponent implements AfterViewInit {
-  
+  @Input() isLoading: boolean = false;
   ngAfterViewInit(): void {
     this.loadExternalScripts().then(() => {
       this.loadParticles();

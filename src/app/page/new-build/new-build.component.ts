@@ -32,6 +32,7 @@ export class NewBuildComponent implements OnInit{
   public itemsPerPage: number = 10; // Change this to set the number of items per page
 
 
+  public isLoading: boolean = false; // Add this property
 
   @ViewChild(MapComponent, { static: false }) mapComponent!: MapComponent; // Add "static: false" to avoid the initialization error
   constructor(private http: HttpClient, private sanitizer: DomSanitizer, private cdr: ChangeDetectorRef, private filterService: DataService, private router: Router) {
@@ -51,14 +52,17 @@ export class NewBuildComponent implements OnInit{
     return outlet && outlet.activatedRouteData && outlet.activatedRouteData['animation'];
   }
   public getMethod(): void {
+    this.isLoading = true; // Show loader
     this.http.get<any[]>('https://usskkwk.mark-build.com/items/').subscribe(
       data => {
         this.jsonData = data;
         this.originalData = [...data]; // Keep the original data
         this.filteredJsonData = [...data]; // Initial filtered data is all data
+        this.isLoading = false; // Hide loader
       },
       error => {
         console.error('Error fetching data:', error);
+        this.isLoading = false; // Hide loader
       }
     );
   }
