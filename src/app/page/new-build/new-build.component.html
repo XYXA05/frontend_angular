@@ -26,7 +26,7 @@
     <div *ngIf="!showMaps" class="div1">
       <div class="cart" *ngFor="let data of paginatedData; let i = index">
         <a [routerLink]="['/build_about_the_project/', data?.id]">
-          <video class="cart" [muted]="'muted'" loop  autoplay playsinline (ended)="replayVideo($event)" [src]="getVideoUrl(data.id)"  (loadedmetadata)="onVideoLoaded($event)" id="video-{{i}}">
+          <video #videoElement class="cart" [muted]="'muted'" loop  autoplay playsinline (ended)="replayVideo($event)" [src]="getVideoUrl(data.id)">
           </video>
         </a>
         <div class="description">

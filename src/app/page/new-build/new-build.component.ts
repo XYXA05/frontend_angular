@@ -33,7 +33,7 @@ export class NewBuildComponent implements OnInit{
 
 
   loading = true;
-
+  @ViewChildren('videoElement') videoElements!: QueryList<any>;
   @ViewChild(MapComponent, { static: false }) mapComponent!: MapComponent; // Add "static: false" to avoid the initialization error
   constructor(private http: HttpClient, private sanitizer: DomSanitizer, private cdr: ChangeDetectorRef, private filterService: DataService, private router: Router) {
     this.router.events.subscribe(event => {
@@ -55,7 +55,12 @@ export class NewBuildComponent implements OnInit{
     });
     this.loading = true; // Start loading indicator
   }
-
+  ngAfterViewInit(): void {
+    this.videoElements.forEach((videoElement: any) => {
+      videoElement.nativeElement.addEventListener('loadedmetadata', this.onVideoLoaded.bind(this));
+      videoElement.nativeElement.addEventListener('error', this.onVideoError.bind(this));
+    });
+  }
   prepareRoute(outlet: RouterOutlet) {
     return outlet && outlet.activatedRouteData && outlet.activatedRouteData['animation'];
   }
