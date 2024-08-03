@@ -191,5 +191,7 @@ filterItems(
       }
   );
 }
-
+onVideoLoad(): void {
+  this.loading = false;
+}
 }

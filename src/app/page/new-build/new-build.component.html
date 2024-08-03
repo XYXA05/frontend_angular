@@ -27,7 +27,7 @@
         <a [routerLink]="['/build_about_the_project/', data?.id]">
           <app-louding *ngIf="loading"></app-louding>
           <video class="cart" [muted]="'muted'" loop autoplay playsinline (ended)="replayVideo($event)" 
-                 [src]="getVideoUrl(data.id)" (loadeddata)="loading = false">
+                 [src]="getVideoUrl(data.id)" (canplaythrough)="onVideoLoad()">
           </video>
         </a>
         <div class="description">
