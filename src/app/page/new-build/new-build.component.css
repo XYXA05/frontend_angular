@@ -42,7 +42,6 @@
     border-radius: 26px;
     filter: brightness(80%);
     transition: 0.3s;
-    background-color: #010718;
 }
 .cart:hover{
     transform: scale(0.95);
@@ -263,7 +262,7 @@ a {
 	width: 36px;
 	height: 36px;
 	border-radius: 50%;
-	border-left-color: rgb(255, 255, 255);
+	border-left-color: rgb(138, 136, 136);
 	animation: spin 1s ease infinite;
     margin: 145px 160px auto;
     position: absolute;
