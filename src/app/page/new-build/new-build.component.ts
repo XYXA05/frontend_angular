@@ -32,9 +32,6 @@ export class NewBuildComponent implements OnInit{
   public itemsPerPage: number = 10; // Change this to set the number of items per page
   public loading: boolean = true; // Add loading property
 
-
-  public videoLoadingStates: Map<number, boolean> = new Map(); // Track loading states of videos by their ID
-
   @ViewChild(MapComponent, { static: false }) mapComponent!: MapComponent; // Add "static: false" to avoid the initialization error
   constructor(private http: HttpClient, private sanitizer: DomSanitizer, private cdr: ChangeDetectorRef, private filterService: DataService, private router: Router) {
   }
@@ -194,23 +191,5 @@ filterItems(
       }
   );
 }
-onVideoLoad(id: number): void {
-  this.videoLoadingStates.set(id, false);
-  this.cdr.detectChanges();
-}
 
-onVideoPlay(id: number): void {
-  this.videoLoadingStates.set(id, false);
-  this.cdr.detectChanges();
-}
-
-onVideoWaiting(id: number): void {
-  this.videoLoadingStates.set(id, true);
-  this.cdr.detectChanges();
-}
-
-onVideoCanPlayThrough(id: number): void {
-  this.videoLoadingStates.set(id, false);
-  this.cdr.detectChanges();
-}
 }
