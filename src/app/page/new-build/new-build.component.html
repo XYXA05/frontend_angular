@@ -12,7 +12,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
   </head>
   <body>
-    <app-louding [isLoading]="isLoading"></app-louding>
     <app-main-navbar></app-main-navbar>
     <div>
     <div class="divv">
@@ -26,8 +25,13 @@
     <div *ngIf="!showMaps" class="div1">
       <div class="cart" *ngFor="let data of paginatedData; let i = index">
         <a [routerLink]="['/build_about_the_project/', data?.id]">
-          <video class="cart" [muted]="'muted'" loop  autoplay playsinline (ended)="replayVideo($event)" (loadeddata)="onVideoLoaded()" [src]="getVideoUrl(data.id)">
-          </video>
+          <div *ngIf="videoLoadingStates.get(data.id); else videoContent">
+            <app-louding></app-louding>
+          </div>
+          <ng-template #videoContent>
+            <video class="cart" [muted]="'muted'" loop autoplay playsinline (loadeddata)="onVideoLoad(data.id)" (play)="onVideoPlay(data.id)" (waiting)="onVideoWaiting(data.id)" [src]="getVideoUrl(data.id)">
+            </video>
+          </ng-template>
         </a>
         <div class="description">
           <h2 class="description-title">{{data.title}}</h2>
@@ -57,7 +61,7 @@
       <div class="div1-1" *ngIf="showElements">  
         <div class="cart-1" *ngIf="selectedMarker">
           <a [routerLink]="['/build_about_the_project/', selectedMarker?.id]">
-            <video  *ngIf="selectedMarker"  class="cart-1" [muted]="'muted'" loop  autoplay (ended)="replayVideo($event)" (loadeddata)="onVideoLoaded()" playsinline>
+            <video  *ngIf="selectedMarker"  class="cart-1" [muted]="'muted'" loop  autoplay (ended)="replayVideo($event)" playsinline>
               <source [src]="getVideoUrl(selectedMarker.id)" type="video/mp4">
             </video>
             <div class="div8">
