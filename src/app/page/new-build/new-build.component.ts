@@ -13,7 +13,7 @@ import { Router, RouterOutlet } from '@angular/router';
   styleUrl: './new-build.component.css',
   animations: [routeAnimations]
 })
-export class NewBuildComponent implements OnInit, AfterViewInit{
+export class NewBuildComponent implements OnInit{
   public jsonData: any[] = [];
   originalData: any[] = []; // Store original data
   public filteredItems: DescriptionItem[] = [];
@@ -47,12 +47,7 @@ export class NewBuildComponent implements OnInit, AfterViewInit{
       }
     });
   }
-  ngAfterViewInit(): void {
-    // Ensure that the loader is hidden after the view is initialized
-    setTimeout(() => {
-      this.isLoading = false;
-    }, 1000); // Adjust timeout as needed
-  }
+
   prepareRoute(outlet: RouterOutlet) {
     return outlet && outlet.activatedRouteData && outlet.activatedRouteData['animation'];
   }
