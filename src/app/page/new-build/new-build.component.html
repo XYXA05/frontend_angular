@@ -36,6 +36,7 @@
           <h4>From {{data.price_low}} € up to {{data.price_hi}} €</h4>
           <h5>{{data.line_adres}}</h5>
         </div>
+        <div class="spinner"></div>
       </div>
     </div>
     <div class="filter-table" *ngIf="showFilterTable">
@@ -58,7 +59,6 @@
       <div class="div1-1" *ngIf="showElements">  
         <div class="cart-1" *ngIf="selectedMarker">
           <a [routerLink]="['/build_about_the_project/', selectedMarker?.id]">
-            <div class="spinner"></div>
             <video  *ngIf="selectedMarker"  class="cart-1" [muted]="'muted'" loop  autoplay (ended)="replayVideo($event)" playsinline>
               <source [src]="getVideoUrl(selectedMarker.id)" type="video/mp4">
             </video>
