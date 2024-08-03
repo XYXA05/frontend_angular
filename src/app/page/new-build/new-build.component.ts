@@ -204,4 +204,7 @@ filterItems(
       }
   );
 }
+public onVideoLoaded(): void {
+  this.isLoading = false;
+}
 }
