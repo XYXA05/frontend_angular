@@ -71,6 +71,7 @@ export class NewBuildComponent implements OnInit{
         this.originalData = [...data]; // Keep the original data
         this.filteredJsonData = [...data]; // Initial filtered data is all data
         this.loading = false; // Set loading to false after data is loaded
+        this.cdr.detectChanges();
       },
       error => {
         console.error('Error fetching data:', error);
