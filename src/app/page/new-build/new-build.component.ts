@@ -1,5 +1,5 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { ChangeDetectorRef, Component, ElementRef, Input, OnInit, ViewChild} from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, Input, OnInit, ViewChild} from '@angular/core';
 import { SafeResourceUrl, DomSanitizer} from '@angular/platform-browser';
 import { MapComponent } from '../../plagin/map/map.component';
 import { DataService } from '../../filter.service';
@@ -13,7 +13,7 @@ import { Router, RouterOutlet } from '@angular/router';
   styleUrl: './new-build.component.css',
   animations: [routeAnimations]
 })
-export class NewBuildComponent implements OnInit{
+export class NewBuildComponent implements OnInit, AfterViewInit{
   public jsonData: any[] = [];
   originalData: any[] = []; // Store original data
   public filteredItems: DescriptionItem[] = [];
@@ -47,7 +47,12 @@ export class NewBuildComponent implements OnInit{
       }
     });
   }
-
+  ngAfterViewInit(): void {
+    // Ensure that the loader is hidden after the view is initialized
+    setTimeout(() => {
+      this.isLoading = false;
+    }, 1000); // Adjust timeout as needed
+  }
   prepareRoute(outlet: RouterOutlet) {
     return outlet && outlet.activatedRouteData && outlet.activatedRouteData['animation'];
   }
