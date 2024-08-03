@@ -30,6 +30,7 @@ export class NewBuildComponent implements OnInit{
 
   public currentPage: number = 1;
   public itemsPerPage: number = 10; // Change this to set the number of items per page
+  public loading: boolean = true; // Add loading property
 
 
   public videoLoadingStates: Map<number, boolean> = new Map(); // Track loading states of videos by their ID
