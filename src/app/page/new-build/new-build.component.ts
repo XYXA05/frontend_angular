@@ -194,13 +194,17 @@ filterItems(
   );
 }
 onVideoLoad(id: number): void {
-  this.videoLoadingStates.set(id, false);
-  this.cdr.detectChanges();
+  setTimeout(() => {
+    this.videoLoadingStates.set(id, false);
+    this.cdr.detectChanges();
+  }, 500); // Add delay to ensure loading state is visible
 }
 
 onVideoPlay(id: number): void {
-  this.videoLoadingStates.set(id, false);
-  this.cdr.detectChanges();
+  setTimeout(() => {
+    this.videoLoadingStates.set(id, false);
+    this.cdr.detectChanges();
+  }, 500); // Add delay to ensure loading state is visible
 }
 
 onVideoWaiting(id: number): void {
