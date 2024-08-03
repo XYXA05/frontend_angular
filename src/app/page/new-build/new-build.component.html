@@ -24,6 +24,7 @@
     </div>
     <div *ngIf="!showMaps" class="div1">
       <div class="cart" *ngFor="let data of paginatedData; let i = index">
+        <div class="spinner"></div>
         <a [routerLink]="['/build_about_the_project/', data?.id]">
           <video class="cart" [muted]="'muted'" loop autoplay playsinline (ended)="replayVideo($event)" 
                  [src]="getVideoUrl(data.id)">
@@ -35,7 +36,6 @@
           <h4>From {{data.price_low}} € up to {{data.price_hi}} €</h4>
           <h5>{{data.line_adres}}</h5>
         </div>
-        <div class="spinner"></div>
       </div>
     </div>
     <div class="filter-table" *ngIf="showFilterTable">
