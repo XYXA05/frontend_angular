@@ -58,7 +58,8 @@
       <div class="div1-1" *ngIf="showElements">  
         <div class="cart-1" *ngIf="selectedMarker">
           <a [routerLink]="['/build_about_the_project/', selectedMarker?.id]">
-            <video  *ngIf="selectedMarker"  class="cart-1" [muted]="'muted'" loop  autoplay (ended)="replayVideo($event)" playsinline>
+            <app-louding *ngIf="loading"></app-louding>
+            <video  *ngIf="selectedMarker"  class="cart-1" [muted]="'muted'" loop  autoplay (ended)="replayVideo($event)" (canplaythrough)="onVideoLoad()" playsinline>
               <source [src]="getVideoUrl(selectedMarker.id)" type="video/mp4">
             </video>
             <div class="div8">
