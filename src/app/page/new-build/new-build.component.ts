@@ -194,21 +194,22 @@ filterItems(
   );
 }
 onVideoLoad(id: number): void {
-  setTimeout(() => {
-    this.videoLoadingStates.set(id, false);
-    this.cdr.detectChanges();
-  }, 500); // Add delay to ensure loading state is visible
+  this.videoLoadingStates.set(id, false);
+  this.cdr.detectChanges();
 }
 
 onVideoPlay(id: number): void {
-  setTimeout(() => {
-    this.videoLoadingStates.set(id, false);
-    this.cdr.detectChanges();
-  }, 500); // Add delay to ensure loading state is visible
+  this.videoLoadingStates.set(id, false);
+  this.cdr.detectChanges();
 }
 
 onVideoWaiting(id: number): void {
   this.videoLoadingStates.set(id, true);
+  this.cdr.detectChanges();
+}
+
+onVideoCanPlayThrough(id: number): void {
+  this.videoLoadingStates.set(id, false);
   this.cdr.detectChanges();
 }
 }

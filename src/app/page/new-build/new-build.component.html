@@ -29,7 +29,7 @@
             <app-louding></app-louding>
           </div>
           <ng-template #videoContent>
-            <video class="cart" [muted]="'muted'" loop autoplay playsinline (loadeddata)="onVideoLoad(data.id)" (play)="onVideoPlay(data.id)" (waiting)="onVideoWaiting(data.id)" [src]="getVideoUrl(data.id)">
+            <video class="cart" [muted]="'muted'" loop autoplay playsinline (loadeddata)="onVideoLoad(data.id)" (play)="onVideoPlay(data.id)" (waiting)="onVideoWaiting(data.id)" (canplaythrough)="onVideoCanPlayThrough(data.id)" [src]="getVideoUrl(data.id)">
             </video>
           </ng-template>
         </a>
