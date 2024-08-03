@@ -1,11 +1,11 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { ChangeDetectorRef, Component, ElementRef, Input, OnInit, QueryList, ViewChild, ViewChildren} from '@angular/core';
+import { ChangeDetectorRef, Component, ElementRef, Input, OnInit, ViewChild} from '@angular/core';
 import { SafeResourceUrl, DomSanitizer} from '@angular/platform-browser';
 import { MapComponent } from '../../plagin/map/map.component';
 import { DataService } from '../../filter.service';
 import { DescriptionItem } from '../../plagin/main-navbar-button/main-navbar-button.component';
 import { routeAnimations } from '../../route-animations';
-import { NavigationCancel, NavigationEnd, NavigationError, NavigationStart, Router, RouterOutlet } from '@angular/router';
+import { Router, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-new-build',
@@ -32,17 +32,9 @@ export class NewBuildComponent implements OnInit{
   public itemsPerPage: number = 10; // Change this to set the number of items per page
 
 
-  loading = true;
-  @ViewChildren('videoElement') videoElements!: QueryList<any>;
+
   @ViewChild(MapComponent, { static: false }) mapComponent!: MapComponent; // Add "static: false" to avoid the initialization error
   constructor(private http: HttpClient, private sanitizer: DomSanitizer, private cdr: ChangeDetectorRef, private filterService: DataService, private router: Router) {
-    this.router.events.subscribe(event => {
-      if (event instanceof NavigationStart) {
-        this.loading = true;
-      } else if (event instanceof NavigationEnd || event instanceof NavigationCancel || event instanceof NavigationError) {
-        this.loading = false;
-      }
-    });
   }
 
   ngOnInit(): void {
@@ -53,14 +45,8 @@ export class NewBuildComponent implements OnInit{
         this.applyFilter(filterData);
       }
     });
-    this.loading = true; // Start loading indicator
   }
-  ngAfterViewInit(): void {
-    this.videoElements.forEach((videoElement: any) => {
-      videoElement.nativeElement.addEventListener('loadedmetadata', this.onVideoLoaded.bind(this));
-      videoElement.nativeElement.addEventListener('error', this.onVideoError.bind(this));
-    });
-  }
+
   prepareRoute(outlet: RouterOutlet) {
     return outlet && outlet.activatedRouteData && outlet.activatedRouteData['animation'];
   }
@@ -70,12 +56,9 @@ export class NewBuildComponent implements OnInit{
         this.jsonData = data;
         this.originalData = [...data]; // Keep the original data
         this.filteredJsonData = [...data]; // Initial filtered data is all data
-        this.loading = false; // Set loading to false after data is loaded
-        this.cdr.detectChanges();
       },
       error => {
         console.error('Error fetching data:', error);
-        this.loading = false; // Set loading to false in case of error
       }
     );
   }
@@ -212,13 +195,4 @@ filterItems(
       }
   );
 }
-onVideoLoaded(event: Event): void {
-  this.loading = false; // Set loading to false when the video metadata is loaded
 }
-
-onVideoError(event: Event): void {
-  console.error('Error loading video:', event);
-  this.loading = false; // Set loading to false in case of video loading error
-}
-}
-
