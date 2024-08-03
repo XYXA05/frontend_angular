@@ -31,6 +31,7 @@ export class NewBuildComponent implements OnInit{
   public currentPage: number = 1;
   public itemsPerPage: number = 10; // Change this to set the number of items per page
 
+  public loading: boolean = true; // Loading state
 
 
   @ViewChild(MapComponent, { static: false }) mapComponent!: MapComponent; // Add "static: false" to avoid the initialization error
@@ -56,9 +57,11 @@ export class NewBuildComponent implements OnInit{
         this.jsonData = data;
         this.originalData = [...data]; // Keep the original data
         this.filteredJsonData = [...data]; // Initial filtered data is all data
+        this.loading = false; // Data loaded, set loading to false
       },
       error => {
         console.error('Error fetching data:', error);
+        this.loading = false; // Even if there's an error, stop loading indicator
       }
     );
   }
