@@ -25,7 +25,7 @@
     <div *ngIf="!showMaps" class="div1">
       <div class="cart" *ngFor="let data of paginatedData; let i = index">
         <a [routerLink]="['/build_about_the_project/', data?.id]">
-          <app-louding></app-louding>
+          <div class="spinner"></div>
           <video class="cart" [muted]="'muted'" loop autoplay playsinline (ended)="replayVideo($event)" 
                  [src]="getVideoUrl(data.id)">
           </video>
@@ -58,7 +58,7 @@
       <div class="div1-1" *ngIf="showElements">  
         <div class="cart-1" *ngIf="selectedMarker">
           <a [routerLink]="['/build_about_the_project/', selectedMarker?.id]">
-            <app-louding></app-louding>
+            <div class="spinner"></div>
             <video  *ngIf="selectedMarker"  class="cart-1" [muted]="'muted'" loop  autoplay (ended)="replayVideo($event)" playsinline>
               <source [src]="getVideoUrl(selectedMarker.id)" type="video/mp4">
             </video>
