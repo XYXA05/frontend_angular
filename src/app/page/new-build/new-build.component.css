@@ -265,7 +265,7 @@ a {
 	border-radius: 50%;
 	border-left-color: rgb(255, 255, 255);
 	animation: spin 1s ease infinite;
-    margin: -180px 145px auto;
+    margin: 145px 160px auto;
     position: absolute;
 }
   
