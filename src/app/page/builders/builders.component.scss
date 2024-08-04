@@ -133,7 +133,7 @@
 	border-radius: 50%;
 	border-left-color: rgb(138, 136, 136);
 	animation: spin 1s ease infinite;
-    margin: 145px 160px auto;
+    margin: 234px 167px auto;
     position: absolute;
 }
   
@@ -145,7 +145,25 @@
 	  transform: rotate(360deg);
 	}
 }
-
+.spinner-1 {
+	border: 4px solid rgba(0, 0, 0, 0.1);
+	width: 36px;
+	height: 36px;
+	border-radius: 50%;
+	border-left-color: rgb(138, 136, 136);
+	animation: spin1 1s ease infinite;
+    margin: 50px 260px auto;
+    position: absolute;
+}
+  
+@keyframes spin1 {
+	0% {
+	  transform: rotate(0deg);
+	}
+	100% {
+	  transform: rotate(360deg);
+	}
+}
 // Variables
 $color: #000000;
 $color-dark: #ffffff;
