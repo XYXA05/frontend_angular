@@ -46,7 +46,7 @@
             </div>
 
             <div class="cart-1">
-                <div class="spinner-1"></div>
+                <div class="spinner"></div>
                 <a [routerLink]="['/document_page/', ddata?.id]">
                     <video class="cart-1" [muted]="'muted'" loop  autoplay playsinline (ended)="replayVideo($event)">
                         <source  [src]="getVideoOwnerUrl(ddata?.id)" type="video/mp4">
@@ -64,7 +64,7 @@
             </div>
         </div> 
         <div class="ccart-1">
-            <div class="spinner"></div>
+            <div class="spinner-1"></div>
             <a [routerLink]="['/document_page/', ddata?.id]">
                 <video class="ccart-1" [muted]="'muted'" loop  autoplay playsinline (ended)="replayVideo($event)">
                     <source [src]="getVideoOwnerUrl(ddata?.id)" type="video/mp4">
