@@ -1,4 +1,6 @@
 <div class="card">
+  <div class="spinner"></div>
+
     <video class="cart-1-1" [muted]="'muted'" loop  autoplay playsinline (ended)="replayVideo($event)">
       <source *ngIf="jsonDataOwner?.id" [src]="getVideoOwnerUrl(jsonDataOwner?.id)" type="video/mp4">
     </video>

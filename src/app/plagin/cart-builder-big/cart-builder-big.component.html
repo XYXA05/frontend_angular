@@ -1,4 +1,5 @@
 <article class="postcard dark blue">
+    <div class="spinner"></div>
     <a class="postcard__img_link" [routerLink]="['/document_page/', jsonDataOwner?.id]">
         <video class="postcard__img" [muted]="'muted'" loop  autoplay playsinline (ended)="replayVideo($event)">
             <source *ngIf="jsonDataOwner?.id" [src]="getVideoOwnerUrl(jsonDataOwner?.id)" type="video/mp4">
