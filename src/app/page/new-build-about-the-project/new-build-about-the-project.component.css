@@ -244,8 +244,8 @@ background-image: linear-gradient(315deg, #343434 0%, #000000 74%);
 	border-radius: 50%;
 	border-left-color: rgb(138, 136, 136);
 	animation: spin 1s ease infinite;
-  margin: 150px 250px;
-  position: absolute;
+  margin: -250px 250px;
+  position: fixed;
 }
   
 @keyframes spin {
