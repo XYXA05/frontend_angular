@@ -62,7 +62,6 @@ export class NewBuildPlanningComponent implements OnInit{
       console.log(data);
       if (data.owner_id) {  // Check if owner_id exists
         this.getMethodOwner(data.owner_id);  // Pass owner_id to getMethodOwner
-        this.cdr.detectChanges();
       }
     });
   }
@@ -74,12 +73,13 @@ export class NewBuildPlanningComponent implements OnInit{
       this.uniqueFeaturesItems = [...new Set<string>(data.map((item: any) => item.Features))];
     });
   }
-  public getMethodOwner(ownerId: number) {
-    this.http.get(`https://usskkwk.mark-build.com/user/${ownerId}`).subscribe((data: any) => {
+  public getMethodOwner(ownerId: number){
+    this.http.get(`https://usskkwk.mark-build.com/user/${ownerId}`).subscribe((data:any) =>{
       console.log(data);
       this.jsonDataOwner = data;
-      this.cdr.detectChanges();
-    });
+      this.cdr.detectChanges(); // Trigger change detection
+    }
+    );
   }
 
   public getPhotoUrl(id: string | undefined): SafeResourceUrl {
