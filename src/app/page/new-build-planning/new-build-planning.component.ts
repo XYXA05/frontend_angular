@@ -62,6 +62,7 @@ export class NewBuildPlanningComponent implements OnInit{
       console.log(data);
       if (data.owner_id) {  // Check if owner_id exists
         this.getMethodOwner(data.owner_id);  // Pass owner_id to getMethodOwner
+        this.cdr.detectChanges();
       }
     });
   }
