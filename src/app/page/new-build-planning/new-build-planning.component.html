@@ -69,7 +69,7 @@
         <div class="div1">
             <div class="div2" *ngFor="let jsonDataDescription of jsonDataDescriptions | filterByType:selectedTypeItem:selectedFeaturesItem:selectedInputTerm:selectedInputHouse" (click)="toggleFilterTable(jsonDataDescription.id)">
             <div class="div22"></div>
-            <img class="div3" [src]="getPhotoUrl(jsonDataDescription?.id)">
+            <img class="div3" [src]="getPhotoUrl(jsonDataDescription?.id)" style="object-fit: cover;">
             <h1 style="margin: 0px 0px 0px 30px;">{{jsonDataDescription.price_one_meter}} for м²</h1>
             <div class="div4">
                 <div style="display: flex; align-items: center;">
@@ -107,7 +107,7 @@
     <div style="overflow: hidden;" class="filter-table1">
         <div class="filter-table-title">
             <h2>Planing</h2>
-            <img style="height: 48px; width: 48px; cursor: pointer;" (click)="toggleFilterTable(null)" src="assets/icons8-close-100.png">
+            <img style="height: 48px; width: 48px; cursor: pointer; object-fit: cover;" (click)="toggleFilterTable(null)" src="assets/icons8-close-100.png">
         </div>
         <div class="filter-table-ended">
         </div>
