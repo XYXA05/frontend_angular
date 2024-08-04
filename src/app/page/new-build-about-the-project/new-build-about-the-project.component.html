@@ -17,8 +17,8 @@
 
 <app-main-navbar></app-main-navbar>
 <app-main-navbar2 [jsonData]="jsonData"></app-main-navbar2>
+<div class="spinner"></div>
 <div style="margin-left: -54px;">
-    <div class="spinner"></div>
 <ul class="gallery" [@fadeAnimation]>
 	<li *ngFor="let pos of [position + 0, position + 1, position + 2, position + 3, position + 4, position + 5]"> 
         <video class="video111" [muted]="'muted'" loop autoplay playsinline (ended)="replayVideo($event)" (ended)="updatePosition(pos)">
