@@ -50,7 +50,6 @@ export class AerialSurvey360Component implements OnInit, AfterViewInit{
       this.renderer.setSize(canvas.clientWidth, canvas.clientHeight);
     }
   }
-
   public getMethod() {
     this.http.get(`https://usskkwk.mark-build.com/items/${this.id}`).subscribe((data: any) => {
       console.log(data);

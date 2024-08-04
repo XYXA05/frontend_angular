@@ -50,7 +50,6 @@ export class NewBuildPlanningComponent implements OnInit{
   ngOnInit(): void {
     this.id = this.route.snapshot.paramMap.get('id');
     this.getMethodDescriptions();
-    this.getMethodOwner()
   }
 
 
@@ -58,7 +57,14 @@ export class NewBuildPlanningComponent implements OnInit{
     this.selectedRangeValues = values;
     this.filterData();
   }
-
+  public getMethod() {
+    this.http.get(`https://usskkwk.mark-build.com/items/${this.id}`).subscribe((data: any) => {
+      console.log(data);
+      if (data.owner_id) {  // Check if owner_id exists
+        this.getMethodOwner(data.owner_id);  // Pass owner_id to getMethodOwner
+      }
+    });
+  }
   public getMethodDescriptions(): void {
     this.http.get<any[]>(`https://usskkwk.mark-build.com/get_descriptions_id/${this.id}`).subscribe(data => {
       this.jsonDataDescriptionsOriginal = data;
@@ -67,13 +73,12 @@ export class NewBuildPlanningComponent implements OnInit{
       this.uniqueFeaturesItems = [...new Set<string>(data.map((item: any) => item.Features))];
     });
   }
-  public getMethodOwner(){
-    this.http.get(`https://usskkwk.mark-build.com/user/1/`).subscribe((data:any) =>{
+  public getMethodOwner(ownerId: number) {
+    this.http.get(`https://usskkwk.mark-build.com/user/${ownerId}`).subscribe((data: any) => {
       console.log(data);
       this.jsonDataOwner = data;
       this.cdr.detectChanges();
-    }
-    );
+    });
   }
 
   public getPhotoUrl(id: string | undefined): SafeResourceUrl {
