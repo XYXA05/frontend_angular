@@ -20,11 +20,11 @@
 <div style="margin-left: -54px;">
 <ul class="gallery" [@fadeAnimation]>
 	<li *ngFor="let pos of [position + 0, position + 1, position + 2, position + 3, position + 4, position + 5]"> 
-        <div class="spinner"></div>
         <video class="video111" [muted]="'muted'" loop autoplay playsinline (ended)="replayVideo($event)" (ended)="updatePosition(pos)">
         <source [src]="getVideoUrl(pos)" type="video/mp4"></video>
     </li>
 </ul>
+<div class="spinner"></div>
 
 </div>
 <div  *ngIf="jsonData" class="9" style="display: flex; justify-content: space-between;">
