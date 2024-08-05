@@ -92,14 +92,14 @@ export class NewBuildAboutTheProjectComponent implements OnInit, AfterViewInit{
   }
 
   public getImagesFromPosition(position: number){
-    this.http.get(`https://usskkwk.mark-build.com/get_images/${position}/${this.id}`).subscribe((data:any) =>{
+    this.http.get(`https://host.mark-build.com/get_images/${position}/${this.id}`).subscribe((data:any) =>{
       console.log(data);
       this.Video = data;  // Assuming Video will be an array of image paths
     });
   }
 
   public getVideoUrl(position: number): SafeResourceUrl {
-    return this.sanitizer.bypassSecurityTrustResourceUrl(`https://usskkwk.mark-build.com/get_image/${position}/${this.id}`);
+    return this.sanitizer.bypassSecurityTrustResourceUrl(`https://host.mark-build.com/get_image/${position}/${this.id}`);
   }
 
   updatePosition(position: number): void {
@@ -107,7 +107,7 @@ export class NewBuildAboutTheProjectComponent implements OnInit, AfterViewInit{
   }
   public getVideoFromPosition(id: number): SafeResourceUrl {
     if (id) {
-      return this.sanitizer.bypassSecurityTrustResourceUrl(`https://usskkwk.mark-build.com/get_image_about/${id}`);
+      return this.sanitizer.bypassSecurityTrustResourceUrl(`https://host.mark-build.com/get_image_about/${id}`);
     } else {
       console.error("ID is not available");
       return this.sanitizer.bypassSecurityTrustResourceUrl('');  // Handle the error as needed

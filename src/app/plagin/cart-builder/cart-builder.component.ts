@@ -50,7 +50,7 @@ export class CartBuilderComponent implements AfterViewInit, OnInit{
   }
 
   public getVideoOwnerUrl(id: string): SafeResourceUrl {
-    return this.sanitizer.bypassSecurityTrustResourceUrl(`https://usskkwk.mark-build.com/get_image_owner/1/${id}`);
+    return this.sanitizer.bypassSecurityTrustResourceUrl(`https://host.mark-build.com/get_image_owner/1/${id}`);
   }
 
   follow() {

@@ -68,11 +68,11 @@ export class AerialSurvey360Component implements OnInit, AfterViewInit{
   }
 
   getImagesInformation(): void {
-    this.http.get<any>(`https://usskkwk.mark-build.com/get_image_description_360_metadata/${this.id}`).subscribe(
+    this.http.get<any>(`https://host.mark-build.com/get_image_description_360_metadata/${this.id}`).subscribe(
       (metadataList: any) => {
         this.PhotoInformation = metadataList.files.map((metadata: any) => ({
           id: metadata.id,
-          url: this.sanitizer.bypassSecurityTrustResourceUrl(`https://usskkwk.mark-build.com/get_image_description_360/${metadata.id}`),
+          url: this.sanitizer.bypassSecurityTrustResourceUrl(`https://host.mark-build.com/get_image_description_360/${metadata.id}`),
           date: metadata.date,
         }));
       },

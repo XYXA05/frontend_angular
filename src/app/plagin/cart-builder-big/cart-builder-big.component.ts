@@ -26,7 +26,7 @@ export class CartBuilderBigComponent {
 
   public getVideoOwnerUrl(id: string): SafeResourceUrl {
     // Assuming your backend serves the video at a URL like this:
-    const videoUrl = `https://usskkwk.mark-build.com/get_image_owner/1/${id}`;
+    const videoUrl = `https://host.mark-build.com/get_image_owner/1/${id}`;
     return this.sanitizer.bypassSecurityTrustResourceUrl(videoUrl);
   }
 
