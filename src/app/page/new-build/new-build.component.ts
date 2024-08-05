@@ -91,7 +91,7 @@ export class NewBuildComponent implements OnInit{
     video.play();
   }
   public getVideoUrl(id: string): SafeResourceUrl {
-    return this.sanitizer.bypassSecurityTrustResourceUrl(`https://host.mark-build.com/get_image/1/${id}`);
+    return this.sanitizer.bypassSecurityTrustResourceUrl(`https://b4kg48k.mark-build.com/get_image/1/${id}`);
   }
 
   toggleFilterTable(): void {

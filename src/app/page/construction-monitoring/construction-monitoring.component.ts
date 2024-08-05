@@ -65,7 +65,7 @@ export class ConstructionMonitoringComponent implements OnInit{
   }
 
   public getImagesInformation(numberBuildAndSection: string, useFilter: boolean = true) {
-    this.http.get<any>(`https://host.mark-build.com/get_images_metadata/${this.id}`).subscribe(
+    this.http.get<any>(`https://b4kg48k.mark-build.com/get_images_metadata/${this.id}`).subscribe(
       (metadataList: any) => {
         this.PhotoInformation = [];
         let filteredMetadata = metadataList.files;
@@ -89,7 +89,7 @@ export class ConstructionMonitoringComponent implements OnInit{
         filteredMetadata.forEach((metadata: any) => {
           this.PhotoInformation.push({
             id: metadata.id,
-            url: this.sanitizer.bypassSecurityTrustResourceUrl(`https://host.mark-build.com/get_image_monitoring/${metadata.id}`),
+            url: this.sanitizer.bypassSecurityTrustResourceUrl(`https://b4kg48k.mark-build.com/get_image_monitoring/${metadata.id}`),
             date: metadata.date,
             position: metadata.position,
             namber_build_andsection: metadata.namber_build_andsection

@@ -54,10 +54,10 @@ export class BuildersPageComponent implements OnInit {
   }
 
   public getVideoUrl(id: string): SafeResourceUrl {
-    return this.sanitizer.bypassSecurityTrustResourceUrl(`https://host.mark-build.com/get_image/1/${id}`);
+    return this.sanitizer.bypassSecurityTrustResourceUrl(`https://b4kg48k.mark-build.com/get_image/1/${id}`);
   }
   public getVideoOwnerUrl(id: string): SafeResourceUrl {
-    return this.sanitizer.bypassSecurityTrustResourceUrl(`https://host.mark-build.com/get_image_owner/1/${id}`);
+    return this.sanitizer.bypassSecurityTrustResourceUrl(`https://b4kg48k.mark-build.com/get_image_owner/1/${id}`);
   }
   get jsonDataCount(): number {
     return this.jsonDataa.length;

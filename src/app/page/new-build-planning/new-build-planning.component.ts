@@ -87,7 +87,7 @@ export class NewBuildPlanningComponent implements OnInit{
       console.error("ID is undefined");
       return '';
     }
-    return this.sanitizer.bypassSecurityTrustResourceUrl(`https://host.mark-build.com/get_image_description/${id}`);
+    return this.sanitizer.bypassSecurityTrustResourceUrl(`https://b4kg48k.mark-build.com/get_image_description/${id}`);
   }
 
 
