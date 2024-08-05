@@ -36,13 +36,28 @@ export class NewBuildComponent implements OnInit{
   }
 
   ngOnInit(): void {
-
+    this.addGTagScript();
     this.getMethod();
     this.filterService.currentFilterData.subscribe(filterData => {
       if (filterData) {
         this.applyFilter(filterData);
       }
     });
+  }
+  private addGTagScript(): void {
+    const gtagScript = document.createElement('script');
+    gtagScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-04BE3JYN39';
+    gtagScript.async = true;
+    document.head.appendChild(gtagScript);
+
+    const gtagConfigScript = document.createElement('script');
+    gtagConfigScript.innerHTML = `
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-04BE3JYN39');
+    `;
+    document.head.appendChild(gtagConfigScript);
   }
 
   prepareRoute(outlet: RouterOutlet) {
