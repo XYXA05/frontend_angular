@@ -71,6 +71,7 @@ export class NewBuildPlanningComponent implements OnInit{
       this.jsonDataDescriptions = [...this.jsonDataDescriptionsOriginal];
       this.uniqueTypeItems = [...new Set<string>(data.map((item: any) => item.type_items))];
       this.uniqueFeaturesItems = [...new Set<string>(data.map((item: any) => item.Features))];
+      this.cdr.detectChanges(); // Trigger change detection
     });
   }
   public getMethodOwner(ownerId: number){
