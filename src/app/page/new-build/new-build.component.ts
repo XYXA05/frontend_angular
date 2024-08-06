@@ -30,8 +30,7 @@ export class NewBuildComponent implements OnInit{
 
   public currentPage: number = 1;
   public itemsPerPage: number = 10; // Change this to set the number of items per page
-  private apiUrl1 = 'https://usskkwk.mark-build.com/items/';
-  private apiUrl2 = 'https://b4kg48k.mark-build.com/get_image/1/';
+
   @ViewChild(MapComponent, { static: false }) mapComponent!: MapComponent; // Add "static: false" to avoid the initialization error
   constructor(private http: HttpClient, private sanitizer: DomSanitizer, private cdr: ChangeDetectorRef, private filterService: DataService, private router: Router) {
   }
@@ -65,7 +64,7 @@ export class NewBuildComponent implements OnInit{
     return outlet && outlet.activatedRouteData && outlet.activatedRouteData['animation'];
   }
   public getMethod(): void {
-    this.http.get<any[]>(this.apiUrl1).subscribe(
+    this.http.get<any[]>('https://usskkwk.mark-build.com/items/').subscribe(
       data => {
         this.jsonData = data;
         this.originalData = [...data]; // Keep the original data
@@ -75,7 +74,7 @@ export class NewBuildComponent implements OnInit{
   }
 
   public getMethods(id: number): void {
-    this.http.get(`${this.apiUrl1}${id}`).subscribe((data: any) => {
+    this.http.get(`https://usskkwk.mark-build.com/items/${id}`).subscribe((data: any) => {
       console.log(data);
       this.jsonData = data;
       this.filteredJsonData = data; // Initialize filtered data
@@ -92,7 +91,7 @@ export class NewBuildComponent implements OnInit{
     video.play();
   }
   public getVideoUrl(id: string): SafeResourceUrl {
-    return this.sanitizer.bypassSecurityTrustResourceUrl(`${this.apiUrl2}${id}`);
+    return this.sanitizer.bypassSecurityTrustResourceUrl(`https://b4kg48k.mark-build.com/get_image/1/${id}`);
   }
 
   toggleFilterTable(): void {
