@@ -13,7 +13,7 @@ export class NewBuildPlanningComponent implements OnInit{
   public jsonDataDescriptionsOriginal: any[] = [];
   public uniqueFeaturesItems: string[] = [];
   public uniqueTypeItems: string[] = [];
-  public jsonDataOwner: string[] = [];
+  public jsonDataOwner: any;
   public selectedTypeItem: string | null = null;
   public selectedFeaturesItem: string | null = null;
   public showFilterTable: boolean = false;
