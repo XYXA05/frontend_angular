@@ -43,8 +43,7 @@ path {
   animation: OpenLeft 500ms;
 }
 .container svg {
-  position: absolute;
-  transition: transform 500ms;
+  transform: translateX(var(--translateX, 0));
 }
 @keyframes OpenRight {
   25% { stroke-dasharray: 100 150; }
