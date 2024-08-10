@@ -17,7 +17,7 @@ export class BuildersComponent implements OnInit{
   position: number = 1; 
 
   public currentPage: number = 1;
-  public itemsPerPage: number = 5;
+  public itemsPerPage: number = 1;
 
   constructor(private http: HttpClient, private sanitizer: DomSanitizer, private cdr: ChangeDetectorRef){}
 

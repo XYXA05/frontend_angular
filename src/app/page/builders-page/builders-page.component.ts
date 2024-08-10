@@ -13,7 +13,7 @@ export class BuildersPageComponent implements OnInit {
   public jsonDataa: any;
   public getNewsData: any;
   public currentPage: number = 1;
-  public itemsPerPage: number = 1; // Change this to set the number of items per page
+  public itemsPerPage: number = 5; // Change this to set the number of items per page
 
   @Input() jsonData: any;
   id: string | null = null;
