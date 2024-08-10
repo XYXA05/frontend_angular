@@ -27,17 +27,19 @@ export class PaginatorComponent {
 
   handleIndexClick(i: number): void {
     const c = this.container.nativeElement;
-
+  
     // Clear previous styles
     c.className = 'container';
     void c.offsetWidth; // Reflow
     c.classList.add('open');
-    c.classList.add(`i${i + 1}`);
     
+    const translation = i * 52; // Assuming 52px is the space needed for each index
+    c.style.setProperty('--translateX', `${translation}px`);
+  
     if (this.cur > i) {
       c.classList.add('flip');
     }
-    
+  
     this.cur = i;
     this.pageSelected.emit(i + 1);
   }
