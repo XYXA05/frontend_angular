@@ -34,6 +34,7 @@ svg {
   top: -11px;
   transition: transform 500ms;
   width: 46px;
+  display: none;
 }
 path {
   fill:none;
