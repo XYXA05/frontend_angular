@@ -26,21 +26,18 @@ export class PaginatorComponent {
   }
 
   handleIndexClick(i: number): void {
-    const c = this.container.nativeElement;
-  
-    // Clear previous styles
-    c.className = 'container';
-    void c.offsetWidth; // Reflow
-    c.classList.add('open');
-    
-    const translation = i * 52; // Assuming 52px is the space needed for each index
-    c.style.setProperty('--translateX', `${translation}px`);
-  
-    if (this.cur > i) {
-      c.classList.add('flip');
-    }
-  
     this.cur = i;
     this.pageSelected.emit(i + 1);
+    
+    const container = this.container.nativeElement;
+    const indexes = container.querySelectorAll('.index');
+    
+    indexes.forEach((el, idx) => {
+      if (idx === i) {
+        el.classList.add('active');
+      } else {
+        el.classList.remove('active');
+      }
+    });
   }
 }

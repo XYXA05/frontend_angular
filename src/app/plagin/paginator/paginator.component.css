@@ -14,11 +14,16 @@ body {
 }
 .index {
   cursor: pointer;
-  display: inline;
+  display: inline-block;
   margin-right: 29.5px;
   padding: 5px;
   user-select: none;
-  -moz-user-select: none;
+  transition: transform 500ms ease;
+}
+
+.active {
+  transform: scale(1.2);
+  font-weight: bold;
 }
 .index:last-child {
   margin: 0;
