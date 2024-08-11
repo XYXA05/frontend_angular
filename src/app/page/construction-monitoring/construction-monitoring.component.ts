@@ -64,46 +64,51 @@ export class ConstructionMonitoringComponent implements OnInit{
     });
   }
 
-  public getImagesInformation(numberBuildAndSection: string, useFilter: boolean = true) {
+  public getImagesInformation(numberBuildAndSection: string, useFilter: boolean = true, position?: string) {
     this.http.get<any>(`https://b4kg48k.mark-build.com/get_images_metadata/${this.id}`).subscribe(
-      (metadataList: any) => {
-        this.PhotoInformation = [];
-        let filteredMetadata = metadataList.files;
+        (metadataList: any) => {
+            this.PhotoInformation = [];
+            let filteredMetadata = metadataList.files;
 
-        if (numberBuildAndSection) {
-          filteredMetadata = filteredMetadata.filter((metadata: any) => metadata.namber_build_andsection === numberBuildAndSection);
-        }
-
-        if (useFilter) {
-          const latestPhotos = filteredMetadata.reduce((acc: any, curr: any) => {
-            const key = curr.position;
-            if (!acc[key] || new Date(curr.date) > new Date(acc[key].date)) {
-              acc[key] = curr;
+            if (numberBuildAndSection) {
+                filteredMetadata = filteredMetadata.filter((metadata: any) => metadata.namber_build_andsection === numberBuildAndSection);
             }
-            return acc;
-          }, {});
 
-          filteredMetadata = Object.values(latestPhotos);
-        }
+            if (position) {
+                filteredMetadata = filteredMetadata.filter((metadata: any) => metadata.position === position);
+            }
 
-        filteredMetadata.forEach((metadata: any) => {
-          this.PhotoInformation.push({
-            id: metadata.id,
-            url: this.sanitizer.bypassSecurityTrustResourceUrl(`https://b4kg48k.mark-build.com/get_image_monitoring/${metadata.id}`),
-            date: metadata.date,
-            position: metadata.position,
-            namber_build_andsection: metadata.namber_build_andsection
-          });
-        });
-        if (this.showFilterTable) {
-          this.selectedPhotos = this.PhotoInformation.length > 0 ? this.PhotoInformation.slice(0, 3) : [];
+            if (useFilter) {
+                const latestPhotos = filteredMetadata.reduce((acc: any, curr: any) => {
+                    const key = curr.position;
+                    if (!acc[key] || new Date(curr.date) > new Date(acc[key].date)) {
+                        acc[key] = curr;
+                    }
+                    return acc;
+                }, {});
+
+                filteredMetadata = Object.values(latestPhotos);
+            }
+
+            filteredMetadata.forEach((metadata: any) => {
+                this.PhotoInformation.push({
+                    id: metadata.id,
+                    url: this.sanitizer.bypassSecurityTrustResourceUrl(`https://b4kg48k.mark-build.com/get_image_monitoring/${metadata.id}`),
+                    date: metadata.date,
+                    position: metadata.position,
+                    namber_build_andsection: metadata.namber_build_andsection
+                });
+            });
+
+            if (this.showFilterTable) {
+                this.selectedPhotos = this.PhotoInformation.length > 0 ? this.PhotoInformation.slice(0, 3) : [];
+            }
+        },
+        (error: HttpErrorResponse) => {
+            console.error('Error fetching metadata:', error);
+            console.log('Response status:', error.status);
+            console.log('Response body:', error.error);
         }
-      },
-      (error: HttpErrorResponse) => {
-        console.error('Error fetching metadata:', error);
-        console.log('Response status:', error.status);
-        console.log('Response body:', error.error);
-      }
     );
   }
 
@@ -123,17 +128,16 @@ export class ConstructionMonitoringComponent implements OnInit{
       return !isDuplicate;
     });
   }
+
   toggleFilterTable(position: string): void {
     this.showFilterTable = !this.showFilterTable;
     this.showAllItems = !this.showFilterTable;
-  
+
     if (this.showFilterTable) {
-      this.getImagesInformation(this.selectedNumberBuildAndSection, false); // Call with filter disabled
-  
-      // Filter photos by the specific position before opening the slider
-      this.selectedPhotos = this.PhotoInformation.filter(photo => photo.position === position);
+        // Filter photos by the specific position
+        this.getImagesInformation(this.selectedNumberBuildAndSection, false, position); 
     } else {
-      this.selectedPhotos = [];
+        this.selectedPhotos = [];
     }
   }
   closePhotoSlider(): void {
@@ -141,6 +145,7 @@ export class ConstructionMonitoringComponent implements OnInit{
     this.showAllItems = true;
     this.selectedPhotos = [];
     this.resetFilters(); // Reset filters and restore initial data
+
   }
   resetFilters(): void {
     this.filteredDescriptions = [];
