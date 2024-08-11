@@ -123,24 +123,24 @@ export class ConstructionMonitoringComponent implements OnInit{
       return !isDuplicate;
     });
   }
-  toggleFilterTable(clickedPhoto: any): void {
-      this.showFilterTable = true;
-      this.showAllItems = false;
+  toggleFilterTable(position: string): void {
+    this.showFilterTable = !this.showFilterTable;
+    this.showAllItems = !this.showFilterTable;
   
-      // Filter photos that match the position of the clicked photo
-      this.selectedPhotos = this.PhotoInformation.filter(photo => photo.position === clickedPhoto.position);
+    if (this.showFilterTable) {
+      this.getImagesInformation(this.selectedNumberBuildAndSection, false); // Call with filter disabled
   
-      if (this.selectedPhotos.length === 0) {
-          // Handle the case where no photos match (optional)
-          console.warn('No photos found for the selected position.');
-      }
+      // Filter photos by the specific position before opening the slider
+      this.selectedPhotos = this.PhotoInformation.filter(photo => photo.position === position);
+    } else {
+      this.selectedPhotos = [];
+    }
   }
   closePhotoSlider(): void {
     this.showFilterTable = false;
     this.showAllItems = true;
     this.selectedPhotos = [];
     this.resetFilters(); // Reset filters and restore initial data
-
   }
   resetFilters(): void {
     this.filteredDescriptions = [];
