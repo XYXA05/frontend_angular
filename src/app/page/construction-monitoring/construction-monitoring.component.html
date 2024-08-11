@@ -23,15 +23,15 @@
     </div>
     <h4 class="h3" *ngFor="let dataa of filteredDescriptions" style="color: rgb(0 0 0 / 50%);">The declared date of commissioning: {{dataa.input_term}}</h4>
     <div class="div2">
-        <div class="div3" (click)="toggleFilterTable()" *ngFor="let photo of PhotoInformation">
-            <img class="responsive-img" [src]="photo.url" alt="image">
-            <div class="darken-area">
-              <div class="div5">
-                <h4 style="margin: 10px;">{{photo.date}}</h4>
-                <h4 style="margin: 10px;">Position {{photo.position}}</h4>
-              </div>
+        <div class="div3" (click)="toggleFilterTable(photo)" *ngFor="let photo of PhotoInformation">
+          <img class="responsive-img" [src]="photo.url" alt="image">
+          <div class="darken-area">
+            <div class="div5">
+              <h4 style="margin: 10px;">{{photo.date}}</h4>
+              <h4 style="margin: 10px;">Position {{photo.position}}</h4>
             </div>
-        </div>
+          </div>
+      </div>
     </div>
 </div>
 <div class="div00" *ngIf="showAllItems">

@@ -123,16 +123,17 @@ export class ConstructionMonitoringComponent implements OnInit{
       return !isDuplicate;
     });
   }
-
-  toggleFilterTable(): void {
-    this.showFilterTable = !this.showFilterTable;
-    this.showAllItems = !this.showFilterTable;
-    
-    if (this.showFilterTable) {
-      this.getImagesInformation(this.selectedNumberBuildAndSection, false); // Call with filter disabled
-    } else {
-      this.selectedPhotos = [];
-    }
+  toggleFilterTable(clickedPhoto: any): void {
+      this.showFilterTable = true;
+      this.showAllItems = false;
+  
+      // Filter photos that match the position of the clicked photo
+      this.selectedPhotos = this.PhotoInformation.filter(photo => photo.position === clickedPhoto.position);
+  
+      if (this.selectedPhotos.length === 0) {
+          // Handle the case where no photos match (optional)
+          console.warn('No photos found for the selected position.');
+      }
   }
   closePhotoSlider(): void {
     this.showFilterTable = false;
