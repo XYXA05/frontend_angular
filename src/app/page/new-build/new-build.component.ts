@@ -150,20 +150,28 @@ export class NewBuildComponent implements OnInit{
 filterItems(filterData: any): void {
     let params = new HttpParams();
 
-    if (filterData.valueA) params = params.append('min_all_meter_in_item', filterData.valueA.toString());
-    if (filterData.valueB) params = params.append('max_all_meter_in_item', filterData.valueB.toString());
-    if (filterData.priceMeterA) params = params.append('min_price_one_meter', filterData.priceMeterA.toString());
-    if (filterData.priceMeterB) params = params.append('max_price_one_meter', filterData.priceMeterB.toString());
-    if (filterData.priceAllA) params = params.append('min_all_price_items', filterData.priceAllA.toString());
-    if (filterData.priceAllB) params = params.append('max_all_price_items', filterData.priceAllB.toString());
-    if (filterData.typeItems) params = params.append('type_items', filterData.typeItems);
-    if (filterData.inputTerm) params = params.append('input_term', filterData.inputTerm);
-    if (filterData.state) params = params.append('state', filterData.state);
-    if (filterData.floors) params = params.append('floors', filterData.floors);
-    if (filterData.apartmentCondition) params = params.append('apartment_condition', filterData.apartmentCondition);
-    if (filterData.constructionStatus) params = params.append('construction_status', filterData.constructionStatus);
-    if (filterData.declaredCommissioning) params = params.append('declared_commissioning', filterData.declaredCommissioning);
-    if (filterData.housingCondition) params = params.append('housing_condition', filterData.housingCondition);
+    const mapping = {
+        valueA: 'min_all_meter_in_item',
+        valueB: 'max_all_meter_in_item',
+        priceMeterA: 'min_price_one_meter',
+        priceMeterB: 'max_price_one_meter',
+        priceAllA: 'min_all_price_items',
+        priceAllB: 'max_all_price_items',
+        typeItems: 'type_items',
+        inputTerm: 'input_term',
+        state: 'state',
+        floors: 'floors',
+        apartmentCondition: 'apartment_condition',
+        constructionStatus: 'construction_status',
+        declaredCommissioning: 'declared_commissioning',
+        housingCondition: 'housing_condition'
+    };
+
+    Object.keys(filterData).forEach(key => {
+        if (filterData[key] !== undefined && filterData[key] !== null) {
+            params = params.append(mapping[key] || key, filterData[key].toString());
+        }
+    });
 
     this.http.get<DescriptionItem[]>('https://usskkwk.mark-build.com/filter_items', { params }).subscribe(
         (data) => {
