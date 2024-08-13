@@ -82,16 +82,16 @@
     <div class='range-slider__progress'></div>
 </div>
 <h4>Number of rooms</h4>
-<button class="custom-btn btn-14" *ngFor="let typeItem of uniqueTypeItems" 
+<button class="custom-btn btn-14" *ngFor="let typeItem of uniqueTypeItems | unique" 
         (click)="updateSelectedUniqueTypeItems(typeItem)">{{ typeItem }}</button>
 <h4>Declared commissioning</h4>
-<button class="custom-btn btn-14" *ngFor="let typeItem of uniqueDeclaredCommissioning" 
+<button class="custom-btn btn-14" *ngFor="let typeItem of uniqueDeclaredCommissioning | unique" 
         (click)="updateSelectedUniqueDeclaredCommissioning(typeItem)">{{ typeItem }}</button>
 
 <h4>Construction status</h4>
-<button class="custom-btn btn-14" *ngFor="let typeItem of uniqueConstructionStatus" 
+<button class="custom-btn btn-14" *ngFor="let typeItem of uniqueConstructionStatus | unique" 
         (click)="updateSelectedUniqueConstructionStatus(typeItem)">{{ typeItem }}</button>
 
 <h4>Number of storeys in the building</h4>
-<button class="custom-btn btn-14" *ngFor="let typeItem of uniqueNumberOfStoreys" 
+<button class="custom-btn btn-14" *ngFor="let typeItem of uniqueNumberOfStoreys | unique" 
         (click)="updateSelectedUniqueNumberOfStoreys(typeItem)">{{ typeItem }}</button>

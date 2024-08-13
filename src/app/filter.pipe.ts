@@ -30,3 +30,11 @@ export class FilterPipe implements PipeTransform {
     return filteredItems;
   }
 }
+@Pipe({
+  name: 'unique'
+})
+export class UniquePipe implements PipeTransform {
+  transform(value: any[]): any[] {
+    return Array.isArray(value) ? [...new Set(value)] : value;
+  }
+}

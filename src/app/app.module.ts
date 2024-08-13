@@ -43,7 +43,7 @@ import { MapForBuilderComponent } from './plagin/map-for-builder/map-for-builder
 import { CartImageComponent } from './plagin/cart-image/cart-image.component';
 import { WriteMassageComponent } from './plagin/write-massage/write-massage.component';
 import { LoudingComponent } from './plagin/louding/louding.component';
-
+import { UniquePipe } from './filter.pipe';
 
 
 
@@ -57,7 +57,7 @@ import { LoudingComponent } from './plagin/louding/louding.component';
     NewBuildAboutTheProjectComponent,
 
 
-
+    UniquePipe,
     MainNavbarComponent,
     PlanirovkaComponent,
     InputTernComponent,
