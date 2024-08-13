@@ -144,57 +144,26 @@ export class NewBuildComponent implements OnInit{
     }
 
     console.log('Filtering with values:', filterData);
-
-    // Destructure filterData and pass it directly to filterItems
-    this.filterItems(
-        filterData.valueA,
-        filterData.valueB,
-        filterData.priceMeterA,
-        filterData.priceMeterB,
-        filterData.priceAllA,
-        filterData.priceAllB,
-        filterData.typeItems,
-        filterData.inputTerm,
-        filterData.state,
-        filterData.floors,
-        filterData.apartmentCondition,
-        filterData.constructionStatus,
-        filterData.declaredCommissioning,
-        filterData.housingCondition
-    );
+    this.filterItems(filterData);
 }
 
-filterItems(
-    allMeterInItemA?: number,
-    allMeterInItemB?: number,
-    priceOneMeterA?: number,
-    priceOneMeterB?: number,
-    allPriceItemsA?: number,
-    allPriceItemsB?: number,
-    typeItems?: string,
-    inputTerm?: string,
-    state?: string,
-    floors?: string,
-    apartmentCondition?: string,
-    constructionStatus?: string,
-    declaredCommissioning?: string,
-    housingCondition?: string
-): void {
+filterItems(filterData: any): void {
     let params = new HttpParams();
-    if (allMeterInItemA) params = params.append('min_all_meter_in_item', allMeterInItemA.toString());
-    if (allMeterInItemB) params = params.append('max_all_meter_in_item', allMeterInItemB.toString());
-    if (priceOneMeterA) params = params.append('min_price_one_meter', priceOneMeterA.toString());
-    if (priceOneMeterB) params = params.append('max_price_one_meter', priceOneMeterB.toString());
-    if (allPriceItemsA) params = params.append('min_all_price_items', allPriceItemsA.toString());
-    if (allPriceItemsB) params = params.append('max_all_price_items', allPriceItemsB.toString());
-    if (typeItems) params = params.append('type_items', typeItems);
-    if (inputTerm) params = params.append('input_term', inputTerm);
-    if (state) params = params.append('state', state);
-    if (floors) params = params.append('floors', floors);
-    if (apartmentCondition) params = params.append('apartment_condition', apartmentCondition);
-    if (constructionStatus) params = params.append('construction_status', constructionStatus);
-    if (declaredCommissioning) params = params.append('declared_commissioning', declaredCommissioning);
-    if (housingCondition) params = params.append('housing_condition', housingCondition);
+
+    if (filterData.valueA) params = params.append('min_all_meter_in_item', filterData.valueA.toString());
+    if (filterData.valueB) params = params.append('max_all_meter_in_item', filterData.valueB.toString());
+    if (filterData.priceMeterA) params = params.append('min_price_one_meter', filterData.priceMeterA.toString());
+    if (filterData.priceMeterB) params = params.append('max_price_one_meter', filterData.priceMeterB.toString());
+    if (filterData.priceAllA) params = params.append('min_all_price_items', filterData.priceAllA.toString());
+    if (filterData.priceAllB) params = params.append('max_all_price_items', filterData.priceAllB.toString());
+    if (filterData.typeItems) params = params.append('type_items', filterData.typeItems);
+    if (filterData.inputTerm) params = params.append('input_term', filterData.inputTerm);
+    if (filterData.state) params = params.append('state', filterData.state);
+    if (filterData.floors) params = params.append('floors', filterData.floors);
+    if (filterData.apartmentCondition) params = params.append('apartment_condition', filterData.apartmentCondition);
+    if (filterData.constructionStatus) params = params.append('construction_status', filterData.constructionStatus);
+    if (filterData.declaredCommissioning) params = params.append('declared_commissioning', filterData.declaredCommissioning);
+    if (filterData.housingCondition) params = params.append('housing_condition', filterData.housingCondition);
 
     this.http.get<DescriptionItem[]>('https://usskkwk.mark-build.com/filter_items', { params }).subscribe(
         (data) => {
@@ -207,5 +176,4 @@ filterItems(
         }
     );
 }
-
 }
