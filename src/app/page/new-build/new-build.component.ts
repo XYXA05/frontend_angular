@@ -139,49 +139,70 @@ export class NewBuildComponent implements OnInit{
 
   applyFilter(filterData: any): void {
     if (Object.keys(filterData).length === 0) {
-        console.warn('No filter data provided.');
-        return;
+      console.warn('No filter data provided.');
+      return;
     }
 
     console.log('Filtering with values:', filterData);
-    this.filterItems(filterData);
+    this.filterItems(
+      filterData.valueA,
+      filterData.valueB,
+      filterData.priceMeterA,
+      filterData.priceMeterB,
+      filterData.priceAllA,
+      filterData.priceAllB,
+      filterData.typeItems,
+      filterData.inputTerm,
+      filterData.state,
+      filterData.floors,
+      filterData.apartmentCondition,
+      filterData.constructionStatus,
+      filterData.declaredCommissioning,
+      filterData.housingCondition
+  );
 }
 
-filterItems(filterData: any): void {
-    let params = new HttpParams();
+filterItems(
+  allMeterInItemA?: number,
+  allMeterInItemB?: number,
+  priceOneMeterA?: number,
+  priceOneMeterB?: number,
+  allPriceItemsA?: number,
+  allPriceItemsB?: number,
+  typeItems?: string,
+  inputTerm?: string,
+  state?: string,
+  floors?: string,
+  apartmentCondition?: string,
+  constructionStatus?: string,
+  declaredCommissioning?: string,
+  housingCondition?: string
+): void {
+  let params = new HttpParams();
+  if (allMeterInItemA) params = params.append('min_all_meter_in_item', allMeterInItemA.toString());
+  if (allMeterInItemB) params = params.append('max_all_meter_in_item', allMeterInItemB.toString());
+  if (priceOneMeterA) params = params.append('min_price_one_meter', priceOneMeterA.toString());
+  if (priceOneMeterB) params = params.append('max_price_one_meter', priceOneMeterB.toString());
+  if (allPriceItemsA) params = params.append('min_all_price_items', allPriceItemsA.toString());
+  if (allPriceItemsB) params = params.append('max_all_price_items', allPriceItemsB.toString());
+  if (typeItems) params = params.append('type_items', typeItems);
+  if (inputTerm) params = params.append('input_term', inputTerm);
+  if (state) params = params.append('state', state);
+  if (floors) params = params.append('floors', floors);
+  if (apartmentCondition) params = params.append('apartment_condition', apartmentCondition);
+  if (constructionStatus) params = params.append('construction_status', constructionStatus);
+  if (declaredCommissioning) params = params.append('declared_commissioning', declaredCommissioning);
+  if (housingCondition) params = params.append('housing_condition', housingCondition);
 
-    const mapping = {
-        valueA: 'min_all_meter_in_item',
-        valueB: 'max_all_meter_in_item',
-        priceMeterA: 'min_price_one_meter',
-        priceMeterB: 'max_price_one_meter',
-        priceAllA: 'min_all_price_items',
-        priceAllB: 'max_all_price_items',
-        typeItems: 'type_items',
-        inputTerm: 'input_term',
-        state: 'state',
-        floors: 'floors',
-        apartmentCondition: 'apartment_condition',
-        constructionStatus: 'construction_status',
-        declaredCommissioning: 'declared_commissioning',
-        housingCondition: 'housing_condition'
-    };
-
-    Object.keys(filterData).forEach(key => {
-        if (filterData[key] !== undefined && filterData[key] !== null) {
-            params = params.append(mapping[key] || key, filterData[key].toString());
-        }
-    });
-
-    this.http.get<DescriptionItem[]>('https://usskkwk.mark-build.com/filter_items', { params }).subscribe(
-        (data) => {
-            this.filteredJsonData = data;
-            this.cdr.detectChanges();
-            console.log('Filtered data received:', data);
-        },
-        (error) => {
-            console.error('Error filtering data:', error);
-        }
-    );
+  this.http.get<DescriptionItem[]>('https://usskkwk.mark-build.com/filter_items', { params }).subscribe(
+      (data) => {
+          this.filteredJsonData = data;
+          this.cdr.detectChanges();
+          console.log('Filtered data received:', data);
+      },
+      (error) => {
+          console.error('Error filtering data:', error);
+      }
+  );
 }
 }
