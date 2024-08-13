@@ -139,70 +139,34 @@ export class NewBuildComponent implements OnInit{
 
   applyFilter(filterData: any): void {
     if (Object.keys(filterData).length === 0) {
-      console.warn('No filter data provided.');
-      return;
+        console.warn('No filter data provided.');
+        return;
     }
 
     console.log('Filtering with values:', filterData);
-    this.filterItems(
-      filterData.valueA,
-      filterData.valueB,
-      filterData.priceMeterA,
-      filterData.priceMeterB,
-      filterData.priceAllA,
-      filterData.priceAllB,
-      filterData.typeItems,
-      filterData.inputTerm,
-      filterData.state,
-      filterData.floors,
-      filterData.apartmentCondition,
-      filterData.constructionStatus,
-      filterData.declaredCommissioning,
-      filterData.housingCondition
-  );
+    this.filterItems(filterData);
 }
 
-filterItems(
-  allMeterInItemA?: number,
-  allMeterInItemB?: number,
-  priceOneMeterA?: number,
-  priceOneMeterB?: number,
-  allPriceItemsA?: number,
-  allPriceItemsB?: number,
-  typeItems?: string,
-  inputTerm?: string,
-  state?: string,
-  floors?: string,
-  apartmentCondition?: string,
-  constructionStatus?: string,
-  declaredCommissioning?: string,
-  housingCondition?: string
-): void {
-  let params = new HttpParams();
-  if (allMeterInItemA) params = params.append('min_all_meter_in_item', allMeterInItemA.toString());
-  if (allMeterInItemB) params = params.append('max_all_meter_in_item', allMeterInItemB.toString());
-  if (priceOneMeterA) params = params.append('min_price_one_meter', priceOneMeterA.toString());
-  if (priceOneMeterB) params = params.append('max_price_one_meter', priceOneMeterB.toString());
-  if (allPriceItemsA) params = params.append('min_all_price_items', allPriceItemsA.toString());
-  if (allPriceItemsB) params = params.append('max_all_price_items', allPriceItemsB.toString());
-  if (typeItems) params = params.append('type_items', typeItems);
-  if (inputTerm) params = params.append('input_term', inputTerm);
-  if (state) params = params.append('state', state);
-  if (floors) params = params.append('floors', floors);
-  if (apartmentCondition) params = params.append('apartment_condition', apartmentCondition);
-  if (constructionStatus) params = params.append('construction_status', constructionStatus);
-  if (declaredCommissioning) params = params.append('declared_commissioning', declaredCommissioning);
-  if (housingCondition) params = params.append('housing_condition', housingCondition);
+filterItems(filterData: any): void {
+    let params = new HttpParams();
 
-  this.http.get<DescriptionItem[]>('https://usskkwk.mark-build.com/filter_items', { params }).subscribe(
-      (data) => {
-          this.filteredJsonData = data;
-          this.cdr.detectChanges();
-          console.log('Filtered data received:', data);
-      },
-      (error) => {
-          console.error('Error filtering data:', error);
-      }
-  );
+    // Iterate over the filterData object to append non-null values to the params
+    Object.entries(filterData).forEach(([key, value]) => {
+        if (value !== null && value !== undefined) {
+            params = params.append(key, value.toString());
+        }
+    });
+
+    this.http.get<DescriptionItem[]>('https://usskkwk.mark-build.com/filter_items', { params }).subscribe(
+        (data) => {
+            this.filteredJsonData = data;
+            this.cdr.detectChanges();
+            console.log('Filtered data received:', data);
+        },
+        (error) => {
+            console.error('Error filtering data:', error);
+        }
+    );
 }
+
 }
