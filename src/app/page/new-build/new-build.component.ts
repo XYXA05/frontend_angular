@@ -1,5 +1,5 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, Input, OnInit, ViewChild} from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit, ViewChild} from '@angular/core';
 import { SafeResourceUrl, DomSanitizer} from '@angular/platform-browser';
 import { MapComponent } from '../../plagin/map/map.component';
 import { DataService } from '../../filter.service';
@@ -44,6 +44,7 @@ export class NewBuildComponent implements OnInit{
       }
     });
   }
+
   private addGTagScript(): void {
     const gtagScript = document.createElement('script');
     gtagScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-04BE3JYN39';
