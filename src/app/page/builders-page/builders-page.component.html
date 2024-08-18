@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
-    <meta name="description" content="Мета-описание">
+    <meta *ngIf="jsonDataOwner" name="description" content="Catalog of developers MARK: information about the construction company {{jsonDataOwner.title_company}} in Luxembourg, a complete list of new buildings, availability of apartments and prices in all residential complexes, contacts of the developer.">
+    <title *ngIf="jsonDataOwner"> New buildings MARK — Developer {{jsonDataOwner.title_company}} in Luxembourg</title>
     <meta name="keywords" content="js, py">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
