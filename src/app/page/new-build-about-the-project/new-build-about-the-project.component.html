@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
-    <meta name="description" content="Find the best apartments for sale from the developer. Discover project characteristics, terms of financing, and more.">
+    <meta *ngIf="jsonData" name="description" content="All about {{jsonData.title}} ({{jsonData.line_adres}}) on MARK: sale of apartments in a new building from the developer, current prices, planning, construction progress in the photo and infrastructure of the residential complex.">
     <meta name="keywords" content="apartments, real estate, developer, property sale, financing terms, construction status">
-    <title>Apartments for Sale from the Developer</title>
+    <title *ngIf="jsonData"> {{jsonData.title}} — Apartments in new buildings — MARK</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
