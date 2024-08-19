@@ -14,7 +14,6 @@ export class NewBuildPlanningComponent implements OnInit{
   public uniqueFeaturesItems: string[] = [];
   public uniqueTypeItems: string[] = [];
   public jsonDataOwner: any;
-  public jsonItem: any;
   public selectedTypeItem: string | null = null;
   public selectedFeaturesItem: string | null = null;
   public showFilterTable: boolean = false;
@@ -62,8 +61,6 @@ export class NewBuildPlanningComponent implements OnInit{
   public getMethod() {
     this.http.get(`https://usskkwk.mark-build.com/items/${this.id}`).subscribe((data: any) => {
       console.log(data);
-      this.jsonItem = data;
-      this.cdr.detectChanges();
       if (data.owner_id) {  // Check if owner_id exists
         this.getMethodOwner(data.owner_id);  // Pass owner_id to getMethodOwner
       }
