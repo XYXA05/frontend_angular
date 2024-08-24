@@ -20,10 +20,10 @@
     </div>
     <div class="darkLight-searchBox">
       <div class="dark-light" #modeToggle>
-        <select (change)="switchLanguage($event)">
-          <option value="en">English</option>
-          <option value="fr">French</option>
-        </select>
+        <div (change)="switchLanguage($event)">
+          <div value="en">EN</div>
+          <div value="fr">FR</div>
+        </div>
       </div>
       <div class="searchBox">
         <div class="searchToggle" #searchToggle></div>

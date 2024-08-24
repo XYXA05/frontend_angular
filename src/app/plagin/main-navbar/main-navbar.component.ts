@@ -15,7 +15,13 @@ export class MainNavbarComponent implements OnInit, AfterViewInit {
   @ViewChild('modeToggle', { static: false }) modeToggle!: ElementRef;
   @ViewChild('searchToggle', { static: false }) searchToggle!: ElementRef;
 
-  constructor(private translate: TranslateService) { }
+  constructor(private translate: TranslateService) { 
+    this.translate.setDefaultLang('en');
+    // Optionally, use browser language as default
+    const browserLang = translate.getBrowserLang();
+    translate.use(browserLang.match(/en|fr/) ? browserLang : 'en');
+  }
+
   switchLanguage(event: Event) {
     const selectElement = event.target as HTMLSelectElement;
     const language = selectElement.value;

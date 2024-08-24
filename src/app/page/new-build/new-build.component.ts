@@ -34,8 +34,10 @@ export class NewBuildComponent implements OnInit{
 
   @ViewChild(MapComponent, { static: false }) mapComponent!: MapComponent; // Add "static: false" to avoid the initialization error
   constructor(private http: HttpClient, private sanitizer: DomSanitizer, private cdr: ChangeDetectorRef, private filterService: DataService, private router: Router, private translate: TranslateService) {
-    this.translate.setDefaultLang('en'); // Set the default language
-    this.translate.use('en'); // Use default language
+    this.translate.setDefaultLang('en');
+    // Optionally, use browser language as default
+    const browserLang = translate.getBrowserLang();
+    translate.use(browserLang.match(/en|fr/) ? browserLang : 'en');
   }
   switchLanguage(language: string) {
     this.translate.use(language);
