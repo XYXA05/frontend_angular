@@ -1,9 +1,15 @@
 {
+    "TITLE_MAIN":"MARK — Real estate Luxembourg apartments from developers",
+    "TITLE_DESCRIPTION":"New buildings MARK - the most relevant catalog of new buildings! It is easy to choose and buy an apartment in a new building from a developer in Luxembourg. Search for residential complexes on the map, filters by price and location of residential complex.",
     "TITLE": "Real estate Luxembourg",
     "SALE_OF_APARTMENTS": "Sale of apartments from developers in {{count}} projects",
     "FILTERS": "Filters",
     "MAPS": "Maps",
     "LIST": "List",
     "SET": "Set",
-    "SELECT": "Select"
+    "SELECT": "Select",
+    "DESCRIPTION": {
+        "FROM_TO_PRICE": "From {{price_low}} € up to {{price_hi}} €",
+        "ADDRESS": "{{line_adres}}"
+      }
   }

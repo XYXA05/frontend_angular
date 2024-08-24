@@ -1,9 +1,15 @@
 {
+    "TITLE_MAIN":"MARK - Immobilier Luxembourg appartements de promoteurs",
+    "TITLE_DESCRIPTION":"Nouveaux bâtiments MARK - le catalogue le plus pertinent de nouveaux bâtiments! Il est facile de choisir et d'acheter un appartement dans un immeuble neuf d'un promoteur au Luxembourg. Recherche de complexes résidentiels sur la carte, filtres par prix et localisation du complexe résidentiel.",
     "TITLE": "Immobilier Luxembourg",
     "SALE_OF_APARTMENTS": "Vente d'appartements de promoteurs dans {{count}} projets",
     "FILTERS": "Filtres",
     "MAPS": "Cartes",
     "LIST": "Liste",
     "SET": "Définir",
-    "SELECT": "Sélectionner"
+    "SELECT": "Sélectionner",
+    "DESCRIPTION": {
+        "FROM_TO_PRICE": "De {{price_low}} € à {{price_hi}} €",
+        "ADDRESS": "{{line_adres}}"
+      }
   }
