@@ -37,14 +37,14 @@
 <div style="display: -webkit-flex; display: flex; width: 100%; position: relative; margin-bottom: 42px;" [@fadeAnimation]>
 
     <div class="div1">
-        <h2 class="h2" style="color: rgb(0, 0, 0);">Apartments for sale from the developer</h2>
+        <h2 class="h2" style="color: rgb(0, 0, 0);">{{ 'PAGE.TITLE' | translate }}</h2>
         <div class="div4">
             <ng-container *ngIf="jsonDataOwner">
-                <h3 class="h3" style="color: rgb(0, 0, 0);"> A project by: 
+                <h3 class="h3" style="color: rgb(0, 0, 0);">{{ 'PAGE.PROJECT_BY' | translate }} 
                     <a [routerLink]="['/document_page/', jsonDataOwner?.id]" target="_blank">{{jsonDataOwner.title_company}}</a>
                 </h3>
                 <a href="https://wa.me/{{jsonDataOwner.phone}}?text=MARK" target="_blank">
-                <button class="custom-btn but btn-13">Request prices and availability</button>
+                <button class="custom-btn but btn-13">{{ 'PAGE.REQUEST_PRICES' | translate }}</button>
                 </a>
             </ng-container>
         </div>
@@ -53,10 +53,10 @@
         </div>
 
 
-        <h2 class="h2">Terms of financing</h2>
+        <h2 class="h2">{{ 'PAGE.TERMS_OF_FINANCING' | translate }}</h2>
         <app-terms-of-financing [getTermsOfFinancing]="getTermsOfFinancing"></app-terms-of-financing>
 
-        <h2 class="h2">Location, master plan and infrastructure</h2>
+        <h2 class="h2">{{ 'PAGE.LOCATION' | translate }}</h2>
         <ng-container *ngIf="jsonData">
             <h5>{{jsonData.city}}, {{jsonData.line_adres}}</h5>
         </ng-container>
@@ -68,105 +68,105 @@
 
 <app-map-project-new-build [jsonData]="jsonData"></app-map-project-new-build>
 <div class="div1">
-    <h2 class="h2">Project characteristics</h2>
-    <h5>Information is given according to the data from the developer</h5>
+    <h2 class="h2">{{ 'PAGE.PROJECT_CHARACTERISTICS' | translate }}</h2>
+    <h5>{{ 'PAGE.INFO_FROM_DEVELOPER' | translate }}</h5>
     <div class="div6" style="width: auto; height: auto">
         <ng-container *ngIf="jsonData">
             <div class="div7">
                 <img style="height: 50px ; width: 50px;" src="assets/volume.png" alt="Building Class">
                 <div style="display: flex; flex-direction: column; margin: 0px 0px 0px 10px;">
                     <h5 style="margin: 5px 0px -20px 0px;">{{jsonData.class_bulding}}</h5>
-                    <h6>Class</h6>
+                    <h6>{{ 'PAGE.BUILDING_CLASS' | translate }}</h6>
                 </div>
             </div>
             <div class="div7">
                 <img style="height: 50px ; width: 50px;" src="assets/hotel.png"  alt="Houses">
                 <div style="display: flex; flex-direction: column; margin: 0px 0px 0px 10px;">
                     <h5 style="margin: 5px 0px -20px 0px;">{{jsonData.houses}}</h5>
-                    <h6>Houses</h6>
+                    <h6>{{ 'PAGE.HOUSES' | translate }}</h6>
                 </div>
             </div>
             <div class="div7">
                 <img style="height: 50px ; width: 50px;" src="assets/residence.png" alt="Number of Storeys">
                 <div style="display: flex; flex-direction: column; margin: 0px 0px 0px 10px;">
                     <h5 style="margin: 5px 0px -20px 0px;">{{jsonData.number_of_storeys}}</h5>
-                    <h6>Number of storeys</h6>
+                    <h6>{{ 'PAGE.NUMBER_OF_STOREYS' | translate }}</h6>
                 </div>
             </div>
             <div class="div7">
                 <img style="height: 50px ; width: 50px;" src="assets/technology.png" alt="Construction Technology">
                 <div style="display: flex; flex-direction: column; margin: 0px 0px 0px 10px;">
                     <h5 style="margin: 5px 0px -20px 0px;">{{jsonData.construction_technology}}</h5>
-                    <h6>Construction technology</h6>
+                    <h6>{{ 'PAGE.CONSTRUCTION_TECHNOLOGY' | translate }}</h6>
                 </div>
             </div>
             <div class="div7">
                 <img style="height: 50px; width: 50px;" src="assets/brick-wall.png" alt="Walls">
                 <div style="display: flex; flex-direction: column; margin: 0px 0px 0px 10px;">
                     <h5 style="margin: 5px 0px -20px 0px;">{{jsonData.walls}}</h5>
-                    <h6>Walls</h6>
+                    <h6>{{ 'PAGE.WALLS' | translate }}</h6>
                 </div>
             </div>
             <div class="div7">
                 <img style="width: 50px; height: 50px;" src="assets/eco-house.png" alt="Insulation">
                 <div style="display: flex; flex-direction: column; margin: 0px 0px 0px 10px;">
                     <h5 style="margin: 5px 0px -20px 0px;">{{jsonData.insulation}}</h5>
-                    <h6>Insulation</h6>
+                    <h6>{{ 'PAGE.INSULATION' | translate }}</h6>
                 </div>
             </div>
             <div class="div7">
                 <img style="height: 50px; width: 50px;" src="assets/heat.png"  alt="Heating">
                 <div style="display: flex; flex-direction: column; margin: 0px 0px 0px 10px;">
                     <h5 style="margin: 5px 0px -20px 0px;">{{jsonData.heating}}</h5>
-                    <h6>Heating</h6>
+                    <h6>{{ 'PAGE.HEATING' | translate }}</h6>
                 </div>
             </div>
             <div class="div7">
             <img style="height: 50px; width: 50px;" src="assets/measure.png" alt="Ceiling Height">
             <div style="display: flex; flex-direction: column; margin: 0px 0px 0px 10px;">
                 <h5 style="margin: 5px 0px -20px 0px;">{{jsonData.ceiling_height}}</h5>
-                <h6>Ceiling height</h6>
+                <h6>{{ 'PAGE.CEILING_HEIGHT' | translate }}</h6>
             </div>
             </div>
             <div class="div7">
             <img style="height: 50px; width: 50px;" src="assets/plan.png" alt="Number of Flats">    
             <div style="display: flex; flex-direction: column; margin: 0px 0px 0px 10px;">
                 <h5 style="margin: 5px 0px -20px 0px;">{{jsonData.number_of_flats}}</h5>
-                <h6>Number of flats</h6>
+                <h6>{{ 'PAGE.NUMBER_OF_FLATS' | translate }}</h6>
             </div>
             </div>
             <div class="div7">
             <img style="height: 50px; width: 50px;" src="assets/paint-roller.png" alt="Apartment Condition">    
             <div style="display: flex; flex-direction: column; margin: 0px 0px 0px 10px;">
                 <h5 style="margin: 5px 0px -20px 0px;">{{jsonData.apartment_condition}}</h5>
-                <h6>Apartment condition</h6>
+                <h6>{{ 'PAGE.APARTMENT_CONDITION' | translate }}</h6>
             </div>
             </div>
             <div class="div7">
                 <img style="height: 52px; width: 52px;" src="assets/icons8-territory-50.png" alt="Territory">
                 <div style="display: flex; flex-direction: column; margin: 0px 0px 0px 10px;">
                     <h5 style="margin: 5px 0px -20px 0px;">{{jsonData.territory}}</h5>
-                    <h6>territory</h6>
+                    <h6>{{ 'PAGE.TERRITORY' | translate }}</h6>
                 </div>
             </div>
             <div class="div7">
             <img style="height: 50px; width: 50px;" src="assets/parking.png" alt="Car Park">
             <div style="display: flex; flex-direction: column; margin: 0px 0px 0px 10px;">
                 <h5 style="margin: 5px 0px -20px 0px;">{{jsonData.car_park}}</h5>
-                <h6>car park</h6>
+                <h6>{{ 'PAGE.CAR_PARK' | translate }}</h6>
             </div>
             </div>
         </ng-container>
     </div>
-    <h2 class="h2">Documents</h2>
+    <h2 class="h2">{{ 'PAGE.DOCUMENTS' | translate }}</h2>
     <div style="background-color: black; width: auto; height: 150px; margin: 50px auto;">
         <app-document-puti [jsonData]="jsonData"></app-document-puti>
     </div>
-    <h2 class="h2">Construction status</h2>
+    <h2 class="h2">{{ 'PAGE.CONSTRUCTION_STATUS' | translate }}</h2>
     <div style="height: 350px; margin: 50px auto;">
     <app-cart-image [jsonData]="jsonData"></app-cart-image>
     </div>
-    <h2 class="h2">More about this project</h2>
+    <h2 class="h2">{{ 'PAGE.MORE_ABOUT_PROJECT' | translate }}</h2>
     <div style="height: auto; margin: 50px 0px 30px 0px;">
         <div class="div6-5">
             <div *ngFor="let dddd of jsonDataOwnerAbout" class="div6-6" style=" display: -webkit-flex;display: flex; width: auto; color: #000000; background: #f5f6fa; border-radius: 35px; padding: 16px 30px 0px 0px; margin: 0px 30px 0px 0px;" >

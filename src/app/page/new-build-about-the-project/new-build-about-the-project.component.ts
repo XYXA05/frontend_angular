@@ -3,7 +3,7 @@ import { Component, OnInit, AfterViewInit, Input, Renderer2, ElementRef, ChangeD
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { ActivatedRoute, NavigationCancel, NavigationEnd, NavigationError, NavigationStart, Router, RouterOutlet } from '@angular/router';
 import { coolTransition, fadeAnimation } from '../../route-animations';
-
+import { TranslateService } from '@ngx-translate/core';
 @Component({
   selector: 'app-new-build-about-the-project',
   templateUrl: './new-build-about-the-project.component.html',
@@ -26,7 +26,7 @@ export class NewBuildAboutTheProjectComponent implements OnInit, AfterViewInit{
   loading = false;
 
   constructor(private http: HttpClient, private sanitizer: DomSanitizer, private route: ActivatedRoute,
-    private renderer: Renderer2,private el: ElementRef, private cdr: ChangeDetectorRef, private router: Router
+    private renderer: Renderer2,private el: ElementRef, private cdr: ChangeDetectorRef, private router: Router,private translate: TranslateService
   ){
     this.router.events.subscribe(event => {
       if (event instanceof NavigationStart) {
@@ -35,6 +35,13 @@ export class NewBuildAboutTheProjectComponent implements OnInit, AfterViewInit{
         this.loading = false;
       }
     });
+    this.translate.setDefaultLang('en');
+    // Optionally, use browser language as default
+    const browserLang = translate.getBrowserLang();
+    translate.use(browserLang.match(/en|fr/) ? browserLang : 'en');
+  }
+  switchLanguage(language: string) {
+    this.translate.use(language);
   }
 
   ngOnInit(): void {

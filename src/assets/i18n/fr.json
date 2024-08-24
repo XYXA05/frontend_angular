@@ -1,4 +1,10 @@
 {
+    "NEW_BUILDINGS":"Nouveaux bâtiments",
+    "BUILDERS":"Développeurs",
+    "NEW_COTTAGES":"Nouveaux chalets",
+    "STATISTICS":"Statistiques",
+
+
     "AREA":"Zone",
     "PRICE":"Prix",
     "PRICE_OF_ONE_METER":"Prix d'un mètre",
@@ -19,5 +25,31 @@
     "DESCRIPTION": {
         "FROM_TO_PRICE": "De {{price_low}} € à {{price_hi}} €",
         "ADDRESS": "{{line_adres}}"
+    },
+
+    "PAGE": {
+        "TITLE": "Appartements à vendre du promoteur",
+        "PROJECT_BY": "Un projet par :",
+        "REQUEST_PRICES": "Demander les prix et disponibilités",
+        "TERMS_OF_FINANCING": "Conditions de financement",
+        "LOCATION": "Localisation, plan directeur et infrastructure",
+        "PROJECT_CHARACTERISTICS": "Caractéristiques du projet",
+        "INFO_FROM_DEVELOPER": "Informations données selon les données du promoteur",
+        "BUILDING_CLASS": "Classe du bâtiment",
+        "HOUSES": "Maisons",
+        "NUMBER_OF_STOREYS": "Nombre d'étages",
+        "CONSTRUCTION_TECHNOLOGY": "Technologie de construction",
+        "WALLS": "Murs",
+        "INSULATION": "Isolation",
+        "HEATING": "Chauffage",
+        "CEILING_HEIGHT": "Hauteur sous plafond",
+        "NUMBER_OF_FLATS": "Nombre d'appartements",
+        "APARTMENT_CONDITION": "État de l'appartement",
+        "TERRITORY": "Territoire",
+        "CAR_PARK": "Parking",
+        "DOCUMENTS": "Documents",
+        "CONSTRUCTION_STATUS": "État de la construction",
+        "MORE_ABOUT_PROJECT": "En savoir plus sur ce projet",
+        "ABOUT_PROJECT": "À propos du projet"
       }
   }

@@ -1,4 +1,10 @@
 {   
+    "NEW_BUILDINGS":"New Buildings",
+    "BUILDERS":"Builders",
+    "NEW_COTTAGES":"New Cottages",
+    "STATISTICS":"Statistics",
+
+
     "AREA":"Area",
     "PRICE":"Price",
     "PRICE_OF_ONE_METER":"Price of one meter",
@@ -19,5 +25,30 @@
     "DESCRIPTION": {
         "FROM_TO_PRICE": "From {{price_low}} € up to {{price_hi}} €",
         "ADDRESS": "{{line_adres}}"
+    },
+    "PAGE": {
+        "TITLE": "Apartments for sale from the developer",
+        "PROJECT_BY": "A project by:",
+        "REQUEST_PRICES": "Request prices and availability",
+        "TERMS_OF_FINANCING": "Terms of financing",
+        "LOCATION": "Location, master plan and infrastructure",
+        "PROJECT_CHARACTERISTICS": "Project characteristics",
+        "INFO_FROM_DEVELOPER": "Information is given according to the data from the developer",
+        "BUILDING_CLASS": "Building Class",
+        "HOUSES": "Houses",
+        "NUMBER_OF_STOREYS": "Number of storeys",
+        "CONSTRUCTION_TECHNOLOGY": "Construction technology",
+        "WALLS": "Walls",
+        "INSULATION": "Insulation",
+        "HEATING": "Heating",
+        "CEILING_HEIGHT": "Ceiling height",
+        "NUMBER_OF_FLATS": "Number of flats",
+        "APARTMENT_CONDITION": "Apartment condition",
+        "TERRITORY": "Territory",
+        "CAR_PARK": "Car park",
+        "DOCUMENTS": "Documents",
+        "CONSTRUCTION_STATUS": "Construction status",
+        "MORE_ABOUT_PROJECT": "More about this project",
+        "ABOUT_PROJECT": "About the project"
     }
   }
