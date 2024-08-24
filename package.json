@@ -21,6 +21,8 @@
     "@egjs/ngx-view360": "^4.0.0-beta.7",
     "@maplibre/ngx-maplibre-gl": "^17.4.3",
     "@maptiler/sdk": "^2.0.1",
+    "@ngx-translate/core": "^15.0.0",
+    "@ngx-translate/http-loader": "^8.0.0",
     "@types/video.js": "^7.3.58",
     "apexcharts": "^3.48.0",
     "babylonjs": "^7.5.0",

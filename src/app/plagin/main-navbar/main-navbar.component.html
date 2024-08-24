@@ -19,7 +19,12 @@
       </ul>
     </div>
     <div class="darkLight-searchBox">
-      <div class="dark-light" #modeToggle></div>
+      <div class="dark-light" #modeToggle>
+        <select (change)="switchLanguage($event.target.value)">
+          <option value="en">English</option>
+          <option value="fr">French</option>
+        </select>
+      </div>
       <div class="searchBox">
         <div class="searchToggle" #searchToggle></div>
       </div>

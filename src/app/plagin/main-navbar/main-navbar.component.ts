@@ -1,4 +1,5 @@
 import { AfterViewInit, Component,  ElementRef,  OnInit,  ViewChild,  ViewEncapsulation } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-main-navbar',
@@ -14,8 +15,10 @@ export class MainNavbarComponent implements OnInit, AfterViewInit {
   @ViewChild('modeToggle', { static: false }) modeToggle!: ElementRef;
   @ViewChild('searchToggle', { static: false }) searchToggle!: ElementRef;
 
-  constructor() { }
-
+  constructor(private translate: TranslateService) { }
+  switchLanguage(language: string) {
+    this.translate.use(language);
+  }
   ngOnInit(): void {
     const body = document.querySelector("body");
 

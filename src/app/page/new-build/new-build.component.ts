@@ -6,6 +6,7 @@ import { DataService } from '../../filter.service';
 import { DescriptionItem } from '../../plagin/main-navbar-button/main-navbar-button.component';
 import { routeAnimations } from '../../route-animations';
 import { Router, RouterOutlet } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-new-build',
@@ -32,9 +33,13 @@ export class NewBuildComponent implements OnInit{
   public itemsPerPage: number = 10; // Change this to set the number of items per page
 
   @ViewChild(MapComponent, { static: false }) mapComponent!: MapComponent; // Add "static: false" to avoid the initialization error
-  constructor(private http: HttpClient, private sanitizer: DomSanitizer, private cdr: ChangeDetectorRef, private filterService: DataService, private router: Router) {
+  constructor(private http: HttpClient, private sanitizer: DomSanitizer, private cdr: ChangeDetectorRef, private filterService: DataService, private router: Router, private translate: TranslateService) {
+    this.translate.setDefaultLang('en'); // Set the default language
+    this.translate.use('en'); // Use default language
   }
-
+  switchLanguage(language: string) {
+    this.translate.use(language);
+  }
   ngOnInit(): void {
     this.addGTagScript();
     this.getMethod();

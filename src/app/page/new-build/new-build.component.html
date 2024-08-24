@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en-GB">
+<html lang="en">
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
@@ -20,8 +20,8 @@
       <button class="custom-btn btn-16" (click)="toggleMaps()">{{ showMaps ? 'List' : 'Maps' }}</button>
     </div>
     <div *ngIf="!showMaps" class="div0">
-      <h1 class="h1">Real estate Luxembourg</h1>
-      <h5>Sale of apartments from developers in {{jsonDataCount}} projects</h5>
+      <h1>{{ 'TITLE' | translate }}</h1>
+      <h5>{{ 'SALE_OF_APARTMENTS' | translate:{count: jsonDataCount} }}</h5>
     </div>
     <div *ngIf="!showMaps" class="div1">
       <div class="cart" *ngFor="let data of paginatedData; let i = index">
