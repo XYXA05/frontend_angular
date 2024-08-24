@@ -12,6 +12,7 @@ import {
 import Knobs from './knods';
 import { HttpClient } from '@angular/common/http';
 import { DataService } from '../../filter.service';
+import { TranslateService } from '@ngx-translate/core';
 
 export interface DescriptionItem {
   all_meter_in_item: number;
@@ -96,9 +97,15 @@ export class MainNavbarButtonComponent implements AfterViewInit, OnInit {
   constructor(
     private http: HttpClient,
     private cdr: ChangeDetectorRef,
-    private filterService: DataService
-  ) {}
-
+    private filterService: DataService,
+    private translate: TranslateService
+  ) {
+    this.translate.setDefaultLang('en'); // Set the default language
+    this.translate.use('en'); // Use default language
+  }
+  switchLanguage(language: string) {
+    this.translate.use(language);
+  }
   ngOnInit(): void {
     this.getMethodDescription();
     this.getMethod();

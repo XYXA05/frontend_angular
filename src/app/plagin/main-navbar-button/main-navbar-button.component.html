@@ -7,7 +7,7 @@
               <div class='range-slider__progress'></div>
        </div>
 </div>
-<h4>Area</h4>
+<h4>{{ 'AREA' | translate }}</h4>
 <div class="range-slider flat"
     data-ticks-position='top'
     [style.--min]="minMaxValues.minAllMeter"
@@ -32,7 +32,7 @@
     <div class='range-slider__progress'></div>
 </div>
 
-<h4>Price</h4>
+<h4>{{ 'PRICE' | translate }}</h4>
 <div class="range-slider flat"
     data-ticks-position='top'
     [style.--min]="minMaxValues.minAllPrice"
@@ -57,7 +57,7 @@
     <div class='range-slider__progress'></div>
 </div>
 
-<h4>Price of one meter</h4>
+<h4>{{ 'PRICE_OF_ONE_METER' | translate }}</h4>
 <div class="range-slider flat"
     data-ticks-position='top'
     [style.--min]="minMaxValues.minPriceMeter"
@@ -81,17 +81,17 @@
     <output>{{selectedRangeValues.priceMeterB}}€</output>
     <div class='range-slider__progress'></div>
 </div>
-<h4>Number of rooms</h4>
+<h4>{{ 'NUMBER_OF_ROOMS' | translate }}</h4>
 <button class="custom-btn btn-14" *ngFor="let typeItem of uniqueTypeItems | unique" 
         (click)="updateSelectedUniqueTypeItems(typeItem)">{{ typeItem }}</button>
-<h4>Declared commissioning</h4>
+<h4>{{ 'DECLARED_COMMISSIONING' | translate }}</h4>
 <button class="custom-btn btn-14" *ngFor="let typeItem of uniqueDeclaredCommissioning | unique" 
         (click)="updateSelectedUniqueDeclaredCommissioning(typeItem)">{{ typeItem }}</button>
 
-<h4>Construction status</h4>
+<h4>{{ 'CONSTRUCTION_STATUS' | translate }}</h4>
 <button class="custom-btn btn-14" *ngFor="let typeItem of uniqueConstructionStatus | unique" 
         (click)="updateSelectedUniqueConstructionStatus(typeItem)">{{ typeItem }}</button>
 
-<h4>Number of storeys in the building</h4>
+<h4>{{ 'NUMBER_OF_STOREYS_IN_THE_BUILDING' | translate }}</h4>
 <button class="custom-btn btn-14" *ngFor="let typeItem of uniqueNumberOfStoreys | unique" 
         (click)="updateSelectedUniqueNumberOfStoreys(typeItem)">{{ typeItem }}</button>

@@ -17,7 +17,7 @@
     <div>
     <div class="divv">
       <button class="custom-btn btn-16" (click)="toggleFilterTable()">{{ 'FILTERS' | translate }}</button>
-      <button class="custom-btn btn-16" (click)="toggleMaps()">{{ showMaps ? ('FILTERS' | translate) : ('LIST' | translate) }}</button>
+      <button class="custom-btn btn-16" (click)="toggleMaps()">{{ showMaps ? ('MAPS' | translate) : ('LIST' | translate) }}</button>
     </div>
     <div *ngIf="!showMaps" class="div0">
       <h1>{{ 'TITLE' | translate }}</h1>
@@ -49,8 +49,8 @@
           <app-main-navbar-button (filterChanged)="applyFilter($event)"></app-main-navbar-button>
         </div>
         <div class="filter-table-ended">
-          <div class="custom-btn1 btn-16" (click)="onFilterApply()">SET</div>
-          <div class="custom-btn1 btn-16" (click)="toggleFilterTable()">{{jsonDataCount}} SELECT</div>
+          <div class="custom-btn1 btn-16" (click)="onFilterApply()">{{ 'RESET' | translate }}</div>
+          <div class="custom-btn1 btn-16" (click)="toggleFilterTable()">{{jsonDataCount}} {{ 'SELECT' | translate }}</div>
         </div>
       </div>
     </div>
@@ -65,8 +65,8 @@
             <div class="div8">
               <h2 class="description-title-1">{{ selectedMarker.title }}</h2>
               <h3 class="h33">{{ selectedMarker.city }}</h3>
-              <h4 class="h44">From {{ selectedMarker.price_low }} € up to {{ selectedMarker.price_hi }} €</h4>
-              <h5 class="h55">{{ selectedMarker.line_adres }}</h5>
+              <h4 class="h44">{{ 'DESCRIPTION.FROM_TO_PRICE' | translate: { price_low: selectedMarker.price_low, price_hi: selectedMarker.price_hi } }}</h4>
+              <h5 class="h55">{{ 'DESCRIPTION.ADDRESS' | translate: { line_adres: selectedMarker.line_adres } }}</h5>
             </div>
           </a>
         </div>
