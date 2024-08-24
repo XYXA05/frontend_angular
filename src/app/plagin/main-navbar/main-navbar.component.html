@@ -20,11 +20,12 @@
     </div>
     <div class="darkLight-searchBox">
       <div class="dark-light" #modeToggle>
-        <button (click)="switchLanguage('en')">EN</button>
-        <button (click)="switchLanguage('fr')">FR</button>
+          <h4 (click)="switchLanguage('en')">EN</h4>
       </div>
       <div class="searchBox">
-        <div class="searchToggle" #searchToggle></div>
+        <div class="searchToggle" #searchToggle>
+          <h4 (click)="switchLanguage('fr')">FR</h4>
+        </div>
       </div>
     </div>
   </div>

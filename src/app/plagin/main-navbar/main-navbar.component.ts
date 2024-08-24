@@ -17,7 +17,6 @@ export class MainNavbarComponent implements OnInit, AfterViewInit {
 
   constructor(private translate: TranslateService) { 
     this.translate.setDefaultLang('en');
-
     // Optionally, use browser language as default
     const browserLang = this.translate.getBrowserLang();
     this.translate.use(browserLang.match(/en|fr/) ? browserLang : 'en');
@@ -26,6 +25,7 @@ export class MainNavbarComponent implements OnInit, AfterViewInit {
   switchLanguage(language: string) {
     this.translate.use(language);
   }
+
   ngOnInit(): void {
     const body = document.querySelector("body");
 
