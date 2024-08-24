@@ -16,7 +16,9 @@ export class MainNavbarComponent implements OnInit, AfterViewInit {
   @ViewChild('searchToggle', { static: false }) searchToggle!: ElementRef;
 
   constructor(private translate: TranslateService) { }
-  switchLanguage(language: string) {
+  switchLanguage(event: Event) {
+    const selectElement = event.target as HTMLSelectElement;
+    const language = selectElement.value;
     this.translate.use(language);
   }
   ngOnInit(): void {
