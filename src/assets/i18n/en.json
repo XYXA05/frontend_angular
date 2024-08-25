@@ -36,6 +36,7 @@
     },
     "PAGE": {
         "TITLE": "Apartments for sale from the developer",
+        "DESCRIPTION": "All about {{title}} ({{line_adres}}) on MARK: sale of apartments in a new building from the developer, current prices, planning, construction progress in the photo, and infrastructure of the residential complex.",
         "PROJECT_BY": "A project by:",
         "REQUEST_PRICES": "Request prices and availability",
         "TERMS_OF_FINANCING": "Terms of financing",
@@ -70,5 +71,13 @@
         "3D Walk Soon":"3D Walk Soon",
         "RESET": "RESET",
         "SELECT": "SELECT"
+    },
+    "Construction_Monitoring_Page":{
+        "DESCRIPTION": "Photos of construction progress {{title}} ({{city}}). On MARK, you can easily view the dynamics of the construction of a residential complex!",
+        "CONSTRUCTION_PROGRESS": "construction progress in the photo",
+        "CONSTRUCTION_MONITORING": "construction monitoring in photos",
+        "DECLARED_DATE": "The declared date of commissioning",
+        "IMAGE_ALT": "image",
+        "POSITION": "Position"
     }
   }

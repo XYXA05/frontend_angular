@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
-    <meta *ngIf="jsonDataa" name="description" content="Photos of construction progress {{jsonDataa.title}} ({{jsonDataa.city}}). On MARK, you can easily view the dynamics of the construction of a residential complex!">
-    <title *ngIf="jsonDataa">{{jsonDataa.title}} — construction progress in the photo — MARK</title>
+    <meta *ngIf="jsonDataa" name="description" [attr.content]="'Construction_Monitoring_Page.DESCRIPTION' | translate:{title: jsonDataa.title, city: jsonDataa.city}">
+    <title *ngIf="jsonDataa">{{jsonDataa.title}} — {{ 'Construction_Monitoring_Page.CONSTRUCTION_PROGRESS' | translate }} — MARK</title>
     <meta name="keywords" content="js, py">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,20 +16,20 @@
 <app-main-navbar *ngIf="!showitem && showAllItems"></app-main-navbar>
 <app-main-navbar2  *ngIf="!showitem && showAllItems"></app-main-navbar2>
 <div class="div0"  *ngIf="!showitem && showAllItems">
-    <h1 class="h2" style="margin: 0px auto" *ngIf="jsonDataa">{{jsonDataa.title}}: construction monitoring in photos</h1>
+    <h1 class="h2" style="margin: 0px auto" *ngIf="jsonDataa">{{jsonDataa.title}}: {{ 'Construction_Monitoring_Page.CONSTRUCTION_MONITORING' | translate }}</h1>
     <div class="div1">
         <div class="div4" *ngFor="let data of jsonDataDescriptionsOriginal">
             <button class="buttonn custom-btn btn-10" (click)="filterData(data.namber_build_andsection)">{{data.namber_build_andsection}}</button>
         </div>
     </div>
-    <h4 class="h3" *ngFor="let dataa of filteredDescriptions" style="color: rgb(0 0 0 / 50%);">The declared date of commissioning: {{dataa.input_term}}</h4>
+    <h4 class="h3" *ngFor="let dataa of filteredDescriptions" style="color: rgb(0 0 0 / 50%);">{{ 'Construction_Monitoring_Page.DECLARED_DATE' | translate }}: {{dataa.input_term}}</h4>
     <div class="div2">
         <div class="div3" (click)="toggleFilterTable(photo.position)" *ngFor="let photo of PhotoInformation">
           <img class="responsive-img" [src]="photo.url" alt="image">
           <div class="darken-area">
               <div class="div5">
                   <h4 style="margin: 10px;">{{photo.date}}</h4>
-                  <h4 style="margin: 10px;">Position {{photo.position}}</h4>
+                  <h4 style="margin: 10px;">{{ 'Construction_Monitoring_Page.POSITION' | translate }} {{photo.position}}</h4>
               </div>
           </div>
         </div>

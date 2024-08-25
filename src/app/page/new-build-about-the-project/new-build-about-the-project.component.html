@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
-    <meta *ngIf="jsonData" name="description" content="All about {{jsonData.title}} ({{jsonData.line_adres}}) on MARK: sale of apartments in a new building from the developer, current prices, planning, construction progress in the photo and infrastructure of the residential complex.">
+    <meta *ngIf="jsonData" name="description" [attr.content]="'PAGE.DESCRIPTION' | translate:{title: jsonData.title, line_adres: jsonData.line_adres}">
     <meta name="keywords" content="apartments, real estate, developer, property sale, financing terms, construction status">
     <title *ngIf="jsonData"> {{jsonData.title}} — Apartments in new buildings — MARK</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">

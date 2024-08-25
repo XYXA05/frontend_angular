@@ -37,7 +37,8 @@
     },
 
     "PAGE": {
-        "TITLE": "Appartements à vendre du promoteur",
+        "DESCRIPTION": "Tout sur {{title}} ({{line_adres}}) sur MARK : vente d'appartements dans un nouvel immeuble du promoteur, prix actuels, planification, avancement des travaux en photo et infrastructure du complexe résidentiel.",
+        "KEYWORDS": "appartements, immobilier, promoteur, vente de biens, conditions de financement, état des travaux",
         "PROJECT_BY": "Un projet par :",
         "REQUEST_PRICES": "Demander les prix et disponibilités",
         "TERMS_OF_FINANCING": "Conditions de financement",
@@ -72,5 +73,13 @@
         "3D Walk Soon":"3D  Marcher bientôt",
         "RESET": "Réinitialiser",
         "SELECT": "Sélectionner"
+    },
+    "Construction_Monitoring_Page":{
+        "DESCRIPTION": "Photos de l'avancement des travaux {{title}} ({{city}}). Sur MARK, vous pouvez facilement visualiser la dynamique de la construction d'un complexe résidentiel!",
+        "CONSTRUCTION_PROGRESS": "avancement des travaux en photo",
+        "CONSTRUCTION_MONITORING": "suivi de la construction en photos",
+        "DECLARED_DATE": "La date de mise en service déclarée",
+        "IMAGE_ALT": "image",
+        "POSITION": "Position"
     }
   }
