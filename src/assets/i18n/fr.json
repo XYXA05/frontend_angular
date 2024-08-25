@@ -100,5 +100,22 @@
         "DESCRIPTION_SMAAL":"Entreprises de construction de la région luxembourgeoise",
         "TITLE":"MARK - Catalogue des promoteurs du Luxembourg, rating des entreprises de construction",
         "DESCRIPTION":"Répertoire complet des promoteurs luxembourgeois avec notation, risques d'investissement et tous les nouveaux bâtiments / complexes résidentiels pertinents. Rating des entreprises de construction luxembourgeoises."
+    },
+    "DOCUMENTS":{
+        "1":"Documents relatifs au terrain",
+        "2":"Documents pour la construction",
+        "3":"Mise en service de l'immeuble d'habitation",
+        "4":"Données"
+    },
+    "Input_tern":{
+        "1":"Toute date d'entrée"
+    },
+    "Cart_builder":{
+        "1":"Année de fondation”",
+        "2":"Projets d'appartements",
+        "3":"Projets en cours",
+        "4":"Téléphone",
+        "5":"Ecrire WhatsApp",
+        "6":"website"
     }
   }

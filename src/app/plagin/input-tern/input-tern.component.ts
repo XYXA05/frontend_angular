@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, ViewEncapsulation, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-
+import { TranslateService } from '@ngx-translate/core';
 interface DescriptionItem {
   input_term: string;
   namber_build_andsection: string;
@@ -23,7 +23,12 @@ export class InputTernComponent implements OnInit{
   @Output() selectedHouse = new EventEmitter<string | null>();
 
 
-  constructor(private http: HttpClient, private route: ActivatedRoute) { }
+  constructor(private http: HttpClient, private route: ActivatedRoute, private translate: TranslateService) { 
+    this.translate.setDefaultLang('en');
+    // Optionally, use browser language as default
+    const browserLang = translate.getBrowserLang();
+    translate.use(browserLang.match(/en|fr/) ? browserLang : 'en');
+  }
 
   ngOnInit(): void {
     this.id = this.route.snapshot.paramMap.get('id');

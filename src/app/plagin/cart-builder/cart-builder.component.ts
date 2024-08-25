@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component,Renderer2, ElementRef, ViewChild,AfterViewInit, ViewEncapsulation, OnInit, Input, ChangeDetectorRef } from '@angular/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-cart-builder',
@@ -23,8 +24,11 @@ export class CartBuilderComponent implements AfterViewInit, OnInit{
   @ViewChild('btn', { static: true }) btn!: ElementRef;
   @ViewChild('fw', { static: true }) fw!: ElementRef;
 
-  constructor(private renderer: Renderer2, private http: HttpClient, private sanitizer: DomSanitizer) {
-
+  constructor(private renderer: Renderer2, private http: HttpClient, private sanitizer: DomSanitizer, private translate: TranslateService) {
+    this.translate.setDefaultLang('en');
+    // Optionally, use browser language as default
+    const browserLang = translate.getBrowserLang();
+    translate.use(browserLang.match(/en|fr/) ? browserLang : 'en');
   }
   ngOnInit(): void {
 

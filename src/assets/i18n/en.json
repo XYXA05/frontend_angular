@@ -97,5 +97,22 @@
         "DESCRIPTION_SMAAL":"Construction companies in the Luxembourg region",
         "TITLE":"MARK — Catalog of developers of Luxembourg, rating of construction companies",
         "DESCRIPTION":"Complete directory of Luxembourg developers with rating, investment risks and all relevant new buildings / residential complexes. Rating of Luxembourg construction companies."
+    },
+    "DOCUMENTS":{
+        "1":"Documents for the land plot",
+        "2":"Documents for construction",
+        "3":"Putting the residential complex into operation",
+        "4":"Datails"
+    },
+    "Input_tern":{
+        "1":"Any date of entry"
+    },
+    "Cart_builder":{
+        "1":"Year of Foundation",
+        "2":"Projects in Apartments",
+        "3":"Projects in Cattagesss",
+        "4":"Phone",
+        "5":"Write WhatsApp",
+        "6":"website"
     }
   }

@@ -1,9 +1,9 @@
 <div class="container">
     <div class="card">
       <a [routerLink]="['/document/', jsonData?.id]">
-      <h4>Documents for the land plot</h4>
+      <h4>{{ 'DOCUMENTS.1' | translate }}</h4>
       <i class="fas fa-arrow-right"></i>
-      <p>Datalis</p>
+      <p>{{ 'DOCUMENTS.4' | translate }}</p>
       <div class="pic"></div>
       <ul>
         <li></li>
@@ -36,9 +36,9 @@
     </div>
     <div class="card secondclose">
         <a [routerLink]="['/document/', jsonData?.id]">
-        <h4>Documents for construction</h4>
+        <h4>{{ 'DOCUMENTS.2' | translate }}</h4>
         <i class="fas fa-arrow-right"></i>
-        <p>Datails</p>
+        <p>{{ 'DOCUMENTS.4' | translate }}</p>
         <div class="pic"></div>
         <ul>
           <li></li>
@@ -71,9 +71,9 @@
       </div>
       <div class="card firstclose">
         <a [routerLink]="['/document/', jsonData?.id]">
-        <h4>Putting the residential complex into operation</h4>
+        <h4>{{ 'DOCUMENTS.3' | translate }}</h4>
         <i class="fas fa-arrow-right"></i>
-        <p>Datails</p>
+        <p>{{ 'DOCUMENTS.4' | translate }}</p>
         <div class="pic"></div>
         <ul>
           <li></li>
