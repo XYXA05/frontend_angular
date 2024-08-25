@@ -4,6 +4,8 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { ActivatedRoute, NavigationCancel, NavigationEnd, NavigationError, NavigationStart, Router, RouterOutlet } from '@angular/router';
 import { coolTransition, fadeAnimation } from '../../route-animations';
 import { TranslateService } from '@ngx-translate/core';
+import { Meta, Title } from '@angular/platform-browser';
+
 @Component({
   selector: 'app-new-build-about-the-project',
   templateUrl: './new-build-about-the-project.component.html',
@@ -26,7 +28,7 @@ export class NewBuildAboutTheProjectComponent implements OnInit, AfterViewInit{
   loading = false;
 
   constructor(private http: HttpClient, private sanitizer: DomSanitizer, private route: ActivatedRoute,
-    private renderer: Renderer2,private el: ElementRef, private cdr: ChangeDetectorRef, private router: Router,private translate: TranslateService
+    private renderer: Renderer2,private el: ElementRef, private cdr: ChangeDetectorRef, private router: Router,private translate: TranslateService, private meta: Meta, private title: Title
   ){
     this.router.events.subscribe(event => {
       if (event instanceof NavigationStart) {
@@ -49,6 +51,13 @@ export class NewBuildAboutTheProjectComponent implements OnInit, AfterViewInit{
     this.getMethod();
     this.getMethodOwnerAboutDescription();
     this.getMethodOwnerAbout();
+    this.translate.get('TITLE_MAIN').subscribe(translatedTitle => {
+      this.title.setTitle(translatedTitle);
+    });
+  
+    this.translate.get('TITLE_DESCRIPTION').subscribe(translatedDescription => {
+      this.meta.updateTag({ name: 'description', content: translatedDescription });
+    });
   }
   prepareRoute(outlet: RouterOutlet) {
     return outlet && outlet.activatedRouteData && outlet.activatedRouteData['animation'];

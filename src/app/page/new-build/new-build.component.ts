@@ -7,6 +7,7 @@ import { DescriptionItem } from '../../plagin/main-navbar-button/main-navbar-but
 import { routeAnimations } from '../../route-animations';
 import { Router, RouterOutlet } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
+import { Meta, Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-new-build',
@@ -33,7 +34,7 @@ export class NewBuildComponent implements OnInit{
   public itemsPerPage: number = 10; // Change this to set the number of items per page
 
   @ViewChild(MapComponent, { static: false }) mapComponent!: MapComponent; // Add "static: false" to avoid the initialization error
-  constructor(private http: HttpClient, private sanitizer: DomSanitizer, private cdr: ChangeDetectorRef, private filterService: DataService, private router: Router, private translate: TranslateService) {
+  constructor(private http: HttpClient, private sanitizer: DomSanitizer, private cdr: ChangeDetectorRef, private filterService: DataService, private router: Router, private translate: TranslateService, private meta: Meta, private title: Title) {
     this.translate.setDefaultLang('en');
     // Optionally, use browser language as default
     const browserLang = translate.getBrowserLang();
@@ -49,6 +50,13 @@ export class NewBuildComponent implements OnInit{
       if (filterData) {
         this.applyFilter(filterData);
       }
+    });
+    this.translate.get('TITLE_MAIN').subscribe(translatedTitle => {
+      this.title.setTitle(translatedTitle);
+    });
+  
+    this.translate.get('TITLE_DESCRIPTION').subscribe(translatedDescription => {
+      this.meta.updateTag({ name: 'description', content: translatedDescription });
     });
   }
 
