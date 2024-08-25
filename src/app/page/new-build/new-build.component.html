@@ -19,7 +19,7 @@
     <div>
     <div class="divv">
       <button class="custom-btn btn-16" (click)="toggleFilterTable()">{{ 'FILTERS' | translate }}</button>
-      <button class="custom-btn btn-16" (click)="toggleMaps()">{{ showMaps ? ('MAPS' | translate) : ('LIST' | translate) }}</button>
+      <button class="custom-btn btn-16" (click)="toggleMaps()">{{ showMaps ? ('LIST' | translate) : ('MAPS' | translate) }}</button>
     </div>
     <div *ngIf="!showMaps" class="div0">
       <h1>{{ 'TITLE' | translate }}</h1>
