@@ -1,9 +1,18 @@
-{
+{   
+    "BIG_BAR": {
     "NEW_BUILDINGS":"Nouveaux bâtiments",
     "BUILDERS":"Développeurs",
     "NEW_COTTAGES":"Nouveaux chalets",
-    "STATISTICS":"Statistiques",
+    "STATISTICS":"Statistiques"
+    },
 
+    "SMALL_BAR": {
+        "About_the_project":"A propos du projet",
+        "Planning":"Planification",
+        "Construction_monitoring":"Suivi de la construction",
+        "Documents":"Documents",
+        "Aerial_survey_360":"Relevé aérien 360"
+    },
 
     "AREA":"Zone",
     "PRICE":"Prix",
@@ -20,7 +29,7 @@
     "FILTERS": "Filtres",
     "MAPS": "Cartes",
     "LIST": "Liste",
-    "SET": "RESET",
+    "SET": "Réinitialiser",
     "SELECT": "Sélectionner",
     "DESCRIPTION": {
         "FROM_TO_PRICE": "De {{price_low}} € à {{price_hi}} €",
@@ -51,5 +60,17 @@
         "CONSTRUCTION_STATUS": "État de la construction",
         "MORE_ABOUT_PROJECT": "En savoir plus sur ce projet",
         "ABOUT_PROJECT": "À propos du projet"
-      }
+    },
+    "PLANING_PAGE": {
+        "TITLE":"Planification - Options d'appartements du promoteur - MARK",
+        "DESCRIPTION":"Tous les plans des appartements du complexe résidentiel sur MARK : options de planification pour les appartements d'une pièce, de deux pièces, de trois pièces et de deux niveaux dans les nouveaux bâtiments",
+        "Type":"Type",
+        "Feature":"Caractéristique",
+        "Reset Filters":"Réinitialiser les filtres ",
+        "Show Filter":"Afficher le filtre",
+        "Planing":"Planification",
+        "3D Walk Soon":"3D  Marcher bientôt",
+        "RESET": "Réinitialiser",
+        "SELECT": "Sélectionner"
+    }
   }

@@ -1,9 +1,17 @@
 {   
-    "NEW_BUILDINGS":"New Buildings",
-    "BUILDERS":"Builders",
-    "NEW_COTTAGES":"New Cottages",
-    "STATISTICS":"Statistics",
-
+    "BIG_BAR": {
+        "NEW_BUILDINGS":"New Buildings",
+        "BUILDERS":"Builders",
+        "NEW_COTTAGES":"New Cottages",
+        "STATISTICS":"Statistics"
+    },
+    "SMALL_BAR": {
+        "About_the_project":"About the project",
+        "Planning":"Planning",
+        "Construction_monitoring":"Construction monitoring",
+        "Documents":"Documents",
+        "Aerial_survey_360":"Aerial survey 360"
+    },
 
     "AREA":"Area",
     "PRICE":"Price",
@@ -50,5 +58,17 @@
         "CONSTRUCTION_STATUS": "Construction status",
         "MORE_ABOUT_PROJECT": "More about this project",
         "ABOUT_PROJECT": "About the project"
+    },
+    "PLANING_PAGE": {
+        "TITLE":"Planning  — Apartment options from the developer - MARK",
+        "DESCRIPTION":"All layouts of residential complex apartments on MARK: planning options for one-room, two-room, three-room and two-level apartments in new buildings.",
+        "Type":"Type",
+        "Feature":"Feature",
+        "Reset_Filters":"Reset Filters",
+        "Show_Filter":"Show Filter",
+        "Planing":"Planing",
+        "3D Walk Soon":"3D Walk Soon",
+        "RESET": "RESET",
+        "SELECT": "SELECT"
     }
   }

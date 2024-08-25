@@ -2,23 +2,23 @@
     <div class="div1">
         <h5 class="h55">
             <a [routerLink]="['/build_about_the_project/', id]" 
-               [class.active]="isActive('/build_about_the_project/')">About the project</a>
+               [class.active]="isActive('/build_about_the_project/')">{{ 'SMALL_BAR.About_the_project' | translate }}</a>
         </h5>
         <h5 class="h55">
             <a [routerLink]="['/new_build_planing/', id]" 
-               [class.active]="isActive('/new_build_planing/')">Planning</a>
+               [class.active]="isActive('/new_build_planing/')">{{ 'SMALL_BAR.Planning' | translate }}</a>
         </h5>
         <h5 class="h55">
             <a [routerLink]="['/construction_monitoring/', id]" 
-               [class.active]="isActive('/construction_monitoring/')">Construction monitoring</a>
+               [class.active]="isActive('/construction_monitoring/')">{{ 'SMALL_BAR.Construction_monitoring' | translate }}</a>
         </h5>
         <h5 class="h55">
             <a [routerLink]="['/document/', id]" 
-               [class.active]="isActive('/document/')">Documents</a>
+               [class.active]="isActive('/document/')">{{ 'SMALL_BAR.Documents' | translate }}</a>
         </h5>
         <h5 class="h55">
             <a [routerLink]="['/aerial_survay_360/', id]" 
-               [class.active]="isActive('/aerial_survay_360/')">Aerial survey 360</a>
+               [class.active]="isActive('/aerial_survay_360/')">{{ 'SMALL_BAR.Aerial_survey_360' | translate }}</a>
         </h5>
     </div>
 </div>

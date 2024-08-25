@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
-    <meta  name="description" content="All layouts of residential complex apartments on MARK: planning options for one-room, two-room, three-room and two-level apartments in new buildings.">
-    <title>Planning  — Apartment options from the developer - MARK</title>
+    <meta  name="description" content="{{ 'PLANING_PAGE.DESCRIPTION' | translate }}">
+    <title>{{ 'PLANING_PAGE.TITLE' | translate }}</title>
     <meta name="keywords" content="js, py">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -26,21 +26,21 @@
     </div>
     <div class="aaappp">
         <div class="aaapp">
-            <h3 style="margin: -25px -65px 0px 0px;">Type</h3>
+            <h3 style="margin: -25px -65px 0px 0px;">{{ 'PLANING_PAGE.Type' | translate }}</h3>
             <button class="custom-btn btn-10" *ngFor="let typeItem of uniqueTypeItems" (click)="selectedTypeItem = typeItem">{{ typeItem }}</button>         
         </div>
         <div class="aaapp">
-            <h3 style="margin: -25px -90px 0px 10px;">Feature</h3>
+            <h3 style="margin: -25px -90px 0px 10px;">{{ 'PLANING_PAGE.Feature' | translate }}</h3>
             <button class="custom-btn btn-10" *ngFor="let FeaturesItem of uniqueFeaturesItems" (click)="selectedFeaturesItem = FeaturesItem">{{ FeaturesItem }}</button>    
         </div>
 
-            <button  style="margin-left: auto;"  class="custom-btn btn-11 btn-111" (click)="resetFilters()">Reset Filters<div class="dot"></div></button>
+            <button  style="margin-left: auto;"  class="custom-btn btn-11 btn-111" (click)="resetFilters()">{{ 'PLANING_PAGE.Reset_Filters' | translate }}<div class="dot"></div></button>
     </div>
 </div>
 <div class="filter1">
     <div style="display: flex; justify-content: space-between;">
         <app-input-tern style="position: relative; margin: 9px 0px 0px 0px;" (selectedTerm)="onTermSelected($event)" (selectedHouse)="onHouseSelected($event)"></app-input-tern>
-        <button class="custom-btn btn-10" (click)="toggleFilterTables()">Show Filter</button>    
+        <button class="custom-btn btn-10" (click)="toggleFilterTables()">{{ 'PLANING_PAGE.Show_Filter' | translate }}</button>    
     </div>
     <div class="filter-tablea"  *ngIf="showFilterTables">
         <div style="overflow: hidden;" class="filter-table1a">
@@ -51,15 +51,15 @@
             <div style="height: 80%;"  class="filter-table1-ina">
                 <div>
                     <app-range-input (rangeValuesChanged)="onRangeValuesChanged($event)" [getMethodDescriptions]="id"></app-range-input>
-                    <h2>Type</h2>
+                    <h2>{{ 'PLANING_PAGE.Type' | translate }}</h2>
                     <button class="custom-btn btn-10" *ngFor="let typeItem of uniqueTypeItems" (click)="selectedTypeItem = typeItem">{{ typeItem }}</button>
-                    <h2>Feature</h2>
+                    <h2>{{ 'PLANING_PAGE.Feature' | translate }}</h2>
                     <button class="custom-btn btn-10" *ngFor="let FeaturesItem of uniqueFeaturesItems" (click)="selectedFeaturesItem = FeaturesItem">{{ FeaturesItem }}</button>    
                 </div>
             </div>
             <div class="filter-table-endeda">
-                <div class="custom-btn1 btn-16" (click)="resetFilters()">SET</div>
-                <div class="custom-btn1 btn-16" (click)="toggleFilterTables()"> SELECT</div>
+                <div class="custom-btn1 btn-16" (click)="resetFilters()">{{ 'PLANING_PAGE.RESET' | translate }}</div>
+                <div class="custom-btn1 btn-16" (click)="toggleFilterTables()">{{ 'PLANING_PAGE.SELECT' | translate }}</div>
             </div>
         </div>
     </div>
@@ -107,7 +107,7 @@
 <div class="filter-table"  *ngIf="showFilterTable">
     <div style="overflow: hidden;" class="filter-table1">
         <div class="filter-table-title">
-            <h2>Planing</h2>
+            <h2>{{ 'PLANING_PAGE.Planing' | translate }}</h2>
             <img style="height: 48px; width: 48px; cursor: pointer; object-fit: cover;" (click)="toggleFilterTable(null)" src="assets/icons8-close-100.png">
         </div>
         <div class="filter-table-ended">
