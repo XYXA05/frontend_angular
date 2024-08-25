@@ -93,5 +93,11 @@
         "DESCRIPTION":"",
         "TITLE_MAIN":"Relevé aérien du complexe résidentiel {{title}}",
         "TITLE_SMALL":"Sélectionnez une photo"
+    },
+    "BUILDER_PAGE":{
+        "TITLE_SMALL":"Promoteurs de la région de Luxembourg",
+        "DESCRIPTION_SMAAL":"Entreprises de construction de la région luxembourgeoise",
+        "TITLE":"MARK - Catalogue des promoteurs du Luxembourg, rating des entreprises de construction",
+        "DESCRIPTION":"Répertoire complet des promoteurs luxembourgeois avec notation, risques d'investissement et tous les nouveaux bâtiments / complexes résidentiels pertinents. Rating des entreprises de construction luxembourgeoises."
     }
   }

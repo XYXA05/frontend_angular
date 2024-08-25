@@ -91,5 +91,11 @@
         "DESCRIPTION":"",
         "TITLE_MAIN":"Aerial survey of the {{title}} residential complex",
         "TITLE_SMALL":"Select Photo"
+    },
+    "BUILDER_PAGE":{
+        "TITLE_SMALL":"Developers of Luxembourg region",
+        "DESCRIPTION_SMAAL":"Construction companies in the Luxembourg region",
+        "TITLE":"MARK — Catalog of developers of Luxembourg, rating of construction companies",
+        "DESCRIPTION":"Complete directory of Luxembourg developers with rating, investment risks and all relevant new buildings / residential complexes. Rating of Luxembourg construction companies."
     }
   }

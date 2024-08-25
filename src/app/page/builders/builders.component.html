@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, minimum-scale=1.0">
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta name="description" content="Complete directory of Luxembourg developers with rating, investment risks and all relevant new buildings / residential complexes. Rating of Luxembourg construction companies.">
-    <title>MARK — Catalog of developers of Luxembourg, rating of construction companies</title>
+    <meta name="description" [attr.content]="'BUILDER_PAGE.DESCRIPTION' | translate">
+    <title>{{ 'BUILDER_PAGE.TITLE'  | translate }}</title>
     <meta name="keywords" content="js, py">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,8 +16,8 @@
 <app-main-navbar></app-main-navbar>
 <div class="div0">
     <div style="margin: 40px 0px 40px 0px;">
-        <h1 class="h2" style="margin: 0px 0px 15px 0px;">Developers of Luxembourg region</h1>
-        <h4 class="h3">Construction companies in the Luxembourg region</h4>
+        <h1 class="h2" style="margin: 0px 0px 15px 0px;">{{ 'BUILDER_PAGE.TITLE_SMALL'  | translate }}</h1>
+        <h4 class="h3">{{ 'BUILDER_PAGE.DESCRIPTION_SMAAL'  | translate }}</h4>
     </div>
     <div *ngFor="let ddata of paginatedData; let i = index">
         <div style="display: flex; align-items: center;">
