@@ -5,9 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
-    <meta *ngIf="jsonData" name="description" [attr.content]="'PAGE.DESCRIPTION' | translate:{title: jsonData.title, line_adres: jsonData.line_adres}">
+    <meta property="og:title" content="Apartments for sale from the developer" />
+    <meta *ngIf="jsonData" property="og:description" content="All about {{jsonData.title}} ({{jsonData.line_adres}}) on MARK: sale of apartments in a new building from the developer, current prices, planning, construction progress in the photo, and infrastructure of the residential complex." />
+    <meta property="og:title" content="Appartements à vendre par le promoteur" />
+    <meta *ngIf="jsonData" property="og:description" content="Tout savoir sur {{jsonData.title}} ({{jsonData.line_adres}}) sur MARK : vente d'appartements dans un immeuble neuf du promoteur, prix actuels, planning, avancement de la construction sur la photo, et infrastructure du complexe résidentiel." />
     <meta name="keywords" content="apartments, real estate, developer, property sale, financing terms, construction status">
-    <title *ngIf="jsonData"> {{jsonData.title}} — {{ 'PAGE.TITLE' | translate }}</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
