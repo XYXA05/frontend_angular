@@ -79,5 +79,14 @@
         "DECLARED_DATE": "The declared date of commissioning",
         "IMAGE_ALT": "image",
         "POSITION": "Position"
+    },
+    "Documents_page":{
+        "TITLE":"{{title}} {{city}} - Construction permits - MARK",
+        "DESCRIPTION":"All documents for the construction of residential complex {{title}} ({{line_adres}}) on MARK: construction permit, land documents and cadastre data, certificate of readiness for operation of the complex and financing schemes.",
+        "TITLE_MAIN":"Documents of the {{title}}",
+        "TITLE_SMALL":"All documents are obtained from open state registers"
+    },
+    "Aerial_survey_360_page":{
+        
     }
   }

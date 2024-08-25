@@ -7,7 +7,7 @@
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     <meta *ngIf="jsonData" name="description" [attr.content]="'PAGE.DESCRIPTION' | translate:{title: jsonData.title, line_adres: jsonData.line_adres}">
     <meta name="keywords" content="apartments, real estate, developer, property sale, financing terms, construction status">
-    <title *ngIf="jsonData"> {{jsonData.title}} — Apartments in new buildings — MARK</title>
+    <title *ngIf="jsonData"> {{jsonData.title}} — {{ 'PAGE.TITLE' | translate }}</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
