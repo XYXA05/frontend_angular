@@ -44,20 +44,34 @@ export class NewBuildAboutTheProjectComponent implements OnInit, AfterViewInit{
   }
   switchLanguage(language: string) {
     this.translate.use(language);
+    this.updateMetaTags(); // Обновляем метатеги после смены языка
   }
-
   ngOnInit(): void {
     this.id = this.route.snapshot.paramMap.get('id');
     this.getMethod();
     this.getMethodOwnerAboutDescription();
     this.getMethodOwnerAbout();
-    this.translate.get('TITLE_MAIN').subscribe(translatedTitle => {
-      this.title.setTitle(translatedTitle);
+    this.translate.onLangChange.subscribe(() => {
+      this.updateMetaTags();
     });
   
-    this.translate.get('TITLE_DESCRIPTION').subscribe(translatedDescription => {
-      this.meta.updateTag({ name: 'description', content: translatedDescription });
-    });
+    // Первый вызов при инициализации
+    this.updateMetaTags();
+  }
+
+  private updateMetaTags(): void {
+    if (this.jsonData) {
+      this.translate.get('PAGE.TITLE').subscribe(translatedTitle => {
+        this.title.setTitle(`${this.jsonData.title} — ${translatedTitle}`);
+      });
+  
+      this.translate.get('PAGE.DESCRIPTION', {
+        title: this.jsonData.title,
+        line_adres: this.jsonData.line_adres
+      }).subscribe(translatedDescription => {
+        this.meta.updateTag({ name: 'description', content: translatedDescription });
+      });
+    }
   }
   prepareRoute(outlet: RouterOutlet) {
     return outlet && outlet.activatedRouteData && outlet.activatedRouteData['animation'];
