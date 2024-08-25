@@ -37,6 +37,7 @@
     },
 
     "PAGE": {
+        "TITLE":"Appartements à vendre par le promoteur",
         "DESCRIPTION": "Tout sur {{title}} ({{line_adres}}) sur MARK : vente d'appartements dans un nouvel immeuble du promoteur, prix actuels, planification, avancement des travaux en photo et infrastructure du complexe résidentiel.",
         "KEYWORDS": "appartements, immobilier, promoteur, vente de biens, conditions de financement, état des travaux",
         "PROJECT_BY": "Un projet par :",
