@@ -85,8 +85,8 @@
     "Documents_page":{
         "TITLE":" Permis de construire - MARK",
         "DESCRIPTION":"Tous les documents relatifs à la construction du complexe résidentiel {{title}} ({{line_adres}}) sur MARK : permis de construire, documents fonciers et données cadastrales, certificat d'aptitude à l'exploitation du complexe et plans de financement",
-        "TITLE_MAIN":"Documents of the {{title}}",
-        "TITLE_SMALL":"All documents are obtained from open state registers"
+        "TITLE_MAIN":"Documents du {{title}}",
+        "TITLE_SMALL":"Tous les documents sont obtenus à partir de registres publics ouverts"
     },
     "Aerial_survey_360_page":{
         "TITLE":"",
