@@ -81,5 +81,17 @@
         "DECLARED_DATE": "La date de mise en service déclarée",
         "IMAGE_ALT": "image",
         "POSITION": "Position"
+    },
+    "Documents_page":{
+        "TITLE":" Permis de construire - MARK",
+        "DESCRIPTION":"Tous les documents relatifs à la construction du complexe résidentiel {{title}} ({{line_adres}}) sur MARK : permis de construire, documents fonciers et données cadastrales, certificat d'aptitude à l'exploitation du complexe et plans de financement",
+        "TITLE_MAIN":"Documents of the {{title}}",
+        "TITLE_SMALL":"All documents are obtained from open state registers"
+    },
+    "Aerial_survey_360_page":{
+        "TITLE":"",
+        "DESCRIPTION":"",
+        "TITLE_MAIN":"Relevé aérien du complexe résidentiel {{title}}",
+        "TITLE_SMALL":"Sélectionnez une photo"
     }
   }

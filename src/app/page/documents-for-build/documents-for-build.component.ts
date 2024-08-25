@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, Input, OnInit, Renderer2 } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { fadeAnimation } from '../../route-animations';
+import { TranslateService } from '@ngx-translate/core';
 
 
 @Component({
@@ -21,9 +22,17 @@ export class DocumentsForBuildComponent implements OnInit, AfterViewInit{
     private http: HttpClient,
     private elementRef: ElementRef,
     private renderer: Renderer2,
-    private cdRef: ChangeDetectorRef
-  ) {}
-
+    private cdRef: ChangeDetectorRef,
+    private translate: TranslateService
+  ) {    
+    this.translate.setDefaultLang('en');
+    // Optionally, use browser language as default
+    const browserLang = translate.getBrowserLang();
+    translate.use(browserLang.match(/en|fr/) ? browserLang : 'en');
+  }
+  switchLanguage(language: string) {
+    this.translate.use(language);
+  }
   ngOnInit(): void {
     this.id = this.route.snapshot.paramMap.get('id');
     this.getMethod();

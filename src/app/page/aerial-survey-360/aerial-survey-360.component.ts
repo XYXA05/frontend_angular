@@ -5,6 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import { fadeAnimation } from '../../route-animations';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-aerial-survey-360',
@@ -30,8 +31,15 @@ export class AerialSurvey360Component implements OnInit, AfterViewInit{
   private controls!: OrbitControls;
   private cylinder!: THREE.Mesh;
 
-  constructor(private http: HttpClient, private route: ActivatedRoute, private sanitizer: DomSanitizer) {}
-  
+  constructor(private http: HttpClient, private route: ActivatedRoute, private sanitizer: DomSanitizer, private translate: TranslateService) {    
+    this.translate.setDefaultLang('en');
+    // Optionally, use browser language as default
+    const browserLang = translate.getBrowserLang();
+    translate.use(browserLang.match(/en|fr/) ? browserLang : 'en');
+  }
+  switchLanguage(language: string) {
+    this.translate.use(language);
+  }
   ngOnInit(): void {
     this.id = this.route.snapshot.paramMap.get('id');
     this.getMethod();

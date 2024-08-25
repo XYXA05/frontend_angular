@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
-    <meta *ngIf="jsonDataa" name="description" content="All documents for the construction of residential complex {{jsonDataa.title}} ({{jsonDataa.line_adres}}) on MARK: construction permit, land documents and cadastre data, certificate of readiness for operation of the complex and financing schemes.">
-    <title *ngIf="jsonDataa">{{jsonDataa.title}} {{jsonDataa.city}} - Construction permits - MARK</title>
+    <meta *ngIf="jsonDataa" name="description"  [attr.content]="'Documents_page.DESCRIPTION' | translate:{title: jsonDataa.title, line_adres: jsonDataa.line_adres}">
+    <title *ngIf="jsonDataa">{{jsonDataa.title}} {{jsonDataa.city}} - {{ 'Documents_page.TITLE'  | translate }}</title>
     <meta name="keywords" content="js, py">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,8 +16,8 @@
     <app-main-navbar></app-main-navbar>
     <app-main-navbar2></app-main-navbar2>
     <div *ngIf="jsonDataa" style="display: grid; justify-content: space-around; justify-items: center; margin: 30px 0px 0px 0px;">
-      <h1 class="h2">Documents of the {{jsonDataa.title}}</h1>
-      <h4 class="h3">All documents are obtained from open state registers</h4>
+      <h1 class="h2">{{ 'Documents_page.TITLE_MAIN'  | translate:{title: jsonDataa.title} }}</h1>
+      <h4 class="h3">{{'Documents_page.TITLE_SMALL'  | translate}}</h4>
     </div>
     <section [@fadeAnimation]>
       <div class="container max-w-5xl mx-auto px-8">
