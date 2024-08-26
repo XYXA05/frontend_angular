@@ -52,11 +52,13 @@ export class NewBuildAboutTheProjectComponent implements OnInit, AfterViewInit{
     this.getMethodOwnerAboutDescription();
     this.getMethodOwnerAbout();
     this.translate.onLangChange.subscribe(() => {
-      this.jsonData.forEach(item => {
-        this.translateFields(item);
-      });
+      this.updateMetaTags();
       this.cdr.detectChanges(); // Ensure the template updates with new translations
     });
+
+  
+    // Первый вызов при инициализации
+    this.updateMetaTags();
   }
 
   private updateMetaTags(): void {
@@ -82,12 +84,7 @@ export class NewBuildAboutTheProjectComponent implements OnInit, AfterViewInit{
       this.jsonData = data;
       this.jsonData_id = data.id;
       this.paragraph = data.description_text;
-      this.jsonData.forEach(item => {
-        this.translateFields(item);
-      });
-      
-      // Force change detection to update the view with translated content
-      this.cdr.detectChanges();
+
       this.getImagesFromPosition(2);  // Fetch images starting from position 2
       if (data.owner_id) {  // Check if owner_id exists
         this.getMethodOwner(data.owner_id);  // Pass owner_id to getMethodOwner
@@ -96,18 +93,6 @@ export class NewBuildAboutTheProjectComponent implements OnInit, AfterViewInit{
     }
     );
   }
-  translateFields(item: any): void {
-    const fieldsToTranslate = ['class_bulding', 'description_text', 'construction_technology','walls','insulation','heating','ceiling_height',
-      'apartment_condition','territory','car_park',
-    ]; // Add all fields you need to translate
-  
-    fieldsToTranslate.forEach(field => {
-      this.translate.get(item[field]).subscribe(translatedText => {
-        item[`translated_${field}`] = translatedText;
-      });
-    });
-  }
-
   public getMethodOwnerAboutDescription(): void {
     this.http.get(`https://usskkwk.mark-build.com/get_items_for_document_description/${this.id}`).subscribe((data: any) => {
       console.log(data);
