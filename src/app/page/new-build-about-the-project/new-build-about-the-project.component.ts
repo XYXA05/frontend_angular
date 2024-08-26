@@ -52,13 +52,11 @@ export class NewBuildAboutTheProjectComponent implements OnInit, AfterViewInit{
     this.getMethodOwnerAboutDescription();
     this.getMethodOwnerAbout();
     this.translate.onLangChange.subscribe(() => {
-      this.updateMetaTags();
+      this.jsonData.forEach(item => {
+        this.translateFields(item);
+      });
       this.cdr.detectChanges(); // Ensure the template updates with new translations
     });
-
-  
-    // Первый вызов при инициализации
-    this.updateMetaTags();
   }
 
   private updateMetaTags(): void {
